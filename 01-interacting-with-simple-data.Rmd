@@ -10,9 +10,9 @@ Let's focus on the interactive console first.
 
 ## Coding in the console
 
-Click in the interactive console.  You'll notice a cursor will start blinking next to the `>` symbol.  This is called the command prompt; the computer is waiting for us to give it a command, so its "prompting" us to let us know it's ready.
+Click in the interactive console.  You'll notice a cursor will start blinking next to the `>` symbol.  This is called the command prompt; the computer is waiting for us to give it a command; it's "prompting" us, and letting us know it's ready.
 
-Since R was made for statistics, we would expect it has no problems with numbers and math.  Let's try some basics!
+Given that R was made for statistics, we should expect it to have no problems with numbers and math.  Let's try some basics!
 
 ```{r}
 1
@@ -20,7 +20,7 @@ Since R was made for statistics, we would expect it has no problems with numbers
 10 + 12
 ```
 
-Press enter after each line of code runs it, and R will tell us the answer right away.  This lets us interact with R quickly.
+Pressing enter after each line of code runs it, and R will tell us the answer right away.  This lets us interact with R quickly.
 
 R, like other programming languages, can remember information we give it in named variables.  This is called assigning variables with a value.  Let's tell R to remember some information for us.
 
@@ -59,13 +59,13 @@ This is neat and all, but we're here to dig into data, so let's get to it!
 
 ## Loading in data
 
-We are going to load in CSV files today to get data into R.  R is powerful for statistics because it has a great base collection of functions, or named procedures, for common things we'd want to do with data, like reading in a CSV.  R's base way of doing this is with a function named `read.csv`.  Like the named variables, we can get **what** `read.csv` is by referring to it's name.
+We are going to load in CSV files today to get data into R.  R is powerful for statistics because it has a great base collection of functions, or named procedures, for common things we'd want to do with data, like reading in a CSV.  R's base way of doing this is with a function named `read.csv`.  Like the named variables, we can get **what** `read.csv` is by referring to its name.
 
 ```{r}
 read.csv
 ```
 
-Here, we get back just what `read.csv` is.  In order to tell R to **do** or **run** the function, we need run:
+Here, we get back just what `read.csv` is.  In order to tell R to **do** or **run** the function, we need to run:
 
 ```{r error=TRUE}
 read.csv()
