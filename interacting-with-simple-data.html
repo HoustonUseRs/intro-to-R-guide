@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="">
+  <meta name="generator" content="bookdown 0.1.16 and GitBook 2.6.7">
+
+  <meta property="og:title" content="" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="" />
+  
+  
+  
+
+
+  
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="welcome-to-intro-to-r.html">
+<link rel="next" href="scripting-with-more-data.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About this Guide</a></li>
+<li class="chapter" data-level="2" data-path="welcome-to-intro-to-r.html"><a href="welcome-to-intro-to-r.html"><i class="fa fa-check"></i><b>2</b> Welcome to Intro to R</a><ul>
+<li class="chapter" data-level="2.1" data-path="welcome-to-intro-to-r.html"><a href="welcome-to-intro-to-r.html#what-is-r"><i class="fa fa-check"></i><b>2.1</b> What is R?</a></li>
+<li class="chapter" data-level="2.2" data-path="welcome-to-intro-to-r.html"><a href="welcome-to-intro-to-r.html#the-plan"><i class="fa fa-check"></i><b>2.2</b> The Plan</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="interacting-with-simple-data.html"><a href="interacting-with-simple-data.html"><i class="fa fa-check"></i><b>3</b> Interacting with Simple Data</a><ul>
+<li class="chapter" data-level="3.1" data-path="interacting-with-simple-data.html"><a href="interacting-with-simple-data.html#what-is-rstudio"><i class="fa fa-check"></i><b>3.1</b> What is RStudio?</a></li>
+<li class="chapter" data-level="3.2" data-path="interacting-with-simple-data.html"><a href="interacting-with-simple-data.html#coding-in-the-console"><i class="fa fa-check"></i><b>3.2</b> Coding in the console</a></li>
+<li class="chapter" data-level="3.3" data-path="interacting-with-simple-data.html"><a href="interacting-with-simple-data.html#loading-in-data"><i class="fa fa-check"></i><b>3.3</b> Loading in data</a></li>
+<li class="chapter" data-level="3.4" data-path="interacting-with-simple-data.html"><a href="interacting-with-simple-data.html#glancing-at-the-data"><i class="fa fa-check"></i><b>3.4</b> Glancing at the data</a></li>
+<li class="chapter" data-level="3.5" data-path="interacting-with-simple-data.html"><a href="interacting-with-simple-data.html#visualizing-the-data"><i class="fa fa-check"></i><b>3.5</b> Visualizing the data</a></li>
+<li class="chapter" data-level="3.6" data-path="interacting-with-simple-data.html"><a href="interacting-with-simple-data.html#modeling-the-data"><i class="fa fa-check"></i><b>3.6</b> Modeling the data</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="scripting-with-more-data.html"><a href="scripting-with-more-data.html"><i class="fa fa-check"></i><b>4</b> Scripting with more data</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="interacting-with-simple-data" class="section level1">
+<h1><span class="header-section-number">3</span> Interacting with Simple Data</h1>
+<div id="what-is-rstudio" class="section level2">
+<h2><span class="header-section-number">3.1</span> What is RStudio?</h2>
+<p>Today, we will be working with R in RStudio. While there are other programs we can use to write R, RStudio has become the standard environment for working with R.</p>
+<div class="figure">
+<img src="assets/rstudio.png" alt="RStudio has four main windows: a file viewer, an interactive console, an environment viewer, and directory viewer." />
+<p class="caption">RStudio has four main windows: a file viewer, an interactive console, an environment viewer, and directory viewer.</p>
+</div>
+<p>Let’s focus on the interactive console first.</p>
+</div>
+<div id="coding-in-the-console" class="section level2">
+<h2><span class="header-section-number">3.2</span> Coding in the console</h2>
+<p>Click in the interactive console. You’ll notice a cursor will start blinking next to the <code>&gt;</code> symbol. This is called the command prompt; the computer is waiting for us to give it a command, so its “prompting” us to let us know it’s ready.</p>
+<p>Since R was made for statistics, we would expect it has no problems with numbers and math. Let’s try some basics!</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span></code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">1</span> +<span class="st"> </span><span class="dv">5</span></code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="dv">10</span> +<span class="st"> </span><span class="dv">12</span></code></pre></div>
+<pre><code>## [1] 22</code></pre>
+<p>Press enter after each line of code runs it, and R will tell us the answer right away. This lets us interact with R quickly.</p>
+<p>R, like other programming languages, can remember information we give it in named variables. This is called assigning variables with a value. Let’s tell R to remember some information for us.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="dv">1</span>
+y &lt;-<span class="st"> </span><span class="dv">5</span>
+z &lt;-<span class="st"> </span><span class="dv">10</span></code></pre></div>
+<p>The <code>&lt;</code> and <code>-</code> can be seen as an arrow pointing to the left. You can think of this as saying, “assign the value 1 to a variable named x”. If you are familiar with other programming languages, <code>&lt;-</code> and <code>=</code> can be used interchangably in R, but the preferred way is to use <code>&lt;-</code>. We can also see all the information we’ve told R to remember in the environment viewer.</p>
+<p>We can ask R what the values of these variables are:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x</code></pre></div>
+<pre><code>## [1] 1</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">y</code></pre></div>
+<pre><code>## [1] 5</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z</code></pre></div>
+<pre><code>## [1] 10</code></pre>
+<p>We can also use these variables like so:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x +<span class="st"> </span>y</code></pre></div>
+<pre><code>## [1] 6</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">x +<span class="st"> </span>z</code></pre></div>
+<pre><code>## [1] 11</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">z *<span class="st"> </span>y</code></pre></div>
+<pre><code>## [1] 50</code></pre>
+<p>And if we try to ask R about a variable it doesn’t know about, R will tell us that it can’t find that variable:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">a</code></pre></div>
+<pre><code>## Error in eval(expr, envir, enclos): object &#39;a&#39; not found</code></pre>
+<p>This is neat and all, but we’re here to dig into data, so let’s get to it!</p>
+</div>
+<div id="loading-in-data" class="section level2">
+<h2><span class="header-section-number">3.3</span> Loading in data</h2>
+<p>We are going to load in CSV files today to get data into R. R is powerful for statistics because it has a great base collection of functions, or named procedures, for common things we’d want to do with data, like reading in a CSV. R’s base way of doing this is with a function named <code>read.csv</code>. Like the named variables, we can get <strong>what</strong> <code>read.csv</code> is by referring to it’s name.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">read.csv</code></pre></div>
+<pre><code>## function (file, header = TRUE, sep = &quot;,&quot;, quote = &quot;\&quot;&quot;, dec = &quot;.&quot;, 
+##     fill = TRUE, comment.char = &quot;&quot;, ...) 
+## read.table(file = file, header = header, sep = sep, quote = quote, 
+##     dec = dec, fill = fill, comment.char = comment.char, ...)
+## &lt;bytecode: 0x1037101f8&gt;
+## &lt;environment: namespace:utils&gt;</code></pre>
+<p>Here, we get back just what <code>read.csv</code> is. In order to tell R to <strong>do</strong> or <strong>run</strong> the function, we need run:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read.csv</span>()</code></pre></div>
+<pre><code>## Error in read.table(file = file, header = header, sep = sep, quote = quote, : argument &quot;file&quot; is missing, with no default</code></pre>
+<p>In order to know what file to read in, we need to give the function the location of the file:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&#39;crickets.csv&#39;</span>)</code></pre></div>
+<pre><code>##    Chirpspersecond Temperature
+## 1             20.0        88.6
+## 2             16.0        71.6
+## 3             19.8        93.3
+## 4             18.4        84.3
+## 5             17.1        80.6
+## 6             15.5        75.2
+## 7             14.7        69.7
+## 8             17.1        82.0
+## 9             15.4        69.4
+## 10            16.2        83.3
+## 11            15.0        79.6
+## 12            17.2        82.6
+## 13            16.0        80.6
+## 14            17.0        83.5
+## 15            14.4        76.3</code></pre>
+<p>RStudio reminds us what different functions are named as we start typing them into console, and reminds us what additional information each of those functions may need when we type the <code>(</code>. It also automatically completes the function call for us with the <code>)</code>.</p>
+<p>When we read in the CSV, R printed the data out to us. In order to really use the data though, we need to tell R to remember the data by assigning it to a variable. We want to name our variables so that they’re easy to remember and indicative of what information they are holding onto.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crickets &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&#39;crickets.csv&#39;</span>)</code></pre></div>
+<p>Now, when we ask R about <code>crickets</code>, we get the data back!</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crickets</code></pre></div>
+<pre><code>##    Chirpspersecond Temperature
+## 1             20.0        88.6
+## 2             16.0        71.6
+## 3             19.8        93.3
+## 4             18.4        84.3
+## 5             17.1        80.6
+## 6             15.5        75.2
+## 7             14.7        69.7
+## 8             17.1        82.0
+## 9             15.4        69.4
+## 10            16.2        83.3
+## 11            15.0        79.6
+## 12            17.2        82.6
+## 13            16.0        80.6
+## 14            17.0        83.5
+## 15            14.4        76.3</code></pre>
+<p>There are many other ways to load in data from other file types. Googling “read xls to R” will give us some great answers on how to read in data as an Excel sheet. We also have a quick list of standard ways to load other common file types in the appendix.</p>
+<p>Let’s get a quick sense of what this data is like!</p>
+</div>
+<div id="glancing-at-the-data" class="section level2">
+<h2><span class="header-section-number">3.4</span> Glancing at the data</h2>
+<p>Here’s a table of some quick functions we can run on the data to learn about it:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Code</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>names(crickets)</code></td>
+<td align="left">Column header names</td>
+</tr>
+<tr class="even">
+<td align="left"><code>dim(crickets)</code></td>
+<td align="left">Number of rows by number of columns</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>nrow(crickets)</code></td>
+<td align="left">Number of rows</td>
+</tr>
+<tr class="even">
+<td align="left"><code>ncol(crickets)</code></td>
+<td align="left">Number of columns</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>str(crickets)</code></td>
+<td align="left">Structure of data</td>
+</tr>
+<tr class="even">
+<td align="left"><code>summary(crickets)</code></td>
+<td align="left">Summary of the data</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>View(crickets)</code></td>
+<td align="left">View data in file viewer</td>
+</tr>
+</tbody>
+</table>
+<p>We can also look at parts of the data using <code>[]</code>. For example, we can look at the value in the first row and column:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crickets[<span class="dv">1</span>, <span class="dv">1</span>]</code></pre></div>
+<pre><code>## [1] 20</code></pre>
+<p>We can look at just the rows:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crickets[<span class="dv">1</span>, ]</code></pre></div>
+<pre><code>##   Chirpspersecond Temperature
+## 1              20        88.6</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crickets[<span class="dv">2</span>, ]</code></pre></div>
+<pre><code>##   Chirpspersecond Temperature
+## 2              16        71.6</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crickets[<span class="kw">nrow</span>(crickets), ]</code></pre></div>
+<pre><code>##    Chirpspersecond Temperature
+## 15            14.4        76.3</code></pre>
+<p>or just the columns:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crickets[, <span class="dv">1</span>]</code></pre></div>
+<pre><code>##  [1] 20.0 16.0 19.8 18.4 17.1 15.5 14.7 17.1 15.4 16.2 15.0 17.2 16.0 17.0
+## [15] 14.4</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crickets[, <span class="dv">2</span>]</code></pre></div>
+<pre><code>##  [1] 88.6 71.6 93.3 84.3 80.6 75.2 69.7 82.0 69.4 83.3 79.6 82.6 80.6 83.5
+## [15] 76.3</code></pre>
+<p>We can use this to calculate our own means, standard deviations, and medians:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(crickets[, <span class="dv">1</span>])
+<span class="kw">median</span>(crickets[, <span class="dv">1</span>])
+<span class="kw">sd</span>(crickets[, <span class="dv">1</span>])
+<span class="kw">mean</span>(crickets[, <span class="dv">2</span>])
+<span class="kw">median</span>(crickets[, <span class="dv">2</span>])
+<span class="kw">sd</span>(crickets[, <span class="dv">2</span>])</code></pre></div>
+<p>We can also as R for the max and the min:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">max</span>(crickets[, <span class="dv">1</span>])
+<span class="kw">min</span>(crickets[, <span class="dv">1</span>])
+<span class="kw">max</span>(crickets[, <span class="dv">2</span>])
+<span class="kw">min</span>(crickets[, <span class="dv">2</span>])</code></pre></div>
+<p>There’s many more calculations we can run on the data, but plotting the data will help us we a better picture of it.</p>
+</div>
+<div id="visualizing-the-data" class="section level2">
+<h2><span class="header-section-number">3.5</span> Visualizing the data</h2>
+<p>Base R can plot our data, but the wonderful thing about R being open-sourced is that it’s encouraged many people to expand it’s functionality by writing groups of functions, called packages. These packages are available for everyone to install and use. To plot our data, we will use an outside package, called <code>ggplot2</code>, which has become the standard way to plot data in R.</p>
+<p>We can install the <code>ggplot2</code> package by calling the <code>install.packages</code> function like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&#39;ggplot2&#39;</span>)</code></pre></div>
+<pre><code>## Error in install.packages : Updating loaded packages</code></pre>
+<p>While the package is installing, let’s take a break!</p>
+<p>Once the package installed, we need to tell R to load it so we can use it.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)</code></pre></div>
+<p>To start, we can tell <code>ggplot</code> what our data is:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> crickets)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p>This gives us back a rather boring blank gray square. At this point, ggplot does not know what about the data to map to where. We can tell it to map <code>Chirpspersecond</code> as the <code>x</code>, and <code>Temperature</code> as the <code>y</code> like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> crickets, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Chirpspersecond, <span class="dt">y =</span> Temperature))</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p>At this point, <code>ggplot</code> seems to know where things should go, but there’s no points. This base layer is ready with our coordinates and axis, but we would also like <code>ggplot</code> to map the data in the same way to a layer of markings that represent the data. Let’s try points:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> crickets, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Chirpspersecond, <span class="dt">y =</span> Temperature)) +
+<span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p>We now have points, each with it’s x mapped to Chirpspersecond and the y mapped to Temperature. We can also mapped the color of each point to the temperature like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> crickets, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Chirpspersecond, <span class="dt">y =</span> Temperature)) +
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">color =</span> Temperature))</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p>This gives the points colors mapped from the Temperature along a default scale. We can adjust the scale to give a sense of the temperature like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> crickets, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Chirpspersecond, <span class="dt">y =</span> Temperature)) +
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">color =</span> Temperature)) +
+<span class="st">  </span><span class="kw">scale_color_gradient</span>(<span class="dt">low=</span><span class="st">&quot;orange&quot;</span>, <span class="dt">high=</span><span class="st">&quot;red&quot;</span>)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<p>Let’s take some time to experiment with different visualizations using ggplot2. See the <a href="https://www.rstudio.com/wp-content/uploads/2015/12/ggplot2-cheatsheet-2.0.pdf">data visualization cheat sheet</a> for ideas.</p>
+</div>
+<div id="modeling-the-data" class="section level2">
+<h2><span class="header-section-number">3.6</span> Modeling the data</h2>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="welcome-to-intro-to-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="scripting-with-more-data.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
