@@ -1,0 +1,36 @@
+# About this Guide {-}
+
+Houston R Users are hosting a [guided intro workshop](http://www.meetup.com/houstonr/events/234653360/) on November 12, 2016.  This guide is the full version of the short guide handed out at the workshop.  This should be a good reference for reviewing things we covered in person, or for a self-guided introduction to R.
+
+# Welcome to Intro to R
+
+We are very excited you could make it to this Intro to R workshop!  We hope to leave this workshop with some practical practice under our belts working with data in R and the ability to find and understand resources when applying these steps to our own datasets.
+
+## What is R?
+
+R is a programming language designed specifically for statistics!  Because it is a free and open source language, many people have contributed to the R ecosystem.  In addition to being very powerful and expressive for statistical analysis, R has become very popular for doing exploratory data visualization and report making as well.
+
+## The Plan
+
+Today, we are going to:
+
+1. Work interactively with a simple dataset
+    1. Loading in the data
+    1. Exploring it
+    1. Calculating descriptive statistics
+    1. Visualizing it
+    1. Modeling it
+
+1. Practice making a script and a report with a larger dataset
+    1. Loading in the data
+    1. Exploring it
+    1. **Cleaning it**
+    1. Visualizing it
+    1. Modeling it
+    1. **Making a report**
+
+1. Explore and practice openly with a full dataset
+
+We will also cover how to get help and how to learn more about using R.
+
+While we will not be able to cover how to handle a wide variety of different datasets and visualizations, our mentors have a wide range of experiences with using R for energy data, bioinformatics, mapping, natural language processing, and much more!  We hope to get to know you throughout the workshop and share domain specific experiences with you.
