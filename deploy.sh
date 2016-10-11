@@ -23,6 +23,11 @@ SHA=`git rev-parse --verify HEAD`
 # Clone the existing gh-pages for this repo into out/
 # Create a new empty branch if gh-pages doesn't exist yet (should only happen on first deply)
 git clone $REPO out
+
+# Now let's go have some fun with the cloned repo
+git config user.name "Travis CI"
+git config user.email "$COMMIT_AUTHOR_EMAIL"
+
 cd out
 
 # set up for git subtree deploy
@@ -33,10 +38,6 @@ git commit -m 'allow dist files'
 
 # Run our compile script
 doCompile
-
-# Now let's go have some fun with the cloned repo
-git config user.name "Travis CI"
-git config user.email "$COMMIT_AUTHOR_EMAIL"
 
 # # If there are no changes to the compiled out (e.g. this is a README update) then just bail.
 # if [ -z `git diff --exit-code` ]; then
