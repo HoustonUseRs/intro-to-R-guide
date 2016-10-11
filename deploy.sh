@@ -60,4 +60,4 @@ eval `ssh-agent -s`
 ssh-add intro-to-r-deploy
 
 # Now that we're all set up, we can push.
-git subtree push --prefix _book $SSH_REPO $TARGET_BRANCH
+git subtree push --squash --prefix _book $SSH_REPO $TARGET_BRANCH
