@@ -34,6 +34,7 @@ git checkout -b $TARGET_BRANCH
 sed -i -- '/_book/d' .gitignore
 git add .gitignore
 git commit -m 'allow dist files'
+git subtree add --squash --prefix _book $SSH_REPO $TARGET_BRANCH
 
 # Run our compile script
 doCompile
@@ -46,7 +47,7 @@ doCompile
 
 # Commit the "changes", i.e. the new version.
 # The delta will show diffs between new and old versions.
-git add .
+git add _book
 git commit -m "Deploy to GitHub Pages: ${SHA}"
 
 # Get the deploy key by using Travis's stored variables to decrypt deploy_key.enc
