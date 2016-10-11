@@ -200,12 +200,16 @@ This gives the points colors mapped from the Temperature along a default scale. 
 ```{r}
 ggplot(data = crickets, mapping = aes(x = Chirpspersecond, y = Temperature)) +
   geom_point(mapping = aes(color = Temperature)) +
-  scale_color_gradient(low="orange", high="red")
+  scale_color_gradient(low = "orange", high = "red")
 ```
 
 Let's take some time to experiment with different visualizations using ggplot2.  See the [data visualization cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/12/ggplot2-cheatsheet-2.0.pdf) for ideas.
 
-[//]: <> (Need to finish this section with a quick example of a different visualization, and using ggsave.)
+Once we have a plot we like, we can save our last plot to an image file very easily:
+
+```{r}
+ggsave(filename = "plot.png")
+```
 
 ## Modeling the data
 
