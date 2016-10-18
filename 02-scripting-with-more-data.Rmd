@@ -14,5 +14,9 @@ I mentioned this dataset has some missing data. It's always a good idea to check
 is.na(new_data)
 ```
 
-This will list out `TRUE` or `FALSE` for *every* value in new_data, for the question "is this value equal to NA?". It's kind hard to read, though. If we wanted to get a general sense of how many NAs there were in our entire dataset
+This will list out `TRUE` or `FALSE` for *every* value in new_data, for the question "is this value equal to NA?". It's kind hard to read, though. If we wanted to get a general sense of how many NAs there were in our entire dataset, we could do something like this:
+
+```{r}
+sum(is.na(new_data))
+```
 
