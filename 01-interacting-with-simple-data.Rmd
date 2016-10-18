@@ -111,7 +111,7 @@ Here's a table of some quick functions we can run on the data to learn about it:
 
 To learn more about any function, we can add a `?` in front of the function name like this:
 
-```{r results="hide"}
+```{r eval=FALSE}
 ?str
 ```
 
@@ -264,7 +264,7 @@ Additionally, `cor` and `cor.test` are two functions that can tell us about corr
 
 As before, the `?` can help us learn more:
 
-```{r results="hide"}
+```{r eval=FALSE}
 ?cor
 ?cor.test
 ```
