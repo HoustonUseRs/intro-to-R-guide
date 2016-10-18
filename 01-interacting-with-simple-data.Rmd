@@ -281,7 +281,53 @@ cor.test(x = crickets[,1], y = crickets[,2])
 So far, we've:
 
 1. Loaded in the data from a csv
-```{r}
+
+```{r eval=FALSE}
 crickets <- read.csv(file = 'crickets.csv')
 ```
-1. 
+
+2. Learned more about the data as a whole
+
+| Code                | Description                         |
+| ------------------- | ------------------------------------|
+| `names(crickets)`   | Column header names                 |
+| `dim(crickets)`     | Number of rows by number of columns |
+| `nrow(crickets)`    | Number of rows                      |
+| `ncol(crickets)`    | Number of columns                   |
+| `str(crickets)`     | Structure of data                   |
+| `summary(crickets)` | Summary of the data                 |
+| `View(crickets)`    | View data in file viewer            |
+
+3. Looked at the data by rows and columns
+
+| Code                | Description                         |
+| ------------------- | ------------------------------------|
+| `crickets[1,0]`     | First row                           |
+| `crickets[2,0]`     | Second row                          |
+| `crickets[,1]`      | First column, Chirpspersecond       |
+| `crickets[,2]`      | Second column, Temperature          |
+
+4. Calculated descriptive statistics on the data
+
+| Code                    | Description                       |
+| ----------------------- | ----------------------------------|
+| `mean(crickets[,2])`    | Average Temperature               |
+| `median(crickets[,2])`  | Median Temperature                |
+| `sd(crickets[,2])`      | Standard deviation of Temperature |
+| `max(crickets[,2])`     | Maximum Temperature               |
+| `min(crickets[,2])`     | Minimum Temperature               |
+
+5. Made plots of our data
+
+
+
+6. Applied statistical modelling to the data
+
+| Code                  | Description                         |
+| --------------------- | ------------------------------------|
+| `cor(crickets)`       |                                     |
+| `cor.test(crickets)`  |                                     |
+| `lm(crickets)`        |                                     |
+
+
+Crickets is a rather small and well-formed dataset.  Let's practice our new skills on a slightly more realistic dataset and learn additional skills for cleaning the data and making a report.
