@@ -111,7 +111,7 @@ Here's a table of some quick functions we can run on the data to learn about it:
 
 To learn more about any function, we can add a `?` in front of the function name like this:
 
-```{r}
+```{r results="hide"}
 ?str
 ```
 
@@ -171,7 +171,7 @@ While the package is installing, let's take a break!
 
 Once the package installed, we need to tell R to load it so we can use it.
 
-```{r}
+```{r load_packages}
 library(ggplot2)
 ```
 
@@ -264,7 +264,7 @@ Additionally, `cor` and `cor.test` are two functions that can tell us about corr
 
 As before, the `?` can help us learn more:
 
-```{r}
+```{r results="hide"}
 ?cor
 ?cor.test
 ```
@@ -276,6 +276,12 @@ cor(x = crickets[,1], y = crickets[,2])
 cor.test(x = crickets[,1], y = crickets[,2])
 ```
 
+## Working with a simple dataset
 
+So far, we've:
 
-
+1. Loaded in the data from a csv
+```{r}
+crickets <- read.csv(file = 'crickets.csv')
+```
+1. 
