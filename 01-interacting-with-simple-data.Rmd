@@ -109,6 +109,12 @@ Here's a table of some quick functions we can run on the data to learn about it:
 | `summary(crickets)` | Summary of the data                 |
 | `View(crickets)`    | View data in file viewer            |
 
+To learn more about any function, we can add a `?` in front of the function name like this:
+
+```{r}
+?str
+```
+
 We can also look at parts of the data using `[]`.  For example, we can look at the value in the first row and column:
 
 ```{r}
@@ -213,5 +219,63 @@ ggsave(filename = "plot.png")
 
 ## Modeling the data
 
-[//]: <> (Coming soon.)
+From the plots, we see a potential correlation between Chirpspersecond and Temperature.  If we were ever without our smart phones and thermometers, out in the country with some crickets, we might want to know if we can use the Chirpspersecond to calculate the Temperature.
+
+We can calculate the linear model for Temperature vs. Chirpspersecond using R's `lm` function:
+
+```{r}
+lm(Temperature ~ Chirpspersecond, data = crickets)
+```
+
+To calculate a linear model for Chirpspersecond from Temperature, we would do this:
+
+```{r}
+lm(Chirpspersecond ~ Temperature, data = crickets)
+```
+
+There's actually more information that `lm` tells us.  Let's take a look by first telling the computer the remember the result as a variable called `crickets_lm`.
+
+```{r}
+crickets_lm <- lm(Temperature ~ Chirpspersecond, data = crickets)
+```
+
+Then, if we type in `crickets_lm$` and press tab, we see some suggestions for autocompletion.  For example:
+
+```{r}
+crickets_lm$residuals
+```
+
+`crickets_lm$coefficient` tells us the slope and intercept.
+
+```{r}
+crickets_lm$coefficient
+```
+
+Let's use `crickets_lm$coefficient` to add a line on top of our scatterplot so we can eyeball how our linear model fits.
+
+```{r}
+ggplot(data = crickets, mapping = aes(x = Chirpspersecond, y = Temperature)) +
+    geom_point(mapping = aes(color = Temperature)) +
+    scale_color_gradient(low = "orange", high = "red") +
+    geom_abline(slope = crickets_lm$coefficient[2][1], intercept = crickets_lm$coefficient[1][1])
+```
+
+Additionally, `cor` and `cor.test` are two functions that can tell us about correlations between paired samples.
+
+As before, the `?` can help us learn more:
+
+```{r}
+?cor
+?cor.test
+```
+
+We can run these functions on our data by using `crickets[,1]` as the x, and `crickets[,2]` as the y like so:
+
+```{r}
+cor(x = crickets[,1], y = crickets[,2])
+cor.test(x = crickets[,1], y = crickets[,2])
+```
+
+
+
 
