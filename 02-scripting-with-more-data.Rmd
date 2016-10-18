@@ -1,1 +1,18 @@
-# Scripting with more data
+# This time it's for real!
+
+Let's pick up the pace and put our newfound skills to the test. For this section, we're gonna use a dataset that looks more like what we'll encounter in real life. It's bigger in both dimensions; it has more rows but also more columns. It also has some missing data (oh noes!). Now things are getting real.
+
+We can load our new dataset the same way as before, using the `read.csv()` function.
+
+```{r}
+new_data <- read.csv('new_data.csv')
+```
+
+I mentioned this dataset has some missing data. It's always a good idea to check, even if you are *sure* your data is complete. We can ask R to tell us whether there are any NAs in the dataset here.
+
+```{r}
+is.na(new_data)
+```
+
+This will list out `TRUE` or `FALSE` for *every* value in new_data, for the question "is this value equal to NA?". It's kind hard to read, though. If we wanted to get a general sense of how many NAs there were in our entire dataset
+
