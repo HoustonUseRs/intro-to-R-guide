@@ -1,5 +1,9 @@
 # This time it's for real!
 
+```{r, echo=FALSE}
+## Suppress this chunk in the book
+require('magrittr')
+```
 Let's pick up the pace and put our newfound skills to the test. For this section, we're gonna use a dataset that looks more like what we'll encounter in real life. It's bigger in both dimensions; it has more rows but also more columns. It also has some missing data (oh noes!). Now things are getting real.
 
 We can load our new dataset the same way as before, using the `read.csv()` function.
