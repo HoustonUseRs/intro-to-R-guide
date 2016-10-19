@@ -67,7 +67,13 @@ aircomplete <- airquality[complete.cases(airquality), ]
  ```
 You'll notice two new things about what we did here. First, we assign the output to `plt`, this will be important when we want to make adjustments to the plot later. Second, you'll notice when we do that, nothing appears; we have to print the plt to get it to show up.
  
+Now, I want you to go back and do _everything_ we just did over again.
 
+
+What, you think that's ridiculous? The reality is, we often have to go back and make changes upstream. When we do this, it can get very, very painful if we're doing everything interactively, in the _console_.
+
+
+Before we move on, let's introduce you to writing scripts.
  
  
  
