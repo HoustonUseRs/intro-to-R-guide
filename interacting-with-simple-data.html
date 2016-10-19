@@ -111,6 +111,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.4" data-path="interacting-with-simple-data.html"><a href="interacting-with-simple-data.html#glancing-at-the-data"><i class="fa fa-check"></i><b>2.4</b> Glancing at the data</a></li>
 <li class="chapter" data-level="2.5" data-path="interacting-with-simple-data.html"><a href="interacting-with-simple-data.html#visualizing-the-data"><i class="fa fa-check"></i><b>2.5</b> Visualizing the data</a></li>
 <li class="chapter" data-level="2.6" data-path="interacting-with-simple-data.html"><a href="interacting-with-simple-data.html#modeling-the-data"><i class="fa fa-check"></i><b>2.6</b> Modeling the data</a></li>
+<li class="chapter" data-level="2.7" data-path="interacting-with-simple-data.html"><a href="interacting-with-simple-data.html#working-with-a-simple-dataset"><i class="fa fa-check"></i><b>2.7</b> Working with a simple dataset</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="scripting-with-more-data.html"><a href="scripting-with-more-data.html"><i class="fa fa-check"></i><b>3</b> Scripting with more data</a></li>
 </ul>
@@ -184,7 +185,7 @@ z &lt;-<span class="st"> </span><span class="dv">10</span></code></pre></div>
 ##     fill = TRUE, comment.char = &quot;&quot;, ...) 
 ## read.table(file = file, header = header, sep = sep, quote = quote, 
 ##     dec = dec, fill = fill, comment.char = comment.char, ...)
-## &lt;bytecode: 0x469fac0&gt;
+## &lt;bytecode: 0x2796678&gt;
 ## &lt;environment: namespace:utils&gt;</code></pre>
 <p>Here, we get back just what <code>read.csv</code> is. In order to tell R to <strong>do</strong> or <strong>run</strong> the function, we need to run:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read.csv</span>()</code></pre></div>
@@ -272,6 +273,8 @@ z &lt;-<span class="st"> </span><span class="dv">10</span></code></pre></div>
 </tr>
 </tbody>
 </table>
+<p>To learn more about any function, we can add a <code>?</code> in front of the function name like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?str</code></pre></div>
 <p>We can also look at parts of the data using <code>[]</code>. For example, we can look at the value in the first row and column:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crickets[<span class="dv">1</span>, <span class="dv">1</span>]</code></pre></div>
 <pre><code>## [1] 20</code></pre>
@@ -342,6 +345,202 @@ z &lt;-<span class="st"> </span><span class="dv">10</span></code></pre></div>
 </div>
 <div id="modeling-the-data" class="section level2">
 <h2><span class="header-section-number">2.6</span> Modeling the data</h2>
+<p>From the plots, we see a potential correlation between Chirpspersecond and Temperature. If we were ever without our smart phones and thermometers, out in the country with some crickets, we might want to know if we can use the Chirpspersecond to calculate the Temperature.</p>
+<p>We can calculate the linear model for Temperature vs. Chirpspersecond using R’s <code>lm</code> function:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lm</span>(Temperature ~<span class="st"> </span>Chirpspersecond, <span class="dt">data =</span> crickets)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Temperature ~ Chirpspersecond, data = crickets)
+## 
+## Coefficients:
+##     (Intercept)  Chirpspersecond  
+##          25.232            3.291</code></pre>
+<p>To calculate a linear model for Chirpspersecond from Temperature, we would do this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">lm</span>(Chirpspersecond ~<span class="st"> </span>Temperature, <span class="dt">data =</span> crickets)</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Chirpspersecond ~ Temperature, data = crickets)
+## 
+## Coefficients:
+## (Intercept)  Temperature  
+##     -0.3091       0.2119</code></pre>
+<p>There’s actually more information that <code>lm</code> tells us. Let’s take a look by first telling the computer the remember the result as a variable called <code>crickets_lm</code>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crickets_lm &lt;-<span class="st"> </span><span class="kw">lm</span>(Temperature ~<span class="st"> </span>Chirpspersecond, <span class="dt">data =</span> crickets)</code></pre></div>
+<p>Then, if we type in <code>crickets_lm$</code> and press tab, we see some suggestions for autocompletion. For example:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crickets_lm$residuals</code></pre></div>
+<pre><code>##          1          2          3          4          5          6 
+## -2.4541979 -6.2898196  2.9040281 -1.4884407 -0.9100249 -1.0442738 
+##          7          8          9         10         11         12 
+## -3.9113976  0.4899767 -6.5151585  4.7519636  5.0012750  0.7608644 
+##         13         14         15 
+##  2.7101804  2.3190874  3.6759375</code></pre>
+<p><code>crickets_lm$coefficient</code> tells us the slope and intercept.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crickets_lm$coefficient</code></pre></div>
+<pre><code>##     (Intercept) Chirpspersecond 
+##       25.232305        3.291095</code></pre>
+<p>Let’s use <code>crickets_lm$coefficient</code> to add a line on top of our scatterplot so we can eyeball how our linear model fits.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> crickets, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Chirpspersecond, <span class="dt">y =</span> Temperature)) +
+<span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">color =</span> Temperature)) +
+<span class="st">    </span><span class="kw">scale_color_gradient</span>(<span class="dt">low =</span> <span class="st">&quot;orange&quot;</span>, <span class="dt">high =</span> <span class="st">&quot;red&quot;</span>) +
+<span class="st">    </span><span class="kw">geom_abline</span>(<span class="dt">slope =</span> crickets_lm$coefficient[<span class="dv">2</span>][<span class="dv">1</span>], <span class="dt">intercept =</span> crickets_lm$coefficient[<span class="dv">1</span>][<span class="dv">1</span>])</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<p>Additionally, <code>cor</code> and <code>cor.test</code> are two functions that can tell us about correlations between paired samples.</p>
+<p>As before, the <code>?</code> can help us learn more:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?cor
+?cor.test</code></pre></div>
+<p>We can run these functions on our data by using <code>crickets[,1]</code> as the x, and <code>crickets[,2]</code> as the y like so:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor</span>(<span class="dt">x =</span> crickets[,<span class="dv">1</span>], <span class="dt">y =</span> crickets[,<span class="dv">2</span>])</code></pre></div>
+<pre><code>## [1] 0.8351438</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">cor.test</span>(<span class="dt">x =</span> crickets[,<span class="dv">1</span>], <span class="dt">y =</span> crickets[,<span class="dv">2</span>])</code></pre></div>
+<pre><code>## 
+##  Pearson&#39;s product-moment correlation
+## 
+## data:  crickets[, 1] and crickets[, 2]
+## t = 5.4745, df = 13, p-value = 0.0001067
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.5642928 0.9436856
+## sample estimates:
+##       cor 
+## 0.8351438</code></pre>
+</div>
+<div id="working-with-a-simple-dataset" class="section level2">
+<h2><span class="header-section-number">2.7</span> Working with a simple dataset</h2>
+<p>So far, we’ve:</p>
+<ol style="list-style-type: decimal">
+<li>Loaded in the data from a csv</li>
+</ol>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crickets &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&#39;crickets.csv&#39;</span>)</code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Learned more about the data as a whole</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Code</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>names(crickets)</code></td>
+<td align="left">Column header names</td>
+</tr>
+<tr class="even">
+<td align="left"><code>dim(crickets)</code></td>
+<td align="left">Number of rows by number of columns</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>nrow(crickets)</code></td>
+<td align="left">Number of rows</td>
+</tr>
+<tr class="even">
+<td align="left"><code>ncol(crickets)</code></td>
+<td align="left">Number of columns</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>str(crickets)</code></td>
+<td align="left">Structure of data</td>
+</tr>
+<tr class="even">
+<td align="left"><code>summary(crickets)</code></td>
+<td align="left">Summary of the data</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>View(crickets)</code></td>
+<td align="left">View data in file viewer</td>
+</tr>
+</tbody>
+</table>
+<ol start="3" style="list-style-type: decimal">
+<li>Looked at the data by rows and columns</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Code</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>crickets[1,0]</code></td>
+<td align="left">First row</td>
+</tr>
+<tr class="even">
+<td align="left"><code>crickets[2,0]</code></td>
+<td align="left">Second row</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>crickets[,1]</code></td>
+<td align="left">First column, Chirpspersecond</td>
+</tr>
+<tr class="even">
+<td align="left"><code>crickets[,2]</code></td>
+<td align="left">Second column, Temperature</td>
+</tr>
+</tbody>
+</table>
+<ol start="4" style="list-style-type: decimal">
+<li>Calculated descriptive statistics on the data</li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Code</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>mean(crickets[,2])</code></td>
+<td align="left">Average Temperature</td>
+</tr>
+<tr class="even">
+<td align="left"><code>median(crickets[,2])</code></td>
+<td align="left">Median Temperature</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>sd(crickets[,2])</code></td>
+<td align="left">Standard deviation of Temperature</td>
+</tr>
+<tr class="even">
+<td align="left"><code>max(crickets[,2])</code></td>
+<td align="left">Maximum Temperature</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>min(crickets[,2])</code></td>
+<td align="left">Minimum Temperature</td>
+</tr>
+</tbody>
+</table>
+<ol start="5" style="list-style-type: decimal">
+<li><p>Made plots of our data</p></li>
+<li><p>Applied statistical modelling to the data</p></li>
+</ol>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Code</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>cor(crickets)</code></td>
+<td align="left"></td>
+</tr>
+<tr class="even">
+<td align="left"><code>cor.test(crickets)</code></td>
+<td align="left"></td>
+</tr>
+<tr class="odd">
+<td align="left"><code>lm(crickets)</code></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>Crickets is a rather small and well-formed dataset. Let’s practice our new skills on a slightly more realistic dataset and learn additional skills for cleaning the data and making a report.</p>
 
 </div>
 </div>
