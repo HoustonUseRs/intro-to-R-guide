@@ -75,6 +75,15 @@ What, you think that's ridiculous? The reality is, we often have to go back and 
 
 Before we move on, let's introduce you to writing scripts.
  
+ -- Picture of RStudio window here, arrow pointing to New Script --
  
+ Click the symbol for New Script and you'll see RStudio's built-in text editor pop up.
  
+ Let's take a moment to put all our work in. I know it's a pain but it will pay off, trust me.
  
+ ```{r}
+ airquality <- read.csv('airquality.csv')
+ aircomplete <- airquality[complete.cases(airquality), ]
+ plt <- ggplot(aircomplete) + geom_point(aes(x=Temp, y=Ozone))
+ print(plt)
+ ```
