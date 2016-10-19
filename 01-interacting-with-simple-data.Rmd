@@ -121,14 +121,14 @@ We can also look at parts of the data using `[]`.  For example, we can look at t
 crickets[1, 1]
 ```
 
-We can look at just the rows:
+We can look at just specific rows:
 
 ```{r}
 crickets[1, ]
 crickets[2, ]
 crickets[nrow(crickets), ]
 ```
-or just the columns:
+or just specific columns:
 
 ```{r}
 crickets[, 1]
@@ -146,7 +146,7 @@ median(crickets[, 2])
 sd(crickets[, 2])
 ```
 
-We can also as R for the max and the min:
+We can also ask R for the max and the min values:
 
 ```{r eval = FALSE}
 max(crickets[, 1])
