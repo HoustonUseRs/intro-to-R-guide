@@ -46,3 +46,8 @@ By default, many functions in R will return NA if called on a vector with any NA
 mean(airquality[1, ], na.rm = TRUE)
 ```
 
+There are important questions to ask yourself when dealing with missing data, there's no one-size-fits-all answer for it. A slapdash approach is to simply _remove_ any rows with missing data.
+
+```{r}
+airquality[complete.cases(airquality), ]
+```
