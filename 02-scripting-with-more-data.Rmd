@@ -8,15 +8,40 @@ We can load our new dataset the same way as before, using the `read.csv()` funct
 new_data <- read.csv('new_data.csv')
 ```
 
-I mentioned this dataset has some missing data. It's always a good idea to check, even if you are *sure* your data is complete. We can ask R to tell us whether there are any NAs in the dataset here.
+Let's take a moment to explore the new dataset using tools we learned in the previous section. Try `str`, `head`, `summary` and get a good feel for the dataset.
+
+I mentioned this dataset has some missing data, you may have noticed it already when exploring. In R, missing values are represented by the `NA` symbol.
+
+It's always a good idea to check for missing values, even if you are *sure* your data is complete. We can ask R to tell us whether there are any NAs in the dataset using the `is.na()` function.
 
 ```{r}
 is.na(new_data)
 ```
 
-This will list out `TRUE` or `FALSE` for *every* value in new_data, for the question "is this value equal to NA?". It's kind hard to read, though. If we wanted to get a general sense of how many NAs there were in our entire dataset, we could do something like this:
+This will list out `TRUE` or `FALSE` for *every* value in new_data, for the question "is this value equal to NA?". It's kind hard to read, though.
+
+If we wanted to get a general sense of how many NAs there were in our entire dataset, we could do something like this:
 
 ```{r}
 sum(is.na(new_data))
 ```
 
+Notice how we *nested* one function inside another? There's another way to do this. We can use the pipe operator, represented by the `%>%` symbol, to achieve the same thing.
+
+```{r}
+is.na(new_data) %>% sum()
+```
+
+If we try to call some descriptive statistics on any columns with `NA` values, we will get an ugly result.
+
+```{r}
+mean(new_data[1, ])
+```
+
+Not what we were looking for.
+
+By default, many functions in R will return NA if called on a vector with any NA values inside. We can override this behavior by adding the `na.rm = TRUE` argument
+
+```{r}
+mean(new_data[1, ], na.rm = TRUE)
+```
