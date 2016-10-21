@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="interacting-with-simple-data.html">
+<link rel="prev" href="scripting-with-more-data.html">
+
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -137,38 +137,33 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="welcome-to-intro-to-r" class="section level1">
-<h1><span class="header-section-number">1</span> Welcome to Intro to R</h1>
-<p>We are very excited you could make it to this Intro to R workshop! We hope to leave this workshop with some practical practice under our belts working with data in R and the ability to find and understand resources when applying these steps to our own datasets.</p>
-<div id="what-is-r" class="section level2">
-<h2><span class="header-section-number">1.1</span> What is R?</h2>
-<p>R is a programming language designed specifically for statistics! Because it is a free and open source language, many people have contributed to the R ecosystem. In addition to being very powerful and expressive for statistical analysis, R has become very popular for doing exploratory data visualization and report making as well.</p>
-</div>
-<div id="the-plan" class="section level2">
-<h2><span class="header-section-number">1.2</span> The Plan</h2>
-<p>Today, we are going to:</p>
+<div id="installation-instructions" class="section level1">
+<h1><span class="header-section-number">4</span> Installation Instructions</h1>
+<div id="installing-r-on-mac-os-x" class="section level2">
+<h2><span class="header-section-number">4.1</span> Installing R on Mac OS X</h2>
+<div id="installing-r-with-homebrew" class="section level3">
+<h3><span class="header-section-number">4.1.1</span> Installing R with Homebrew</h3>
+<p>If you are not sure if you have <em>Homebrew</em>, open your Terminal or CLI and type <code>which brew</code>.</p>
+<p>If you get output like this: <code>/usr/local/bin/brew</code>, then you have <em>Homebrew</em> and you are good to go.</p>
+<p>Otherwise, if you get: <code>command not found</code>, you’ll need to install it from here: <a href="http://brew.sh/" class="uri">http://brew.sh/</a>.</p>
+<p>After confirming you have <em>Homebrew</em>, proceed with instructions:</p>
 <ol style="list-style-type: decimal">
-<li>Work interactively with a simple dataset
-<ol style="list-style-type: decimal">
-<li>Loading in the data</li>
-<li>Exploring it</li>
-<li>Calculating descriptive statistics</li>
-<li>Visualizing it</li>
-<li>Modeling it</li>
-</ol></li>
-<li>Practice making a script and a report with a larger dataset
-<ol style="list-style-type: decimal">
-<li>Loading in the data</li>
-<li>Exploring it</li>
-<li><strong>Cleaning it</strong></li>
-<li>Visualizing it</li>
-<li>Modeling it</li>
-<li><strong>Making a report</strong></li>
-</ol></li>
-<li>Explore and practice openly with a full dataset</li>
+<li>Open Terminal.</li>
+<li>Before installing anything, run <code>brew update &amp;&amp; brew upgrade</code></li>
+<li><p>Copy/paste the comands below to install R:</p>
+<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">brew</span> tap caskroom/cask
+$ <span class="kw">brew</span> install homebrew/completions/brew-cask-completion
+$ <span class="kw">brew</span> install Caskroom/cask/xquartz
+$ <span class="kw">brew</span> cask install java
+$ <span class="kw">brew</span> tap homebrew/science
+$ <span class="kw">brew</span> install R</code></pre></div></li>
 </ol>
-<p>We will also cover how to get help and how to learn more about using R.</p>
-<p>While we will not be able to cover how to handle a wide variety of different datasets and visualizations, our mentors have a wide range of experiences with using R for energy data, bioinformatics, mapping, natural language processing, and much more! We hope to get to know you throughout the workshop and share domain specific experiences with you.</p>
+<p><strong>Trouble Shooting</strong></p>
+<p>…</p>
+</div>
+</div>
+<div id="installing-r-on-windows" class="section level2">
+<h2><span class="header-section-number">4.2</span> Installing R on Windows</h2>
 
 </div>
 </div>
@@ -177,8 +172,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="interacting-with-simple-data.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="scripting-with-more-data.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
