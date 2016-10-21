@@ -1,0 +1,34 @@
+#Installation Instructions
+
+
+
+##Installing R on Mac OS X
+
+###Installing R with Homebrew
+
+
+If you are not sure if you have *Homebrew*, open your Terminal or CLI and type `which brew`. 
+
+If you get output like this: `/usr/local/bin/brew`, then you have *Homebrew* and you are good to go. 
+
+Otherwise, if you get:  `command not found`, you'll need to install it from here: http://brew.sh/.
+
+After confirming you have *Homebrew*, proceed with instructions:
+
+1. Open Terminal.
+2. Before installing anything, run `brew update && brew upgrade`
+3. Copy/paste the comands below to install R:
+```bash
+$ brew tap caskroom/cask
+$ brew install homebrew/completions/brew-cask-completion
+$ brew install Caskroom/cask/xquartz
+$ brew cask install java
+$ brew tap homebrew/science
+$ brew install R
+```
+
+**Trouble Shooting**
+
+...
+
+##Installing R on Windows 
