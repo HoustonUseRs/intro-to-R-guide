@@ -41,7 +41,7 @@ is.na(airquality) %>% sum()
 If we try to call some descriptive statistics on any columns with `NA` values, we will get an ugly result. Let's try getting the mean for Ozone levels.
 
 ```{r}
-mean(airquality[1, ])
+mean(airquality[, 1])
 ```
 
 Not what we were looking for.
@@ -49,7 +49,7 @@ Not what we were looking for.
 By default, many functions in R will return NA if called on a vector with any NA values inside. We can override this behavior by adding the `na.rm = TRUE` argument
 
 ```{r}
-mean(airquality[1, ], na.rm = TRUE)
+mean(airquality[, 1], na.rm = TRUE)
 ```
 
 There are important questions to ask yourself when dealing with missing data, there's no one-size-fits-all answer for it. A slapdash approach is to simply _remove_ any rows with missing data.
