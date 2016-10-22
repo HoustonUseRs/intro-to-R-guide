@@ -134,4 +134,4 @@ plt_2 <- plt + geom_abline(intercept = -147.64607 , slope = 2.43911)
 print(plt_2)
 ```
 
-Great. Now, what if we want to make a report of our work? With R, you get the power of `knitr`, which will _knit_ your work together into a report. Let's try it on our current script. Go to File -> Knit Document and select HTML, then watch the magic happen!
+Great. Now, what if we want to make a report of our work? With R, you get the power of `knitr`, which will _knit_ your work together into a report. Let's try it on our current script. Go to File -> Knit Document, pick a name for your file and select HTML, then watch the magic happen!
