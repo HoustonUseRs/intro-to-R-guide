@@ -111,13 +111,13 @@ ozone_model <- lm(Ozone ~ Temp, data = aircomplete)
 summary(ozone_model)
 ```
 
-Our model tells us there is a *statistically significant* relationship between Ozone and Temperature. If we want to add the linear model to our plot, we can use the `geom_abline()` function. `geom_abline()` takes two arguments, the intercept and slope. We can use the `coef()` function to extract those values from the model.
+Our model tells us there is a *statistically significant* relationship between Ozone and Temperature. If we want to add the linear model to our plot, we can use the `geom_abline()` function. `geom_abline()` takes two arguments, the intercept and slope. We can use the `coef()` function to extract those values from the model. Add the following lines to your script and *Source* it.
 
 ```{r}
 coef(ozone_model)
 ```
 
-With that info, we're ready to add our linear model.
+With that info, we're ready to add our linear model. Add the following lines to your script and *Source* it.
 
 ```{r}
 plt_2 <- plt + geom_abline(intercept = -147.64607 , slope = 2.43911)
