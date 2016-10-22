@@ -83,11 +83,45 @@ Before we move on, let's introduce you to writing scripts.
  
  Click the symbol for New Script and you'll see RStudio's built-in text editor pop up.
  
- Let's take a moment to put all our work in. I know it's a pain but it will pay off, trust me.
+ Let's take a moment to put all our work in. I know it's a pain but it will pay off if we want to make changes later.
  
  ```{r}
+ require(ggplot2)
  airquality <- read.csv('airquality.csv')
  aircomplete <- airquality[complete.cases(airquality), ]
  plt <- ggplot(aircomplete) + geom_point(aes(x=Temp, y=Ozone))
  print(plt)
  ```
+ 
+We can run the entire script by clicking *Source* at the top of the editor pane.
+ 
+To run just a specific line or lines, you can select the section you want to run and then click *Run*
+
+Let's get back to our data. You may have seen a pattern in the plot we made earlier. Let's pick up our analysis with a little more visualization and some modeling.
+
+
+
+
+
+
+We'll model the data using reliable `lm()` function again. Let's add the following to our script and *Source* it. 
+
+```{r}
+ozone_model <- lm(Ozone ~ Temp, data = aircomplete)
+summary(ozone_model)
+```
+
+Our model tells us there is a *statistically significant* relationship between Ozone and Temperature. If we want to add the linear model to our plot, we can use the `geom_abline()` function. `geom_abline()` takes two arguments, the intercept and slope. We can use the `coef()` function to extract those values from the model.
+
+```{r}
+coef(ozone_model)
+```
+
+With that info, we're ready to add our linear model.
+
+```{r}
+plt_2 <- plt + geom_abline(intercept = -147.64607 , slope = 2.43911)
+print(plt_2)
+```
+
+Great. Now, what if we want to make a report of our work? With R, you get the power of `knitr`, which will _knit_ your work together into a report. Let's try it on our current script. Go to File -> Knit Document and select HTML, then watch the magic happen!
