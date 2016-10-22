@@ -114,11 +114,11 @@ Let's get back to our data. You may have seen a pattern in the plot we made earl
 
 
 
-We'll model the data using reliable `lm()` function again. Let's add the following to our script and *Source* it. 
+We'll model the data using the reliable `lm()` function again. Let's add the following to the end of our script and *Source* it. 
 
 ```{r}
 ozone_model <- lm(Ozone ~ Temp, data = aircomplete)
-summary(ozone_model)
+print(summary(ozone_model))
 ```
 
 Our model tells us there is a *statistically significant* relationship between Ozone and Temperature. If we want to add the linear model to our plot, we can use the `geom_abline()` function. `geom_abline()` takes two arguments, the intercept and slope. We can use the `coef()` function to extract those values from the model. Add the following lines to your script and *Source* it.
