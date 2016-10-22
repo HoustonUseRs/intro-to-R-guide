@@ -14,7 +14,11 @@ We can load our new dataset the same way as before, using the `read.csv()` funct
 airquality <- read.csv('airquality.csv')
 ```
 
-Let's take a moment to explore the new dataset using tools we learned in the previous section. Try `str`, `head`, `summary` and get a good feel for the dataset.
+Let's take a moment to explore the new dataset using tools we learned in the previous section. Try `str`, `head`, `summary` and get a good feel for the dataset. We can find the number of rows using `nrow`.
+
+ ```{r}
+ nrow(airquality)
+ ```
 
 I mentioned this dataset has some missing data, you may have noticed it already when exploring. In R, missing values are represented by the `NA` symbol.
 
@@ -58,6 +62,10 @@ There are important questions to ask yourself when dealing with missing data, th
 aircomplete <- airquality[complete.cases(airquality), ]
 ```
  If you call `nrow` on aircomplete, you'll see we have 111 rows now instead of the 153 we had before.
+ 
+ ```{r}
+ nrow(aircomplete)
+ ```
  
  Another way to deal with missing data is to _impute_ the values.
  
