@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+  <meta name="description" content="">
+  <meta name="generator" content="bookdown 0.1.16 and GitBook 2.6.7">
+
+  <meta property="og:title" content="" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="" />
+  
+  
+  
+
+
+  
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="interacting-with-simple-data.html">
+<link rel="next" href="installation-instructions.html">
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+</head>
+
+<body>
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About this Guide</a></li>
+<li class="chapter" data-level="1" data-path="welcome-to-intro-to-r.html"><a href="welcome-to-intro-to-r.html"><i class="fa fa-check"></i><b>1</b> Welcome to Intro to R</a><ul>
+<li class="chapter" data-level="1.1" data-path="welcome-to-intro-to-r.html"><a href="welcome-to-intro-to-r.html#what-is-r"><i class="fa fa-check"></i><b>1.1</b> What is R?</a></li>
+<li class="chapter" data-level="1.2" data-path="welcome-to-intro-to-r.html"><a href="welcome-to-intro-to-r.html#the-plan"><i class="fa fa-check"></i><b>1.2</b> The Plan</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="interacting-with-simple-data.html"><a href="interacting-with-simple-data.html"><i class="fa fa-check"></i><b>2</b> Interacting with Simple Data</a><ul>
+<li class="chapter" data-level="2.1" data-path="interacting-with-simple-data.html"><a href="interacting-with-simple-data.html#what-is-rstudio"><i class="fa fa-check"></i><b>2.1</b> What is RStudio?</a></li>
+<li class="chapter" data-level="2.2" data-path="interacting-with-simple-data.html"><a href="interacting-with-simple-data.html#coding-in-the-console"><i class="fa fa-check"></i><b>2.2</b> Coding in the console</a></li>
+<li class="chapter" data-level="2.3" data-path="interacting-with-simple-data.html"><a href="interacting-with-simple-data.html#loading-in-data"><i class="fa fa-check"></i><b>2.3</b> Loading in data</a></li>
+<li class="chapter" data-level="2.4" data-path="interacting-with-simple-data.html"><a href="interacting-with-simple-data.html#glancing-at-the-data"><i class="fa fa-check"></i><b>2.4</b> Glancing at the data</a></li>
+<li class="chapter" data-level="2.5" data-path="interacting-with-simple-data.html"><a href="interacting-with-simple-data.html#visualizing-the-data"><i class="fa fa-check"></i><b>2.5</b> Visualizing the data</a></li>
+<li class="chapter" data-level="2.6" data-path="interacting-with-simple-data.html"><a href="interacting-with-simple-data.html#modeling-the-data"><i class="fa fa-check"></i><b>2.6</b> Modeling the data</a></li>
+<li class="chapter" data-level="2.7" data-path="interacting-with-simple-data.html"><a href="interacting-with-simple-data.html#working-with-a-simple-dataset"><i class="fa fa-check"></i><b>2.7</b> Working with a simple dataset</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html"><i class="fa fa-check"></i><b>3</b> This time it’s for real!</a></li>
+<li class="chapter" data-level="4" data-path="installation-instructions.html"><a href="installation-instructions.html"><i class="fa fa-check"></i><b>4</b> Installation Instructions</a><ul>
+<li class="chapter" data-level="4.1" data-path="installation-instructions.html"><a href="installation-instructions.html#installing-r-on-mac-os-x"><i class="fa fa-check"></i><b>4.1</b> Installing R on Mac OS X</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="installation-instructions.html"><a href="installation-instructions.html#installing-r-with-homebrew"><i class="fa fa-check"></i><b>4.1.1</b> Installing R with Homebrew</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="installation-instructions.html"><a href="installation-instructions.html#installing-r-on-windows"><i class="fa fa-check"></i><b>4.2</b> Installing R on Windows</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./"></a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="this-time-its-for-real" class="section level1">
+<h1><span class="header-section-number">3</span> This time it’s for real!</h1>
+<pre><code>## Installing package into &#39;/home/travis/R/Library&#39;
+## (as &#39;lib&#39; is unspecified)
+## Installing package into &#39;/home/travis/R/Library&#39;
+## (as &#39;lib&#39; is unspecified)</code></pre>
+<pre><code>## Loading required package: magrittr</code></pre>
+<p>Let’s pick up the pace and put our newfound skills to the test. For this section, we’re gonna use a dataset that looks more like what we’ll encounter in real life. It’s bigger in both dimensions; it has more rows but also more columns. It also has some missing data (oh noes!). Now things are getting real.</p>
+<p>We can load our new dataset the same way as before, using the <code>read.csv()</code> function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">airquality &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;airquality.csv&#39;</span>)</code></pre></div>
+<p>Let’s take a moment to explore the new dataset using tools we learned in the previous section. Try <code>str</code>, <code>head</code>, <code>summary</code> and get a good feel for the dataset. We can find the number of rows using <code>nrow</code>.</p>
+<p><code>r  nrow(airquality)</code></p>
+<p><code>## [1] 153</code></p>
+<p>I mentioned this dataset has some missing data, you may have noticed it already when exploring. In R, missing values are represented by the <code>NA</code> symbol.</p>
+<p>It’s always a good idea to check for missing values, even if you are <em>sure</em> your data is complete. We can ask R to tell us whether there are any NAs in the dataset using the <code>is.na()</code> function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.na</span>(airquality)</code></pre></div>
+<pre><code>##        Ozone Solar.R  Wind  Temp Month   Day
+##   [1,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##   [2,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##   [3,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##   [4,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##   [5,]  TRUE    TRUE FALSE FALSE FALSE FALSE
+##   [6,] FALSE    TRUE FALSE FALSE FALSE FALSE
+##   [7,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##   [8,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##   [9,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [10,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+##  [11,] FALSE    TRUE FALSE FALSE FALSE FALSE
+##  [12,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [13,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [14,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [15,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [16,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [17,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [18,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [19,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [20,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [21,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [22,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [23,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [24,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [25,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+##  [26,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+##  [27,]  TRUE    TRUE FALSE FALSE FALSE FALSE
+##  [28,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [29,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [30,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [31,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [32,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+##  [33,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+##  [34,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+##  [35,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+##  [36,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+##  [37,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+##  [38,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [39,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+##  [40,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [41,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [42,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+##  [43,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+##  [44,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [45,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+##  [46,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+##  [47,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [48,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [49,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [50,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [51,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [52,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+##  [53,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+##  [54,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+##  [55,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+##  [56,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+##  [57,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+##  [58,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+##  [59,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+##  [60,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+##  [61,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+##  [62,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [63,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [64,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [65,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+##  [66,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [67,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [68,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [69,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [70,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [71,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [72,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+##  [73,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [74,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [75,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+##  [76,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [77,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [78,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [79,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [80,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [81,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [82,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [83,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+##  [84,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+##  [85,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [86,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [87,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [88,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [89,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [90,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [91,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [92,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [93,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [94,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [95,] FALSE   FALSE FALSE FALSE FALSE FALSE
+##  [96,] FALSE    TRUE FALSE FALSE FALSE FALSE
+##  [97,] FALSE    TRUE FALSE FALSE FALSE FALSE
+##  [98,] FALSE    TRUE FALSE FALSE FALSE FALSE
+##  [99,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [100,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [101,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [102,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+## [103,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+## [104,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [105,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [106,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [107,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+## [108,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [109,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [110,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [111,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [112,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [113,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [114,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [115,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+## [116,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [117,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [118,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [119,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+## [120,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [121,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [122,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [123,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [124,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [125,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [126,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [127,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [128,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [129,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [130,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [131,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [132,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [133,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [134,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [135,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [136,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [137,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [138,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [139,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [140,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [141,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [142,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [143,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [144,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [145,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [146,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [147,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [148,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [149,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [150,]  TRUE   FALSE FALSE FALSE FALSE FALSE
+## [151,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [152,] FALSE   FALSE FALSE FALSE FALSE FALSE
+## [153,] FALSE   FALSE FALSE FALSE FALSE FALSE</code></pre>
+<p>This will list out <code>TRUE</code> or <code>FALSE</code> for <em>every</em> value in new_data, for the question “is this value equal to NA?”. It’s kind hard to read, though.</p>
+<p>If we wanted to get a general sense of how many NAs there were in our entire dataset, we could do something like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">sum</span>(<span class="kw">is.na</span>(airquality))</code></pre></div>
+<pre><code>## [1] 44</code></pre>
+<p>Notice how we <em>nested</em> one function inside another? There’s another way to do this. We can use the pipe operator, represented by the <code>%&gt;%</code> symbol, to achieve the same thing.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.na</span>(airquality) %&gt;%<span class="st"> </span><span class="kw">sum</span>()</code></pre></div>
+<pre><code>## [1] 44</code></pre>
+<p>If we try to call some descriptive statistics on any columns with <code>NA</code> values, we will get an ugly result. Let’s try getting the mean for Ozone levels.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(airquality[, <span class="dv">1</span>])</code></pre></div>
+<pre><code>## [1] NA</code></pre>
+<p>Not what we were looking for.</p>
+<p>By default, many functions in R will return NA if called on a vector with any NA values inside. We can override this behavior by adding the <code>na.rm = TRUE</code> argument</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(airquality[, <span class="dv">1</span>], <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</code></pre></div>
+<pre><code>## [1] 42.12931</code></pre>
+<p>There are important questions to ask yourself when dealing with missing data, there’s no one-size-fits-all answer for it. A slapdash approach is to simply <em>remove</em> any rows with missing data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aircomplete &lt;-<span class="st"> </span>airquality[<span class="kw">complete.cases</span>(airquality), ]</code></pre></div>
+<p>If you call <code>nrow</code> on aircomplete, you’ll see we have 111 rows now instead of the 153 we had before.</p>
+<p><code>r  nrow(aircomplete)</code></p>
+<p><code>## [1] 111</code></p>
+<p>Another way to deal with missing data is to <em>impute</em> the values.</p>
+<p>– Section on imputing here? –</p>
+<p>Now that we’ve addressed missingness in our dataset, we’re ready to start analysis.</p>
+<p>We can start by visualizing the data. We have more data to play with now, but let’s start with the same plot we used last time.</p>
+<p><code>r  plt &lt;- ggplot(aircomplete) + geom_point(aes(x=Temp, y=Ozone))  print(plt)</code></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-43-1.png" width="672" /> You’ll notice two new things about what we did here. First, we assign the output to <code>plt</code>, this will be important when we want to make adjustments to the plot later. Second, you’ll notice when we do that, nothing appears; we have to print the plt to get it to show up.</p>
+<p>Now, I want you to go back and do <em>everything</em> we just did over again.</p>
+<p>What, you think that’s ridiculous? The reality is, we often have to go back and make changes upstream. When we do this, it can get very, very painful if we’re doing everything interactively, in the <em>console</em>.</p>
+<p>Before we move on, let’s introduce you to writing scripts.</p>
+<p>– Picture of RStudio window here, arrow pointing to New Script –</p>
+<p>Click the symbol for New Script and you’ll see RStudio’s built-in text editor pop up.</p>
+<p>Let’s take a moment to put all our work in. I know it’s a pain but it will pay off if we want to make changes later.</p>
+<p><code>r  require(ggplot2)  airquality &lt;- read.csv('airquality.csv')  aircomplete &lt;- airquality[complete.cases(airquality), ]  plt &lt;- ggplot(aircomplete) + geom_point(aes(x=Temp, y=Ozone))  print(plt)</code></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+<p>We can run the entire script by clicking <em>Source</em> at the top of the editor pane.</p>
+<p>To run just a specific line or lines, you can select the section you want to run and then click <em>Run</em></p>
+<p>Let’s get back to our data. You may have seen a pattern in the plot we made earlier. Let’s pick up our analysis with a little more visualization and some modeling.</p>
+<p>We’ll model the data using the reliable <code>lm()</code> function again. Let’s add the following to the end of our script and <em>Source</em> it.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ozone_model &lt;-<span class="st"> </span><span class="kw">lm</span>(Ozone ~<span class="st"> </span>Temp, <span class="dt">data =</span> aircomplete)
+<span class="kw">print</span>(<span class="kw">summary</span>(ozone_model))</code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = Ozone ~ Temp, data = aircomplete)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -40.922 -17.459  -0.874  10.444 118.078 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -147.6461    18.7553  -7.872 2.76e-12 ***
+## Temp           2.4391     0.2393  10.192  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 23.92 on 109 degrees of freedom
+## Multiple R-squared:  0.488,  Adjusted R-squared:  0.4833 
+## F-statistic: 103.9 on 1 and 109 DF,  p-value: &lt; 2.2e-16</code></pre>
+<p>Our model tells us there is a <em>statistically significant</em> relationship between Ozone and Temperature. If we want to add the linear model to our plot, we can use the <code>geom_abline()</code> function. <code>geom_abline()</code> takes two arguments, the intercept and slope. We can use the <code>coef()</code> function to extract those values from the model. Add the following lines to your script and <em>Source</em> it.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">coef</span>(ozone_model)</code></pre></div>
+<pre><code>## (Intercept)        Temp 
+##  -147.64607     2.43911</code></pre>
+<p>With that info, we’re ready to add our linear model. Add the following lines to your script and <em>Source</em> it.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plt_2 &lt;-<span class="st"> </span>plt +<span class="st"> </span><span class="kw">geom_abline</span>(<span class="dt">intercept =</span> -<span class="fl">147.64607</span> , <span class="dt">slope =</span> <span class="fl">2.43911</span>)
+<span class="kw">print</span>(plt_2)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+<p>Great. Now, what if we want to make a report of our work? With R, you get the power of <code>knitr</code>, which will <em>knit</em> your work together into a report. Let’s try it on our current script. Go to File -&gt; Knit Document, name the file <code>airquality_report</code> and select HTML, then watch the magic happen!</p>
+
+
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="interacting-with-simple-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="installation-instructions.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"facebook": true,
+"twitter": true,
+"google": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
