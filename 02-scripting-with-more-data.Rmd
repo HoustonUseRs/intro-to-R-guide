@@ -1,1 +1,137 @@
-# Scripting with more data
+# This time it's for real!
+
+```{r, echo=FALSE}
+## Suppress this chunk in the book
+install.packages('ggplot2')
+install.packages('magrittr')
+require('magrittr')
+```
+Let's pick up the pace and put our newfound skills to the test. For this section, we're gonna use a dataset that looks more like what we'll encounter in real life. It's bigger in both dimensions; it has more rows but also more columns. It also has some missing data (oh noes!). Now things are getting real.
+
+We can load our new dataset the same way as before, using the `read.csv()` function.
+
+```{r}
+airquality <- read.csv('airquality.csv')
+```
+
+Let's take a moment to explore the new dataset using tools we learned in the previous section. Try `str`, `head`, `summary` and get a good feel for the dataset. We can find the number of rows using `nrow`.
+
+ ```{r}
+ nrow(airquality)
+ ```
+
+I mentioned this dataset has some missing data, you may have noticed it already when exploring. In R, missing values are represented by the `NA` symbol.
+
+It's always a good idea to check for missing values, even if you are *sure* your data is complete. We can ask R to tell us whether there are any NAs in the dataset using the `is.na()` function.
+
+```{r}
+is.na(airquality)
+```
+
+This will list out `TRUE` or `FALSE` for *every* value in new_data, for the question "is this value equal to NA?". It's kind hard to read, though.
+
+If we wanted to get a general sense of how many NAs there were in our entire dataset, we could do something like this:
+
+```{r}
+sum(is.na(airquality))
+```
+
+Notice how we *nested* one function inside another? There's another way to do this. We can use the pipe operator, represented by the `%>%` symbol, to achieve the same thing.
+
+```{r}
+is.na(airquality) %>% sum()
+```
+
+If we try to call some descriptive statistics on any columns with `NA` values, we will get an ugly result. Let's try getting the mean for Ozone levels.
+
+```{r}
+mean(airquality[, 1])
+```
+
+Not what we were looking for.
+
+By default, many functions in R will return NA if called on a vector with any NA values inside. We can override this behavior by adding the `na.rm = TRUE` argument
+
+```{r}
+mean(airquality[, 1], na.rm = TRUE)
+```
+
+There are important questions to ask yourself when dealing with missing data, there's no one-size-fits-all answer for it. A slapdash approach is to simply _remove_ any rows with missing data.
+
+```{r}
+aircomplete <- airquality[complete.cases(airquality), ]
+```
+ If you call `nrow` on aircomplete, you'll see we have 111 rows now instead of the 153 we had before.
+ 
+ ```{r}
+ nrow(aircomplete)
+ ```
+ 
+ Another way to deal with missing data is to _impute_ the values.
+ 
+ -- Section on imputing here? --
+ 
+ Now that we've addressed missingness in our dataset, we're ready to start analysis.
+ 
+ We can start by visualizing the data. We have more data to play with now, but let's start with the same plot we used last time.
+ 
+ ```{r}
+ plt <- ggplot(aircomplete) + geom_point(aes(x=Temp, y=Ozone))
+ print(plt)
+ ```
+You'll notice two new things about what we did here. First, we assign the output to `plt`, this will be important when we want to make adjustments to the plot later. Second, you'll notice when we do that, nothing appears; we have to print the plt to get it to show up.
+ 
+Now, I want you to go back and do _everything_ we just did over again.
+
+
+What, you think that's ridiculous? The reality is, we often have to go back and make changes upstream. When we do this, it can get very, very painful if we're doing everything interactively, in the _console_.
+
+
+Before we move on, let's introduce you to writing scripts.
+ 
+ -- Picture of RStudio window here, arrow pointing to New Script --
+ 
+ Click the symbol for New Script and you'll see RStudio's built-in text editor pop up.
+ 
+ Let's take a moment to put all our work in. I know it's a pain but it will pay off if we want to make changes later.
+ 
+ ```{r}
+ require(ggplot2)
+ airquality <- read.csv('airquality.csv')
+ aircomplete <- airquality[complete.cases(airquality), ]
+ plt <- ggplot(aircomplete) + geom_point(aes(x=Temp, y=Ozone))
+ print(plt)
+ ```
+ 
+We can run the entire script by clicking *Source* at the top of the editor pane.
+ 
+To run just a specific line or lines, you can select the section you want to run and then click *Run*
+
+Let's get back to our data. You may have seen a pattern in the plot we made earlier. Let's pick up our analysis with a little more visualization and some modeling.
+
+
+
+
+
+
+We'll model the data using the reliable `lm()` function again. Let's add the following to the end of our script and *Source* it. 
+
+```{r}
+ozone_model <- lm(Ozone ~ Temp, data = aircomplete)
+print(summary(ozone_model))
+```
+
+Our model tells us there is a *statistically significant* relationship between Ozone and Temperature. If we want to add the linear model to our plot, we can use the `geom_abline()` function. `geom_abline()` takes two arguments, the intercept and slope. We can use the `coef()` function to extract those values from the model. Add the following lines to your script and *Source* it.
+
+```{r}
+coef(ozone_model)
+```
+
+With that info, we're ready to add our linear model. Add the following lines to your script and *Source* it.
+
+```{r}
+plt_2 <- plt + geom_abline(intercept = -147.64607 , slope = 2.43911)
+print(plt_2)
+```
+
+Great. Now, what if we want to make a report of our work? With R, you get the power of `knitr`, which will _knit_ your work together into a report. Let's try it on our current script. Go to File -> Knit Document, name the file `airquality_report` and select HTML, then watch the magic happen!
