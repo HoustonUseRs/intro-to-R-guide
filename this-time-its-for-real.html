@@ -113,7 +113,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.6" data-path="interacting-with-simple-data.html"><a href="interacting-with-simple-data.html#modeling-the-data"><i class="fa fa-check"></i><b>2.6</b> Modeling the data</a></li>
 <li class="chapter" data-level="2.7" data-path="interacting-with-simple-data.html"><a href="interacting-with-simple-data.html#working-with-a-simple-dataset"><i class="fa fa-check"></i><b>2.7</b> Working with a simple dataset</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html"><i class="fa fa-check"></i><b>3</b> This time it’s for real!</a></li>
+<li class="chapter" data-level="3" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html"><i class="fa fa-check"></i><b>3</b> This time it’s for real!</a><ul>
+<li class="chapter" data-level="3.1" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#loading-and-exploring-a-larger-dataset"><i class="fa fa-check"></i><b>3.1</b> Loading and exploring a larger dataset</a></li>
+<li class="chapter" data-level="3.2" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#counting-missing-values"><i class="fa fa-check"></i><b>3.2</b> Counting missing values</a></li>
+<li class="chapter" data-level="3.3" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#ignoring-missing-values"><i class="fa fa-check"></i><b>3.3</b> Ignoring missing values</a></li>
+<li class="chapter" data-level="3.4" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#imputing-missing-values"><i class="fa fa-check"></i><b>3.4</b> Imputing missing values</a></li>
+<li class="chapter" data-level="3.5" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#visualizing-the-data-using-a-script"><i class="fa fa-check"></i><b>3.5</b> Visualizing the data using a script</a></li>
+<li class="chapter" data-level="3.6" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#modeling-the-data-1"><i class="fa fa-check"></i><b>3.6</b> Modeling the data</a></li>
+<li class="chapter" data-level="3.7" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#making-a-reproducible-report"><i class="fa fa-check"></i><b>3.7</b> Making a reproducible report</a></li>
+</ul></li>
 <li class="chapter" data-level="4" data-path="installation-instructions.html"><a href="installation-instructions.html"><i class="fa fa-check"></i><b>4</b> Installation Instructions</a><ul>
 <li class="chapter" data-level="4.1" data-path="installation-instructions.html"><a href="installation-instructions.html#installing-r-on-mac-os-x"><i class="fa fa-check"></i><b>4.1</b> Installing R on Mac OS X</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="installation-instructions.html"><a href="installation-instructions.html#installing-r-with-homebrew"><i class="fa fa-check"></i><b>4.1.1</b> Installing R with Homebrew</a></li>
@@ -139,17 +147,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="this-time-its-for-real" class="section level1">
 <h1><span class="header-section-number">3</span> This time it’s for real!</h1>
-<pre><code>## Installing package into &#39;/home/travis/R/Library&#39;
-## (as &#39;lib&#39; is unspecified)
-## Installing package into &#39;/home/travis/R/Library&#39;
-## (as &#39;lib&#39; is unspecified)</code></pre>
-<pre><code>## Loading required package: magrittr</code></pre>
 <p>Let’s pick up the pace and put our newfound skills to the test. For this section, we’re gonna use a dataset that looks more like what we’ll encounter in real life. It’s bigger in both dimensions; it has more rows but also more columns. It also has some missing data (oh noes!). Now things are getting real.</p>
+<div id="loading-and-exploring-a-larger-dataset" class="section level2">
+<h2><span class="header-section-number">3.1</span> Loading and exploring a larger dataset</h2>
 <p>We can load our new dataset the same way as before, using the <code>read.csv()</code> function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">airquality &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;airquality.csv&#39;</span>)</code></pre></div>
 <p>Let’s take a moment to explore the new dataset using tools we learned in the previous section. Try <code>str</code>, <code>head</code>, <code>summary</code> and get a good feel for the dataset. We can find the number of rows using <code>nrow</code>.</p>
-<p><code>r  nrow(airquality)</code></p>
-<p><code>## [1] 153</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nrow</span>(airquality)</code></pre></div>
+<pre><code>## [1] 153</code></pre>
+</div>
+<div id="counting-missing-values" class="section level2">
+<h2><span class="header-section-number">3.2</span> Counting missing values</h2>
 <p>I mentioned this dataset has some missing data, you may have noticed it already when exploring. In R, missing values are represented by the <code>NA</code> symbol.</p>
 <p>It’s always a good idea to check for missing values, even if you are <em>sure</em> your data is complete. We can ask R to tell us whether there are any NAs in the dataset using the <code>is.na()</code> function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.na</span>(airquality)</code></pre></div>
@@ -314,6 +322,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Notice how we <em>nested</em> one function inside another? There’s another way to do this. We can use the pipe operator, represented by the <code>%&gt;%</code> symbol, to achieve the same thing.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.na</span>(airquality) %&gt;%<span class="st"> </span><span class="kw">sum</span>()</code></pre></div>
 <pre><code>## [1] 44</code></pre>
+</div>
+<div id="ignoring-missing-values" class="section level2">
+<h2><span class="header-section-number">3.3</span> Ignoring missing values</h2>
 <p>If we try to call some descriptive statistics on any columns with <code>NA</code> values, we will get an ugly result. Let’s try getting the mean for Ozone levels.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(airquality[, <span class="dv">1</span>])</code></pre></div>
 <pre><code>## [1] NA</code></pre>
@@ -324,25 +335,40 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>There are important questions to ask yourself when dealing with missing data, there’s no one-size-fits-all answer for it. A slapdash approach is to simply <em>remove</em> any rows with missing data.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aircomplete &lt;-<span class="st"> </span>airquality[<span class="kw">complete.cases</span>(airquality), ]</code></pre></div>
 <p>If you call <code>nrow</code> on aircomplete, you’ll see we have 111 rows now instead of the 153 we had before.</p>
-<p><code>r  nrow(aircomplete)</code></p>
-<p><code>## [1] 111</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nrow</span>(aircomplete)</code></pre></div>
+<pre><code>## [1] 111</code></pre>
+</div>
+<div id="imputing-missing-values" class="section level2">
+<h2><span class="header-section-number">3.4</span> Imputing missing values</h2>
 <p>Another way to deal with missing data is to <em>impute</em> the values.</p>
 <p>– Section on imputing here? –</p>
 <p>Now that we’ve addressed missingness in our dataset, we’re ready to start analysis.</p>
+</div>
+<div id="visualizing-the-data-using-a-script" class="section level2">
+<h2><span class="header-section-number">3.5</span> Visualizing the data using a script</h2>
 <p>We can start by visualizing the data. We have more data to play with now, but let’s start with the same plot we used last time.</p>
-<p><code>r  plt &lt;- ggplot(aircomplete) + geom_point(aes(x=Temp, y=Ozone))  print(plt)</code></p>
-<p><img src="_main_files/figure-html/unnamed-chunk-43-1.png" width="672" /> You’ll notice two new things about what we did here. First, we assign the output to <code>plt</code>, this will be important when we want to make adjustments to the plot later. Second, you’ll notice when we do that, nothing appears; we have to print the plt to get it to show up.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plt &lt;-<span class="st"> </span><span class="kw">ggplot</span>(aircomplete) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Temp, <span class="dt">y=</span>Ozone))
+<span class="kw">print</span>(plt)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-43-1.png" width="672" /></p>
+<p>You’ll notice two new things about what we did here. First, we assign the output to <code>plt</code>, this will be important when we want to make adjustments to the plot later. Second, you’ll notice when we do that, nothing appears; we have to print the plt to get it to show up.</p>
 <p>Now, I want you to go back and do <em>everything</em> we just did over again.</p>
 <p>What, you think that’s ridiculous? The reality is, we often have to go back and make changes upstream. When we do this, it can get very, very painful if we’re doing everything interactively, in the <em>console</em>.</p>
 <p>Before we move on, let’s introduce you to writing scripts.</p>
 <p>– Picture of RStudio window here, arrow pointing to New Script –</p>
 <p>Click the symbol for New Script and you’ll see RStudio’s built-in text editor pop up.</p>
 <p>Let’s take a moment to put all our work in. I know it’s a pain but it will pay off if we want to make changes later.</p>
-<p><code>r  require(ggplot2)  airquality &lt;- read.csv('airquality.csv')  aircomplete &lt;- airquality[complete.cases(airquality), ]  plt &lt;- ggplot(aircomplete) + geom_point(aes(x=Temp, y=Ozone))  print(plt)</code></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(ggplot2)
+airquality &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;airquality.csv&#39;</span>)
+aircomplete &lt;-<span class="st"> </span>airquality[<span class="kw">complete.cases</span>(airquality), ]
+plt &lt;-<span class="st"> </span><span class="kw">ggplot</span>(aircomplete) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Temp, <span class="dt">y=</span>Ozone))
+<span class="kw">print</span>(plt)</code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
 <p>We can run the entire script by clicking <em>Source</em> at the top of the editor pane.</p>
 <p>To run just a specific line or lines, you can select the section you want to run and then click <em>Run</em></p>
 <p>Let’s get back to our data. You may have seen a pattern in the plot we made earlier. Let’s pick up our analysis with a little more visualization and some modeling.</p>
+</div>
+<div id="modeling-the-data-1" class="section level2">
+<h2><span class="header-section-number">3.6</span> Modeling the data</h2>
 <p>We’ll model the data using the reliable <code>lm()</code> function again. Let’s add the following to the end of our script and <em>Source</em> it.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ozone_model &lt;-<span class="st"> </span><span class="kw">lm</span>(Ozone ~<span class="st"> </span>Temp, <span class="dt">data =</span> aircomplete)
 <span class="kw">print</span>(<span class="kw">summary</span>(ozone_model))</code></pre></div>
@@ -372,10 +398,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plt_2 &lt;-<span class="st"> </span>plt +<span class="st"> </span><span class="kw">geom_abline</span>(<span class="dt">intercept =</span> -<span class="fl">147.64607</span> , <span class="dt">slope =</span> <span class="fl">2.43911</span>)
 <span class="kw">print</span>(plt_2)</code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-47-1.png" width="672" /></p>
+</div>
+<div id="making-a-reproducible-report" class="section level2">
+<h2><span class="header-section-number">3.7</span> Making a reproducible report</h2>
 <p>Great. Now, what if we want to make a report of our work? With R, you get the power of <code>knitr</code>, which will <em>knit</em> your work together into a report. Let’s try it on our current script. Go to File -&gt; Knit Document, name the file <code>airquality_report</code> and select HTML, then watch the magic happen!</p>
+<p>– example of switching out the data set and generating a new report here? –</p>
 
 
 
+</div>
 </div>
             </section>
 
