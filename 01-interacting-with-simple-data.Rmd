@@ -59,7 +59,7 @@ This is neat and all, but we're here to dig into data, so let's get to it!
 
 ## Loading in data
 
-We are going to load in CSV files today to get data into R.  R is powerful for statistics because it has a great base collection of functions, or named procedures, for common things we'd want to do with data, like reading in a CSV.  R's base way of doing this is with a function named `read.csv`.  Like the named variables, we can get **what** `read.csv` is by referring to its name.
+We are going to load in CSV files today to get data into R.  R is powerful for statistics because it has a great base collection of functions, or named procedures, for common things we'd want to do with data, like reading in a CSV.  R's base way of doing this is with a function named `read.csv`.  Like the named variables, we can get **what** `read.csv` is by referring to its name. For more info on loading data, [see here](https://www.datacamp.com/community/tutorials/importing-data-r-part-two).
 
 ```{r}
 read.csv
