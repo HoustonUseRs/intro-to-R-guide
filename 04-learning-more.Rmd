@@ -1,0 +1,53 @@
+# Learning More
+
+There are many ways to continue learning R.  No matter what you choose to be your next step, we're here and eager to share experiences and questions!  Join us in person for our [Houston R UseRs Meetups](http://www.meetup.com/houstonr/) or online in our [Slack](https://hrug.slack.com) chat anytime.
+
+## Next Steps
+
+[//]: <> ( If you have a specific project where R is useful, or existing datasets you're wanting to explore, we recommend using R with them, and )
+
+The following resources are great next steps to take for learning more on using R after this workshop.
+
+### [R for Data Science](http://r4ds.had.co.nz/)
+
+This book penned by Hadley Wickham and Garrett Grolemund covers modern standards on using R for data science with a cohesive and conversational narrative.  The book covers in more detail some topics we touched on during this workshop for:
+
+* Getting your data into R
+* Cleaning your data
+* Exploring your data by transforming, visualizing, and modeling
+* Creating reproducible reports
+
+For a great overview of what's in the book, check out [this page](http://r4ds.had.co.nz/explore-intro.html).
+
+With R and RStudio setup on your computer, you are ready to start using this book right away.
+
+### Read other people's scripts
+
+* Kaggle Titantic examples
+  * [Gettings started in R](https://www.kaggle.com/c/titanic/details/new-getting-started-with-r)
+  * [Exploring Survival on the Titanic](https://www.kaggle.com/mrisdal/titanic/exploring-survival-on-the-titanic)
+* [R by example](http://www.mayin.org/ajayshah/KB/R/index.html)
+
+### [Data Camp](https://www.datacamp.com/)
+
+### [How to learn R](https://www.r-bloggers.com/how-to-learn-r-2/)
+
+## Getting Practice
+
+### [Houston data jams](https://houstondatavis.github.io/data-jams/)
+
+### [Kaggle](https://www.kaggle.com)
+
+### [drivendata](https://www.drivendata.org/)
+
+## Getting Help
+
+### Houston R UseRs [Slack](https://hrug.slack.com) and [Meetup](http://www.meetup.com/houstonr/)
+
+### [Stack Overflow](http://stackoverflow.com/)
+
+## Staying up to date
+
+### [RWeekly](https://rweekly.org/)
+
+### [Awesome-R](https://awesome-r.com/)
