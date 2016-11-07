@@ -4,6 +4,7 @@
 ## Suppress this chunk in the book
 install.packages('ggplot2')
 install.packages('magrittr')
+install.packages('Hmisc')
 require('magrittr')
 ```
 Let's pick up the pace and put our newfound skills to the test. For this section, we're gonna use a dataset that looks more like what we'll encounter in real life. It's bigger in both dimensions; it has more rows but also more columns. It also has some missing data (oh noes!). Now things are getting real.
@@ -43,7 +44,7 @@ sum(is.na(airquality))
 Notice how we *nested* one function inside another? There's another way to do this. We can use the pipe operator, represented by the `%>%` symbol, to achieve the same thing.
 
 ```{r}
-is.na(airquality) %>% sum()
+airquality %>% is.na() %>% sum()
 ```
 
 ## Ignoring missing values
@@ -75,9 +76,14 @@ nrow(aircomplete)
 
 ## Imputing missing values
 
-Another way to deal with missing data is to _impute_ the values.
+Another way to deal with missing data is to _impute_ the values. In order to deal with missing data, you need to understand why it is missing in the first place. Is random data missing? Is it a function of how the data was collected? Were survey respondents hesitant to answer a question due to cultural or social norms?
 
--- Section on imputing here? --
+There are a number of techniques you can use to impute missing values.  This is a relatively advanced topic that we will not cover in depth today. However, we will give you one method to impute values for the _airquality_ data set. Here we will use the _impute_ function from the _Hmisc_ package to impute data using a predictive mean matching algorithm.
+```{r}
+require(Hmisc)
+airquality$Ozone <- with(airquality, impute(Ozone, mean))
+airquality$Solar.R <- with(airquality, impute(Solar.R, mean))
+```
 
 Now that we've addressed missingness in our dataset, we're ready to start analysis.
 
