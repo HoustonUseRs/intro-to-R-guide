@@ -119,6 +119,7 @@ We can also look at parts of the data using _verbs_ like `filter()` and `select(
 
 ```{r}
 install.packages('dplyr')
+library(dplyr)
 ```
 
 We can look at just specific rows matching a certain condition, using `filter()`:
