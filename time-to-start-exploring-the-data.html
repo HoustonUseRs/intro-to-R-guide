@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="learning-more.html">
-
+<link rel="prev" href="this-time-its-for-real.html">
+<link rel="next" href="section.html">
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -170,34 +170,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="installation-instructions" class="section level1">
-<h1><span class="header-section-number">8</span> Installation Instructions</h1>
-<div id="installing-r-on-mac-os-x" class="section level2">
-<h2><span class="header-section-number">8.1</span> Installing R on Mac OS X</h2>
-<div id="installing-r-with-homebrew" class="section level3">
-<h3><span class="header-section-number">8.1.1</span> Installing R with Homebrew</h3>
-<p>If you are not sure if you have <em>Homebrew</em>, open your Terminal or CLI and type <code>which brew</code>.</p>
-<p>If you get output like this: <code>/usr/local/bin/brew</code>, then you have <em>Homebrew</em> and you are good to go.</p>
-<p>Otherwise, if you get: <code>command not found</code>, you’ll need to install it from here: <a href="http://brew.sh/" class="uri">http://brew.sh/</a>.</p>
-<p>After confirming you have <em>Homebrew</em>, proceed with instructions:</p>
-<ol style="list-style-type: decimal">
-<li>Open Terminal.</li>
-<li>Before installing anything, run <code>brew update &amp;&amp; brew upgrade</code></li>
-<li><p>Copy/paste the comands below to install R:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">brew</span> tap caskroom/cask
-$ <span class="kw">brew</span> install homebrew/completions/brew-cask-completion
-$ <span class="kw">brew</span> install Caskroom/cask/xquartz
-$ <span class="kw">brew</span> cask install java
-$ <span class="kw">brew</span> tap homebrew/science
-$ <span class="kw">brew</span> install R</code></pre></div></li>
-</ol>
-<p><strong>Trouble Shooting</strong></p>
-<p>…</p>
-</div>
-</div>
-<div id="installing-r-on-windows" class="section level2">
-<h2><span class="header-section-number">8.2</span> Installing R on Windows</h2>
-
+<div id="time-to-start-exploring-the-data" class="section level1">
+<h1><span class="header-section-number">4</span> Time to start exploring the data!</h1>
+<p>So far we’ve loaded the dataset, we’ve done some high level exploration of the structure, cleaned up the data and even created a simple linear model. In most projects, this will be the hardest part. Once you have your data loaded and cleaned, a common next step is to use R’s powerful graphics packages to create some <em>exploratory graphics</em> to help you visualize the dataset.</p>
+<div id="r-graphics" class="section level2">
+<h2><span class="header-section-number">4.1</span> R Graphics</h2>
+<p>R has a few graphics packages to choose from. Many useful plots come ‘out of the box’ in R. For example, if we want to see a scatterplot matrix of all the data columns in the <em>airquality</em> dataset, we could use the <em>pairs</em> funtion.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairs</span>(airquality)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
+<p>While the basic package is nice, we will be using <em>ggplot2</em> today. It is a powerful graphics package that is designed to make your plots adaptable, scalable, and easy to produce. It is a very popular graphics package used by a large number of R users worldwide.</p>
+<p>Many times, it’s helpful to just do a scatterplot of two variables</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(airquality, <span class="kw">aes</span>(Ozone, Solar.R)) +<span class="st"> </span><span class="kw">geom_point</span>()
+p</code></pre></div>
+<pre><code>## Warning: Removed 42 rows containing missing values (geom_point).</code></pre>
 </div>
 </div>
             </section>
@@ -205,8 +190,8 @@ $ <span class="kw">brew</span> install R</code></pre></div></li>
           </div>
         </div>
       </div>
-<a href="learning-more.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="this-time-its-for-real.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="section.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
