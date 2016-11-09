@@ -115,7 +115,11 @@ To learn more about any function, we can add a `?` in front of the function name
 ?str
 ```
 
-We can also look at parts of the data using _verbs_ like `filter()` and `select()`.
+We can also look at parts of the data using _verbs_ like `filter()` and `select()`, provided by the `dplyr` package.
+
+```{r}
+install.packages('dplyr')
+```
 
 We can look at just specific rows matching a certain condition, using `filter()`:
 
