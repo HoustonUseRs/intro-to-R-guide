@@ -79,6 +79,7 @@ nrow(aircomplete)
 Another way to deal with missing data is to _impute_ the values. In order to deal with missing data, you need to understand why it is missing in the first place. Is random data missing? Is it a function of how the data was collected? Were survey respondents hesitant to answer a question due to cultural or social norms?
 
 There are a number of techniques you can use to impute missing values.  This is a relatively advanced topic that we will not cover in depth today. However, we will give you one method to impute values for the _airquality_ data set. Here we will use the _impute_ function from the _Hmisc_ package to impute data using a predictive mean matching algorithm.
+
 ```{r}
 require(Hmisc)
 airquality$Ozone <- with(airquality, impute(Ozone, mean))
@@ -119,7 +120,7 @@ aircomplete <- airquality[complete.cases(airquality), ]
 plt <- ggplot(aircomplete) + geom_point(aes(x=Temp, y=Ozone))
 print(plt)
 ```
- 
+
 We can run the entire script by clicking *Source* at the top of the editor pane.
  
 To run just a specific line or lines, you can select the section you want to run and then click *Run*
