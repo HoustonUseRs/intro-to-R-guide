@@ -27,3 +27,6 @@ Many times, it's helpful to just do a scatterplot of two variables
 p <- ggplot(airquality, aes(Ozone, Solar.R)) + geom_point()
 p
 ```
+=======
+# Exploring further
+
