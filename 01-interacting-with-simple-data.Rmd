@@ -115,44 +115,41 @@ To learn more about any function, we can add a `?` in front of the function name
 ?str
 ```
 
-We can also look at parts of the data using `[]`.  For example, we can look at the value in the first row and column:
+We can also look at parts of the data using _verbs_ like `filter()` and `select()`.
+
+We can look at just specific rows matching a certain condition, using `filter()`:
+
 
 ```{r}
-crickets[1, 1]
+filter(crickets, Temperature < 75)
+filter(crickets, Temperature == 82)
 ```
 
-We can look at just specific rows:
+or just specific columns, using `select()`:
 
 ```{r}
-crickets[1, ]
-crickets[2, ]
-crickets[nrow(crickets), ]
-```
-or just specific columns:
-
-```{r}
-crickets[, 1]
-crickets[, 2]
+select(crickets, Chirpspersecond)
+select(crickets, Temperature)
 ```
 
 We can use this to calculate our own means, standard deviations, and medians:
 
 ```{r eval = FALSE}
-mean(crickets[, 1])
-median(crickets[, 1])
-sd(crickets[, 1])
-mean(crickets[, 2])
-median(crickets[, 2])
-sd(crickets[, 2])
+select(crickets, Chirpspersecond) %>% mean()
+select(crickets, Chirpspersecond) %>% median()
+select(crickets, Chirpspersecond) %>% sd()
+select(crickets, Temperature) %>% mean()
+select(crickets, Temperature) %>% median()
+select(crickets, Temperature) %>% sd()
 ```
 
 We can also ask R for the max and the min values:
 
 ```{r eval = FALSE}
-max(crickets[, 1])
-min(crickets[, 1])
-max(crickets[, 2])
-min(crickets[, 2])
+select(crickets, Chirpspersecond) %>% max()
+select(crickets, Chirpspersecond) %>% min()
+select(crickets, Temperature) %>% max()
+select(crickets, Temperature) %>% min()
 ```
 
 There's many more calculations we can run on the data, but plotting the data will help us we a better picture of it.
@@ -302,20 +299,20 @@ crickets <- read.csv(file = 'crickets.csv')
 
 | Code                | Description                         |
 | ------------------- | ------------------------------------|
-| `crickets[1,0]`     | First row                           |
-| `crickets[2,0]`     | Second row                          |
-| `crickets[,1]`      | First column, Chirpspersecond       |
-| `crickets[,2]`      | Second column, Temperature          |
+| `filter(crickets, Temperature < 85`     | Rows with temperature less than 80                           |
+| `filter(crickets, Chirpspersecond > 15`     | Rows with chirps per second greater than 15                         |
+| `select(crickets, Chirpspersecond)`      | First column, Chirpspersecond       |
+| `select(crickets, Temperature)`      | Second column, Temperature          |
 
 4. Calculated descriptive statistics on the data
 
 | Code                    | Description                       |
 | ----------------------- | ----------------------------------|
-| `mean(crickets[,2])`    | Average Temperature               |
-| `median(crickets[,2])`  | Median Temperature                |
-| `sd(crickets[,2])`      | Standard deviation of Temperature |
-| `max(crickets[,2])`     | Maximum Temperature               |
-| `min(crickets[,2])`     | Minimum Temperature               |
+| `mean()`    | Average Temperature               |
+| `median()`  | Median Temperature                |
+| `sd()`      | Standard deviation of Temperature |
+| `max()`     | Maximum Temperature               |
+| `min()`     | Minimum Temperature               |
 
 5. Made plots of our data
 
