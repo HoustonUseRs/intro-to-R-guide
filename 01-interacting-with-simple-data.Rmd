@@ -146,7 +146,7 @@ mean(select(crickets, Temperature))
 Notice how we *nested* one function inside another? There's another way to do this, a way that's more readable and easier to reason about. We can use the pipe operator, represented by the `%>%` symbol, to achieve the same thing.
 
 ```{r}
-crickets %>% select(Chirpspersecond) %>% mean()
+crickets %>% select(Temperature) %>% mean()
 ```
 
 You read this left to right, and you can see the steps the data go through in logical order.
