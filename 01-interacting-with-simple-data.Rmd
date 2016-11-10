@@ -241,25 +241,29 @@ There's actually more information that `lm` tells us.  Let's take a look by firs
 crickets_lm <- lm(Temperature ~ Chirpspersecond, data = crickets)
 ```
 
-Then, if we type in `crickets_lm$` and press tab, we see some suggestions for autocompletion.  For example:
+We can use the `broom` package to help us get to the information stored in the model. Let's install that first:
 
 ```{r}
-crickets_lm$residuals
+install.packages('broom')
+library('broom')
 ```
 
-`crickets_lm$coefficient` tells us the slope and intercept.
+For example:
 
 ```{r}
-crickets_lm$coefficient
+tidy(crickets_lm)
 ```
+We get the slope and the intercept from the `estimate` column.
 
-Let's use `crickets_lm$coefficient` to add a line on top of our scatterplot so we can eyeball how our linear model fits.
+Let's use `tidy()` and `geom_abline()` to add a line on top of our scatterplot so we can eyeball how our linear model fits.
 
 ```{r}
+lm_slope <- crickets_lm %>% tidy %>% filter(term == "(Intercept)") %>% select(estimate)
+lm_intercept <- crickets_lm %>% tidy %>% filter(term == "Chirpspersecond") %>% select(estimate)
 ggplot(data = crickets, mapping = aes(x = Chirpspersecond, y = Temperature)) +
     geom_point(mapping = aes(color = Temperature)) +
     scale_color_gradient(low = "orange", high = "red") +
-    geom_abline(slope = crickets_lm$coefficient[2][1], intercept = crickets_lm$coefficient[1][1])
+    geom_abline(slope = lm_slope, intercept = lm_intercept)
 ```
 
 Additionally, `cor` and `cor.test` are two functions that can tell us about correlations between paired samples.
@@ -304,8 +308,8 @@ crickets <- read.csv(file = 'crickets.csv')
 
 | Code                | Description                         |
 | ------------------- | ------------------------------------|
-| `filter(crickets, Temperature < 85`     | Rows with temperature less than 80                           |
-| `filter(crickets, Chirpspersecond > 15`     | Rows with chirps per second greater than 15                         |
+| `filter(crickets, Temperature < 85`     | Rows with temperature less than 80  |
+| `filter(crickets, Chirpspersecond > 15`     | Rows with chirps per second greater than 15 |
 | `select(crickets, Chirpspersecond)`      | First column, Chirpspersecond       |
 | `select(crickets, Temperature)`      | Second column, Temperature          |
 
