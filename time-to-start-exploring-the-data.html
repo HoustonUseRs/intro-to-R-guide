@@ -176,13 +176,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">4.1</span> R Graphics</h2>
 <p>R has a few graphics packages to choose from. Many useful plots come ‘out of the box’ in R. For example, if we want to see a scatterplot matrix of all the data columns in the <em>airquality</em> dataset, we could use the <em>pairs</em> funtion.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairs</span>(airquality)</code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
 <p>While the basic package is nice, we will be using <em>ggplot2</em> today. It is a powerful graphics package that is designed to make your plots adaptable, scalable, and easy to produce. It is a very popular graphics package used by a large number of R users worldwide.</p>
 <p>Many times, it’s helpful to just do a scatterplot of two variables</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(airquality, <span class="kw">aes</span>(Ozone, Solar.R)) +<span class="st"> </span><span class="kw">geom_point</span>()
 p</code></pre></div>
 <pre><code>## Warning: Removed 42 rows containing missing values (geom_point).</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
 </div>
 </div>
             </section>

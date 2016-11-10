@@ -223,7 +223,7 @@ z &lt;-<span class="st"> </span><span class="dv">10</span></code></pre></div>
 ##     fill = TRUE, comment.char = &quot;&quot;, ...) 
 ## read.table(file = file, header = header, sep = sep, quote = quote, 
 ##     dec = dec, fill = fill, comment.char = comment.char, ...)
-## &lt;bytecode: 0x46c03f8&gt;
+## &lt;bytecode: 0x3fb66a0&gt;
 ## &lt;environment: namespace:utils&gt;</code></pre>
 <p>Here, we get back just what <code>read.csv</code> is. In order to tell R to <strong>do</strong> or <strong>run</strong> the function, we need to run:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read.csv</span>()</code></pre></div>
@@ -370,9 +370,19 @@ z &lt;-<span class="st"> </span><span class="dv">10</span></code></pre></div>
 ## 13        80.6
 ## 14        83.5
 ## 15        76.3</code></pre>
-<p>We can use this to calculate our own means, standard deviations, and medians:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">select</span>(crickets, Chirpspersecond) %&gt;%<span class="st"> </span><span class="kw">mean</span>()
-<span class="kw">select</span>(crickets, Chirpspersecond) %&gt;%<span class="st"> </span><span class="kw">median</span>()
+<p>We can pass the output of one of these to another function to calculate the mean.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(<span class="kw">select</span>(crickets, Temperature))</code></pre></div>
+<pre><code>## Warning in mean.default(select(crickets, Temperature)): argument is not
+## numeric or logical: returning NA</code></pre>
+<pre><code>## [1] NA</code></pre>
+<p>Notice how we <em>nested</em> one function inside another? There’s another way to do this, a way that’s more readable and easier to reason about. We can use the pipe operator, represented by the <code>%&gt;%</code> symbol, to achieve the same thing.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crickets %&gt;%<span class="st"> </span><span class="kw">select</span>(Temperature) %&gt;%<span class="st"> </span><span class="kw">mean</span>()</code></pre></div>
+<pre><code>## Warning in mean.default(.): argument is not numeric or logical: returning
+## NA</code></pre>
+<pre><code>## [1] NA</code></pre>
+<p>You read this left to right, and you can see the steps the data go through in logical order.</p>
+<p>We can use this approach to calculate our own means, standard deviations, and medians:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">select</span>(crickets, Chirpspersecond) %&gt;%<span class="st"> </span><span class="kw">median</span>()
 <span class="kw">select</span>(crickets, Chirpspersecond) %&gt;%<span class="st"> </span><span class="kw">sd</span>()
 <span class="kw">select</span>(crickets, Temperature) %&gt;%<span class="st"> </span><span class="kw">mean</span>()
 <span class="kw">select</span>(crickets, Temperature) %&gt;%<span class="st"> </span><span class="kw">median</span>()
@@ -396,23 +406,23 @@ z &lt;-<span class="st"> </span><span class="dv">10</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)</code></pre></div>
 <p>To start, we can tell <code>ggplot</code> what our data is:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> crickets)</code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 <p>This gives us back a rather boring blank gray square. At this point, ggplot does not know what about the data to map to where. We can tell it to map <code>Chirpspersecond</code> as the <code>x</code>, and <code>Temperature</code> as the <code>y</code> like this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> crickets, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Chirpspersecond, <span class="dt">y =</span> Temperature))</code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
 <p>At this point, <code>ggplot</code> seems to know where things should go, but there’s no points. This base layer is ready with our coordinates and axis, but we would also like <code>ggplot</code> to map the data in the same way to a layer of markings that represent the data. Let’s try points:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> crickets, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Chirpspersecond, <span class="dt">y =</span> Temperature)) +
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 <p>We now have points, each with it’s x mapped to Chirpspersecond and the y mapped to Temperature. We can also mapped the color of each point to the temperature like this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> crickets, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Chirpspersecond, <span class="dt">y =</span> Temperature)) +
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">color =</span> Temperature))</code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 <p>This gives the points colors mapped from the Temperature along a default scale. We can adjust the scale to give a sense of the temperature like this:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> crickets, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Chirpspersecond, <span class="dt">y =</span> Temperature)) +
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">color =</span> Temperature)) +
 <span class="st">  </span><span class="kw">scale_color_gradient</span>(<span class="dt">low =</span> <span class="st">&quot;orange&quot;</span>, <span class="dt">high =</span> <span class="st">&quot;red&quot;</span>)</code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 <p>Let’s take some time to experiment with different visualizations using ggplot2. See the <a href="https://www.rstudio.com/wp-content/uploads/2015/12/ggplot2-cheatsheet-2.0.pdf">data visualization cheat sheet</a> for ideas.</p>
 <p>Once we have a plot we like, we can save our last plot to an image file very easily:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggsave</span>(<span class="dt">filename =</span> <span class="st">&quot;plot.png&quot;</span>)</code></pre></div>
@@ -445,7 +455,6 @@ z &lt;-<span class="st"> </span><span class="dv">10</span></code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&#39;broom&#39;</span>)</code></pre></div>
 <pre><code>## Installing package into &#39;/home/travis/R/Library&#39;
 ## (as &#39;lib&#39; is unspecified)</code></pre>
-<pre><code>## also installing the dependencies &#39;mnormt&#39;, &#39;tidyr&#39;, &#39;psych&#39;</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&#39;broom&#39;</span>)</code></pre></div>
 <p>For example:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tidy</span>(crickets_lm)</code></pre></div>
@@ -460,7 +469,7 @@ lm_intercept &lt;-<span class="st"> </span>crickets_lm %&gt;%<span class="st"> <
 <span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">color =</span> Temperature)) +
 <span class="st">    </span><span class="kw">scale_color_gradient</span>(<span class="dt">low =</span> <span class="st">&quot;orange&quot;</span>, <span class="dt">high =</span> <span class="st">&quot;red&quot;</span>) +
 <span class="st">    </span><span class="kw">geom_abline</span>(<span class="dt">slope =</span> lm_slope, <span class="dt">intercept =</span> lm_intercept)</code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
 <p>Additionally, <code>cor</code> and <code>cor.test</code> are two functions that can tell us about correlations between paired samples.</p>
 <p>As before, the <code>?</code> can help us learn more:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?cor
