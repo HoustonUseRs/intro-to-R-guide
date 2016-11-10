@@ -223,11 +223,13 @@ z &lt;-<span class="st"> </span><span class="dv">10</span></code></pre></div>
 ##     fill = TRUE, comment.char = &quot;&quot;, ...) 
 ## read.table(file = file, header = header, sep = sep, quote = quote, 
 ##     dec = dec, fill = fill, comment.char = comment.char, ...)
-## &lt;bytecode: 0x3fb66a0&gt;
+## &lt;bytecode: 0x3da3cb0&gt;
 ## &lt;environment: namespace:utils&gt;</code></pre>
 <p>Here, we get back just what <code>read.csv</code> is. In order to tell R to <strong>do</strong> or <strong>run</strong> the function, we need to run:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read.csv</span>()</code></pre></div>
 <pre><code>## Error in read.table(file = file, header = header, sep = sep, quote = quote, : argument &quot;file&quot; is missing, with no default</code></pre>
+<p>To learn more about any function, we can add a <code>?</code> in front of the function name like this:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?read.csv</code></pre></div>
 <p>In order to know what file to read in, we need to give the function the location of the file:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read.csv</span>(<span class="dt">file =</span> <span class="st">&#39;crickets.csv&#39;</span>)</code></pre></div>
 <pre><code>##    Chirpspersecond Temperature
@@ -311,8 +313,6 @@ z &lt;-<span class="st"> </span><span class="dv">10</span></code></pre></div>
 </tr>
 </tbody>
 </table>
-<p>To learn more about any function, we can add a <code>?</code> in front of the function name like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?str</code></pre></div>
 <p>We can also look at parts of the data using <em>verbs</em> like <code>filter()</code> and <code>select()</code>, provided by the <code>dplyr</code> package.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&#39;dplyr&#39;</span>)</code></pre></div>
 <pre><code>## Installing package into &#39;/home/travis/R/Library&#39;
@@ -382,16 +382,16 @@ z &lt;-<span class="st"> </span><span class="dv">10</span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
 <p>You read this left to right, and you can see the steps the data go through in logical order.</p>
 <p>We can use this approach to calculate our own means, standard deviations, and medians:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">select</span>(crickets, Chirpspersecond) %&gt;%<span class="st"> </span><span class="kw">median</span>()
-<span class="kw">select</span>(crickets, Chirpspersecond) %&gt;%<span class="st"> </span><span class="kw">sd</span>()
-<span class="kw">select</span>(crickets, Temperature) %&gt;%<span class="st"> </span><span class="kw">mean</span>()
-<span class="kw">select</span>(crickets, Temperature) %&gt;%<span class="st"> </span><span class="kw">median</span>()
-<span class="kw">select</span>(crickets, Temperature) %&gt;%<span class="st"> </span><span class="kw">sd</span>()</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crickets %&gt;%<span class="st"> </span><span class="kw">select</span>(Chirpspersecond) %&gt;%<span class="st"> </span><span class="kw">median</span>()
+crickets %&gt;%<span class="st"> </span><span class="kw">select</span>(Chirpspersecond) %&gt;%<span class="st"> </span><span class="kw">sd</span>()
+crickets %&gt;%<span class="st"> </span><span class="kw">select</span>(Temperature) %&gt;%<span class="st"> </span><span class="kw">mean</span>()
+crickets %&gt;%<span class="st"> </span><span class="kw">select</span>(Temperature) %&gt;%<span class="st"> </span><span class="kw">median</span>()
+crickets %&gt;%<span class="st"> </span><span class="kw">select</span>(Temperature) %&gt;%<span class="st"> </span><span class="kw">sd</span>()</code></pre></div>
 <p>We can also ask R for the max and the min values:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">select</span>(crickets, Chirpspersecond) %&gt;%<span class="st"> </span><span class="kw">max</span>()
-<span class="kw">select</span>(crickets, Chirpspersecond) %&gt;%<span class="st"> </span><span class="kw">min</span>()
-<span class="kw">select</span>(crickets, Temperature) %&gt;%<span class="st"> </span><span class="kw">max</span>()
-<span class="kw">select</span>(crickets, Temperature) %&gt;%<span class="st"> </span><span class="kw">min</span>()</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crickets %&gt;%<span class="st"> </span><span class="kw">select</span>(Chirpspersecond) %&gt;%<span class="st"> </span><span class="kw">max</span>()
+crickets %&gt;%<span class="st"> </span><span class="kw">select</span>(Chirpspersecond) %&gt;%<span class="st"> </span><span class="kw">min</span>()
+crickets %&gt;%<span class="st"> </span><span class="kw">select</span>(Temperature) %&gt;%<span class="st"> </span><span class="kw">max</span>()
+crickets %&gt;%<span class="st"> </span><span class="kw">select</span>(Temperature) %&gt;%<span class="st"> </span><span class="kw">min</span>()</code></pre></div>
 <p>There’s many more calculations we can run on the data, but plotting the data will help us we a better picture of it.</p>
 </div>
 <div id="visualizing-the-data" class="section level2">
