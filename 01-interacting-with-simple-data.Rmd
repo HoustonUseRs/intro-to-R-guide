@@ -137,10 +137,23 @@ select(crickets, Chirpspersecond)
 select(crickets, Temperature)
 ```
 
-We can use this to calculate our own means, standard deviations, and medians:
+We can pass the output of one of these to another function to calculate the mean.
+
+```{r}
+mean(select(crickets, Temperature))
+```
+
+Notice how we *nested* one function inside another? There's another way to do this, a way that's more readable and easier to reason about. We can use the pipe operator, represented by the `%>%` symbol, to achieve the same thing.
+
+```{r}
+crickets %>% select(Chirpspersecond) %>% mean()
+```
+
+You read this left to right, and you can see the steps the data go through in logical order.
+
+We can use this approach to calculate our own means, standard deviations, and medians:
 
 ```{r eval = FALSE}
-select(crickets, Chirpspersecond) %>% mean()
 select(crickets, Chirpspersecond) %>% median()
 select(crickets, Chirpspersecond) %>% sd()
 select(crickets, Temperature) %>% mean()

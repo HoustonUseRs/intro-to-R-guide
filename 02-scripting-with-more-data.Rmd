@@ -30,18 +30,12 @@ I mentioned this dataset has some missing data, you may have noticed it already 
 It's always a good idea to check for missing values, even if you are *sure* your data is complete. We can ask R to tell us whether there are any NAs in the dataset using the `is.na()` function.
 
 ```{r}
-is.na(airquality)
+airquality %>% is.na()
 ```
 
 This will list out `TRUE` or `FALSE` for *every* value in new_data, for the question "is this value equal to NA?". It's kind hard to read, though.
 
 If we wanted to get a general sense of how many NAs there were in our entire dataset, we could do something like this:
-
-```{r}
-sum(is.na(airquality))
-```
-
-Notice how we *nested* one function inside another? There's another way to do this. We can use the pipe operator, represented by the `%>%` symbol, to achieve the same thing.
 
 ```{r}
 airquality %>% is.na() %>% sum()
