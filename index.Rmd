@@ -12,21 +12,17 @@ R is a programming language designed specifically for statistics.  Because it is
 
 ## Why not R?
 
-* R is limited in producing highly-customizing and interactive reporting visualizations
+* R is limited in producing highly-customized and interactive reporting visualizations
 
-  While R is able to produce interactive graphics, maps, and dashboards by leveraging JavaScript, a lot of the more expressive and customized interactive data presentation cannot yet be acheived with R.  The gap is closing quickly however, and you can read more about that [here](./05-appendix).
+  While R is able to produce interactive graphics, maps, and dashboards, a lot of the more expressive and customized interactive data presentations will require knowledge of JavaScript. The amount you can do directly from within R is increasing rapidly, however, and you can read more about that [here](./05-appendix).
 
 * R is not as expressive for general tasks such as scraping and crawling
 
-  Additionally, while data-mining, scraping and crawling for data can be done in R, those might be tasks better left to Python if you are already familar with Python.  Otherwise, R can handle your data workflow from data gathering to exploration to analysis to presentation.
+  New additions to R like `tidyr` and `dplyr` are making R more expressive; the result is R is becoming a strong competitor in more general tasks like data-mining, data-wrangling, and scraping and crawling for data.
 
-* R's ecosystem for machine learning is limited
+* R requires data to be loaded into memory
 
-  For problems in the machine learning, computer vision, and text-analysis (debatably), Python has more comprehensive libraries available.
-
-* R can be slow
-
-  For projects where the data needs to be analyzed or processed very quickly, we will want to consider using [C within R](./05-appendix).
+  For projects where exceptionally large data needs to be analyzed or processed very quickly, we will want to consider using [tools that help us work around the memory limitations](./05-appendix).
 
 Overall, R is a top choice for data exploration, modelling, analysis, and static graphics.
 
