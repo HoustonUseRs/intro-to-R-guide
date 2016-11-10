@@ -12,33 +12,42 @@ R is a programming language designed specifically for statistics.  Because it is
 
 ## Why not R?
 
-While R is able to produce interactive graphics, maps, and dashboards by leveraging JavaScript, a lot of the more expressive and customized interactive data presentation cannot yet be acheived with R.  The gap is closing quickly however, and you can read more about that [here](./05-appendix).
+* R is limited in producing highly-customizing and interactive reporting visualizations
 
-Additionally, while data-mining, scraping and crawling for data can be done in R, those might be tasks better left to Python if you are already familar with Python.  Otherwise, R can handle your data workflow from data gathering to exploration to analysis to presentation.
+  While R is able to produce interactive graphics, maps, and dashboards by leveraging JavaScript, a lot of the more expressive and customized interactive data presentation cannot yet be acheived with R.  The gap is closing quickly however, and you can read more about that [here](./05-appendix).
 
-For projects where the data needs to be analyzed or processed very quickly, we will want to consider using [C within R](./05-appendix).
+* R is not as expressive for general tasks such as scraping and crawling
 
-Overall, R is a great fit for data exploration, modelling, analysis, and static graphics.
+  Additionally, while data-mining, scraping and crawling for data can be done in R, those might be tasks better left to Python if you are already familar with Python.  Otherwise, R can handle your data workflow from data gathering to exploration to analysis to presentation.
+
+* R's ecosystem for machine learning is limited
+
+  For problems in the machine learning, computer vision, and text-analysis (debatably), Python has more comprehensive libraries available.
+
+* R can be slow
+
+  For projects where the data needs to be analyzed or processed very quickly, we will want to consider using [C within R](./05-appendix).
+
+Overall, R is a top choice for data exploration, modelling, analysis, and static graphics.
 
 ## What is the scope of this workshop?
 
 This workshop will cover steps and code that can be readily adapted for small to moderate sized datasets.
 
-## What is missing from this workshop?
-
+// will include what is missing from this workshop
 
 
 ## The Plan
 
 Today, we are going to cover:
 
-    1. Loading in the data
-    1. Exploring it
-    1. Cleaning it
-    1. Calculating descriptive statistics
-    1. Visualizing it
-    1. Modeling it
-    1. Making a report
+1. Loading in the data
+1. Exploring it
+1. Cleaning it
+1. Calculating descriptive statistics
+1. Visualizing it
+1. Modeling it
+1. Making a report
 
 We will also cover how to get help and how to learn more about using R.
 
