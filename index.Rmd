@@ -6,30 +6,39 @@ Houston R Users are hosting a [guided intro workshop](http://www.meetup.com/hous
 
 We are very excited you could make it to this Intro to R workshop!  We hope to leave this workshop with some practical practice under our belts working with data in R and the ability to find and understand resources when applying these steps to our own datasets.
 
-## What is R?
+## Why R?
 
-R is a programming language designed specifically for statistics!  Because it is a free and open source language, many people have contributed to the R ecosystem.  In addition to being very powerful and expressive for statistical analysis, R has become very popular for doing exploratory data visualization and report making as well.
+R is a programming language designed specifically for statistics.  Because it is a free and open source language, many people have contributed to the R ecosystem.  In addition to being very powerful and expressive for statistical analysis, R has become very popular for doing exploratory data visualization and reporting as well.
+
+## Why not R?
+
+While R is able to produce interactive graphics, maps, and dashboards by leveraging JavaScript, a lot of the more expressive and customized interactive data presentation cannot yet be acheived with R.  The gap is closing quickly however, and you can read more about that [here](./05-appendix).
+
+Additionally, while data-mining, scraping and crawling for data can be done in R, those might be tasks better left to Python if you are already familar with Python.  Otherwise, R can handle your data workflow from data gathering to exploration to analysis to presentation.
+
+For projects where the data needs to be analyzed or processed very quickly, we will want to consider using [C within R](./05-appendix).
+
+Overall, R is a great fit for data exploration, modelling, analysis, and static graphics.
+
+## What is the scope of this workshop?
+
+This workshop will cover steps and code that can be readily adapted for small to moderate sized datasets.
+
+## What is missing from this workshop?
+
+
 
 ## The Plan
 
-Today, we are going to:
+Today, we are going to cover:
 
-1. Work interactively with a simple dataset
     1. Loading in the data
     1. Exploring it
+    1. Cleaning it
     1. Calculating descriptive statistics
     1. Visualizing it
     1. Modeling it
-
-1. Practice making a script and a report with a larger dataset
-    1. Loading in the data
-    1. Exploring it
-    1. **Cleaning it**
-    1. Visualizing it
-    1. Modeling it
-    1. **Making a report**
-
-1. Explore and practice openly with a full dataset
+    1. Making a report
 
 We will also cover how to get help and how to learn more about using R.
 
