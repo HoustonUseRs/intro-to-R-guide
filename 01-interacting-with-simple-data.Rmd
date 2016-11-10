@@ -258,8 +258,8 @@ We get the slope and the intercept from the `estimate` column.
 Let's use `tidy()` and `geom_abline()` to add a line on top of our scatterplot so we can eyeball how our linear model fits.
 
 ```{r}
-lm_slope <- crickets_lm %>% tidy %>% filter(term == "(Intercept)") %>% select(estimate)
-lm_intercept <- crickets_lm %>% tidy %>% filter(term == "Chirpspersecond") %>% select(estimate)
+lm_slope <- crickets_lm %>% tidy %>% filter(term == "(Intercept)") %>% select(estimate) %>% unlist()
+lm_intercept <- crickets_lm %>% tidy %>% filter(term == "Chirpspersecond") %>% select(estimate) %>% unlist()
 ggplot(data = crickets, mapping = aes(x = Chirpspersecond, y = Temperature)) +
     geom_point(mapping = aes(color = Temperature)) +
     scale_color_gradient(low = "orange", high = "red") +
