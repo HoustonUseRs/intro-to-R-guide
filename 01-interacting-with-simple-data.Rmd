@@ -71,6 +71,12 @@ Here, we get back just what `read.csv` is.  In order to tell R to **do** or **ru
 read.csv()
 ```
 
+To learn more about any function, we can add a `?` in front of the function name like this:
+
+```{r eval=FALSE}
+?read.csv
+```
+
 In order to know what file to read in, we need to give the function the location of the file:
 
 ```{r}
@@ -109,11 +115,6 @@ Here's a table of some quick functions we can run on the data to learn about it:
 | `summary(crickets)` | Summary of the data                 |
 | `View(crickets)`    | View data in file viewer            |
 
-To learn more about any function, we can add a `?` in front of the function name like this:
-
-```{r eval=FALSE}
-?str
-```
 
 We can also look at parts of the data using _verbs_ like `filter()` and `select()`, provided by the `dplyr` package.
 
