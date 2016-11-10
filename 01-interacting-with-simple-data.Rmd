@@ -154,20 +154,20 @@ You read this left to right, and you can see the steps the data go through in lo
 We can use this approach to calculate our own means, standard deviations, and medians:
 
 ```{r eval = FALSE}
-select(crickets, Chirpspersecond) %>% median()
-select(crickets, Chirpspersecond) %>% sd()
-select(crickets, Temperature) %>% mean()
-select(crickets, Temperature) %>% median()
-select(crickets, Temperature) %>% sd()
+crickets %>% select(Chirpspersecond) %>% median()
+crickets %>% select(Chirpspersecond) %>% sd()
+crickets %>% select(Temperature) %>% mean()
+crickets %>% select(Temperature) %>% median()
+crickets %>% select(Temperature) %>% sd()
 ```
 
 We can also ask R for the max and the min values:
 
 ```{r eval = FALSE}
-select(crickets, Chirpspersecond) %>% max()
-select(crickets, Chirpspersecond) %>% min()
-select(crickets, Temperature) %>% max()
-select(crickets, Temperature) %>% min()
+crickets %>% select(Chirpspersecond) %>% max()
+crickets %>% select(Chirpspersecond) %>% min()
+crickets %>% select(Temperature) %>% max()
+crickets %>% select(Temperature) %>% min()
 ```
 
 There's many more calculations we can run on the data, but plotting the data will help us we a better picture of it.
