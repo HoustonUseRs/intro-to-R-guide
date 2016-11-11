@@ -7,6 +7,7 @@ install.packages('magrittr')
 install.packages('Hmisc')
 require('magrittr')
 ```
+
 Let's pick up the pace and put our newfound skills to the test. For this section, we're gonna use a dataset that looks more like what we'll encounter in real life. It's bigger in both dimensions; it has more rows but also more columns. It also has some missing data (oh noes!). Now things are getting real.
 
 ## Loading and exploring a larger dataset

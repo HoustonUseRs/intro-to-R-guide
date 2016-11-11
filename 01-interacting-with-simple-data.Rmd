@@ -106,7 +106,7 @@ Let's get a quick sense of what this data is like!
 Here's a table of some quick functions we can run on the data to learn about it:
 
 | Code                | Description                         |
-| ------------------- | ------------------------------------|
+| :------------------ | :-----------------------------------|
 | `names(crickets)`   | Column header names                 |
 | `dim(crickets)`     | Number of rows by number of columns |
 | `nrow(crickets)`    | Number of rows                      |
@@ -228,6 +228,7 @@ ggplot(data = crickets, mapping = aes(x = Temperature, y = Chirpspersecond)) +
 Let's take some time to experiment with different visualizations using ggplot2.  See the [data visualization cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/12/ggplot2-cheatsheet-2.0.pdf) for ideas.
 
 One of the reasons that `ggplot` is so popular is that it has a very extensible syntax.  `ggplot` is built on the concept of a _grammar of graphics_.  The grammar of graphics is a way to build plots in a structured way. Every plot consists of a _dataset_, _aesthetics_ to map of the dataset, and a _geom_ that defines how to display the data.  Let's break down our function call above into its graphical grammar elements:
+
 * _dataset_ = the _crickets_ data frame
 * _aesthetics_ = the _Temperature_ and _Chirpspersecond_ variables
 * _geom_ = the _point_ geom (geom_point function call) is used to create a scatterplot
@@ -235,7 +236,7 @@ One of the reasons that `ggplot` is so popular is that it has a very extensible 
 The syntax may seem a little confusing at first, but it can create some very powerful results once you understand how it works.  It allows you to build up plots in _layers_. It also allows you to manipulate plots in a way similar to manipulating data (via function calls). For example, we can assign our plot to a variable _p_.
 
 ```{r}
- p <- ggplot(data = crickets, mapping = aes(x = Temperature, y = Chirpspersecond)) +
+p <- ggplot(data = crickets, mapping = aes(x = Temperature, y = Chirpspersecond)) +
   geom_point(mapping = aes(color = Temperature)) +
   scale_color_gradient(low = "orange", high = "red")
 
