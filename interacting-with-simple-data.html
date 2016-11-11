@@ -225,7 +225,7 @@ z &lt;-<span class="st"> </span><span class="dv">10</span></code></pre></div>
 ##     fill = TRUE, comment.char = &quot;&quot;, ...) 
 ## read.table(file = file, header = header, sep = sep, quote = quote, 
 ##     dec = dec, fill = fill, comment.char = comment.char, ...)
-## &lt;bytecode: 0x288b320&gt;
+## &lt;bytecode: 0x3d2af08&gt;
 ## &lt;environment: namespace:utils&gt;</code></pre>
 <p>Here, we get back just what <code>read.csv</code> is. In order to tell R to <strong>do</strong> or <strong>run</strong> the function, we need to run:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read.csv</span>()</code></pre></div>
@@ -410,22 +410,36 @@ crickets %&gt;%<span class="st"> </span><span class="kw">select</span>(Temperatu
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> crickets)</code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 <p>This gives us back a rather boring blank gray square. At this point, ggplot does not know what about the data to map to where. We can tell it to map <code>Chirpspersecond</code> as the <code>x</code>, and <code>Temperature</code> as the <code>y</code> like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> crickets, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Chirpspersecond, <span class="dt">y =</span> Temperature))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> crickets, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temperature, <span class="dt">y =</span> Chirpspersecond))</code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
 <p>At this point, <code>ggplot</code> seems to know where things should go, but there’s no points. This base layer is ready with our coordinates and axis, but we would also like <code>ggplot</code> to map the data in the same way to a layer of markings that represent the data. Let’s try points:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> crickets, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Chirpspersecond, <span class="dt">y =</span> Temperature)) +
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> crickets, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temperature, <span class="dt">y =</span> Chirpspersecond)) +
 <span class="st">  </span><span class="kw">geom_point</span>()</code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
 <p>We now have points, each with it’s x mapped to Chirpspersecond and the y mapped to Temperature. We can also mapped the color of each point to the temperature like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> crickets, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Chirpspersecond, <span class="dt">y =</span> Temperature)) +
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> crickets, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temperature, <span class="dt">y =</span> Chirpspersecond)) +
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">color =</span> Temperature))</code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 <p>This gives the points colors mapped from the Temperature along a default scale. We can adjust the scale to give a sense of the temperature like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> crickets, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Chirpspersecond, <span class="dt">y =</span> Temperature)) +
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(<span class="dt">data =</span> crickets, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temperature, <span class="dt">y =</span> Chirpspersecond)) +
 <span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">color =</span> Temperature)) +
 <span class="st">  </span><span class="kw">scale_color_gradient</span>(<span class="dt">low =</span> <span class="st">&quot;orange&quot;</span>, <span class="dt">high =</span> <span class="st">&quot;red&quot;</span>)</code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
 <p>Let’s take some time to experiment with different visualizations using ggplot2. See the <a href="https://www.rstudio.com/wp-content/uploads/2015/12/ggplot2-cheatsheet-2.0.pdf">data visualization cheat sheet</a> for ideas.</p>
+<p>One of the reasons that <code>ggplot</code> is so popular is that it has a very extensible syntax. <code>ggplot</code> is built on the concept of a <em>grammar of graphics</em>. The grammar of graphics is a way to build plots in a structured way. Every plot consists of a <em>dataset</em>, <em>aesthetics</em> to map of the dataset, and a <em>geom</em> that defines how to display the data. Let’s break down our function call above into its graphical grammar elements: * <em>dataset</em> = the <em>crickets</em> data frame * <em>aesthetics</em> = the <em>Temperature</em> and <em>Chirpspersecond</em> variables * <em>geom</em> = the <em>point</em> geom (geom_point function call) is used to create a scatterplot</p>
+<p>The syntax may seem a little confusing at first, but it can create some very powerful results once you understand how it works. It allows you to build up plots in layers. It also allows you to manipulate plots in a way similar to manipulating data (via function calls). For example, we can assign our plot to a variable <em>p</em>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> crickets, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temperature, <span class="dt">y =</span> Chirpspersecond)) +
+<span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">color =</span> Temperature)) +
+<span class="st">  </span><span class="kw">scale_color_gradient</span>(<span class="dt">low =</span> <span class="st">&quot;orange&quot;</span>, <span class="dt">high =</span> <span class="st">&quot;red&quot;</span>)
+
+p</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p>Now we can manipulate our plot like any other variable. Let’s add a title</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> p +<span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;Cricket Chirps vs. Temperature&quot;</span>)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
+<p>We can also add another <em>geom</em> just as easily. Let’s add a smoothing function to show what a linear model might look like.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"> p +<span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;Cricket Chirps vs. Temperature&quot;</span>) +<span class="st"> </span><span class="kw">geom_smooth</span>()</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
 <p>Once we have a plot we like, we can save our last plot to an image file very easily:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggsave</span>(<span class="dt">filename =</span> <span class="st">&quot;plot.png&quot;</span>)</code></pre></div>
 <pre><code>## Saving 7 x 5 in image</code></pre>
@@ -452,7 +466,7 @@ crickets %&gt;%<span class="st"> </span><span class="kw">select</span>(Temperatu
 ## (Intercept)  Temperature  
 ##     -0.3091       0.2119</code></pre>
 <p>There’s actually more information that <code>lm</code> tells us. Let’s take a look by first telling the computer the remember the result as a variable called <code>crickets_lm</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crickets_lm &lt;-<span class="st"> </span><span class="kw">lm</span>(Temperature ~<span class="st"> </span>Chirpspersecond, <span class="dt">data =</span> crickets)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">crickets_lm &lt;-<span class="st"> </span><span class="kw">lm</span>(Chirpspersecond ~<span class="st"> </span>Temperature, <span class="dt">data =</span> crickets)</code></pre></div>
 <p>We can use the <code>broom</code> package to help us get to the information stored in the model. Let’s install that first:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&#39;broom&#39;</span>)</code></pre></div>
 <pre><code>## Installing package into &#39;/home/travis/R/Library&#39;
@@ -460,18 +474,18 @@ crickets %&gt;%<span class="st"> </span><span class="kw">select</span>(Temperatu
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(<span class="st">&#39;broom&#39;</span>)</code></pre></div>
 <p>For example:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tidy</span>(crickets_lm)</code></pre></div>
-<pre><code>##              term  estimate std.error statistic      p.value
-## 1     (Intercept) 25.232305 10.060119  2.508152 0.0261830660
-## 2 Chirpspersecond  3.291095  0.601167  5.474510 0.0001066719</code></pre>
+<pre><code>##          term   estimate  std.error   statistic      p.value
+## 1 (Intercept) -0.3091419 3.10858391 -0.09944782 0.9222999135
+## 2 Temperature  0.2119250 0.03871123  5.47450961 0.0001066719</code></pre>
 <p>We get the slope and the intercept from the <code>estimate</code> column.</p>
 <p>Let’s use <code>tidy()</code> and <code>geom_abline()</code> to add a line on top of our scatterplot so we can eyeball how our linear model fits.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lm_slope &lt;-<span class="st"> </span>crickets_lm %&gt;%<span class="st"> </span>tidy %&gt;%<span class="st"> </span><span class="kw">filter</span>(term ==<span class="st"> &quot;(Intercept)&quot;</span>) %&gt;%<span class="st"> </span><span class="kw">select</span>(estimate) %&gt;%<span class="st"> </span><span class="kw">unlist</span>()
-lm_intercept &lt;-<span class="st"> </span>crickets_lm %&gt;%<span class="st"> </span>tidy %&gt;%<span class="st"> </span><span class="kw">filter</span>(term ==<span class="st"> &quot;Chirpspersecond&quot;</span>) %&gt;%<span class="st"> </span><span class="kw">select</span>(estimate) %&gt;%<span class="st"> </span><span class="kw">unlist</span>()
-<span class="kw">ggplot</span>(<span class="dt">data =</span> crickets, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Chirpspersecond, <span class="dt">y =</span> Temperature)) +
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lm_intercept &lt;-<span class="st"> </span>crickets_lm %&gt;%<span class="st"> </span>tidy %&gt;%<span class="st"> </span><span class="kw">filter</span>(term ==<span class="st"> &quot;(Intercept)&quot;</span>) %&gt;%<span class="st"> </span><span class="kw">select</span>(estimate) %&gt;%<span class="st"> </span><span class="kw">unlist</span>()
+lm_slope &lt;-<span class="st"> </span>crickets_lm %&gt;%<span class="st"> </span>tidy %&gt;%<span class="st"> </span><span class="kw">filter</span>(term ==<span class="st"> &quot;Temperature&quot;</span>) %&gt;%<span class="st"> </span><span class="kw">select</span>(estimate) %&gt;%<span class="st"> </span><span class="kw">unlist</span>()
+<span class="kw">ggplot</span>(<span class="dt">data =</span> crickets, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Temperature, <span class="dt">y =</span> Chirpspersecond)) +
 <span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">color =</span> Temperature)) +
 <span class="st">    </span><span class="kw">scale_color_gradient</span>(<span class="dt">low =</span> <span class="st">&quot;orange&quot;</span>, <span class="dt">high =</span> <span class="st">&quot;red&quot;</span>) +
-<span class="st">    </span><span class="kw">geom_abline</span>(<span class="dt">slope =</span> lm_slope, <span class="dt">intercept =</span> lm_intercept)</code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+<span class="st">    </span><span class="kw">geom_abline</span>(<span class="dt">slope =</span> lm_slope, <span class="dt">intercept =</span> lm_intercept, <span class="dt">color =</span> <span class="st">&quot;maroon&quot;</span>)</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
 <p>Additionally, <code>cor</code> and <code>cor.test</code> are two functions that can tell us about correlations between paired samples.</p>
 <p>As before, the <code>?</code> can help us learn more:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">?cor
@@ -607,10 +621,14 @@ lm_intercept &lt;-<span class="st"> </span>crickets_lm %&gt;%<span class="st"> <
 </tbody>
 </table>
 <ol start="5" style="list-style-type: decimal">
-<li><p>Made plots of our data</p></li>
+<li><p>Made plots of our data | Code | Description | | ———————– | ———————————-| | <code>ggplot()</code> | create base layer of plot | | <code>geom_point()</code> | scatterplot geom | | ’geom_smooth()<code>| smoothing geom with confidence intervals | |</code>geom_abline()<code>| line geom               | |</code>ggtitle()` | add title to plot |</p></li>
 <li><p>Applied statistical modelling to the data</p></li>
 </ol>
-<table>
+<table style="width:82%;">
+<colgroup>
+<col width="30%" />
+<col width="51%" />
+</colgroup>
 <thead>
 <tr class="header">
 <th align="left">Code</th>
@@ -620,15 +638,15 @@ lm_intercept &lt;-<span class="st"> </span>crickets_lm %&gt;%<span class="st"> <
 <tbody>
 <tr class="odd">
 <td align="left"><code>cor(crickets)</code></td>
-<td align="left"></td>
+<td align="left">calculate correlation coefficient</td>
 </tr>
 <tr class="even">
 <td align="left"><code>cor.test(crickets)</code></td>
-<td align="left"></td>
+<td align="left">test for statistically significant correlation</td>
 </tr>
 <tr class="odd">
 <td align="left"><code>lm(crickets)</code></td>
-<td align="left"></td>
+<td align="left">create a linear model</td>
 </tr>
 </tbody>
 </table>

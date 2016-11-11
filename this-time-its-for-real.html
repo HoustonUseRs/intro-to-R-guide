@@ -387,7 +387,7 @@ airquality$Solar.R &lt;-<span class="st"> </span><span class="kw">with</span>(ai
 <p>We can start by visualizing the data. We have more data to play with now, but let’s start with the same plot we used last time.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plt &lt;-<span class="st"> </span><span class="kw">ggplot</span>(aircomplete) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Temp, <span class="dt">y=</span>Ozone))
 <span class="kw">print</span>(plt)</code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-45-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
 <p>You’ll notice two new things about what we did here. First, we assign the output to <code>plt</code>, this will be important when we want to make adjustments to the plot later. Second, you’ll notice when we do that, nothing appears; we have to print the plt to get it to show up.</p>
 <p>Now, I want you to go back and do <em>everything</em> we just did over again.</p>
 <p>What, you think that’s ridiculous? The reality is, we often have to go back and make changes upstream. When we do this, it can get very, very painful if we’re doing everything interactively, in the <em>console</em>.</p>
@@ -400,7 +400,7 @@ airquality &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span 
 aircomplete &lt;-<span class="st"> </span>airquality[<span class="kw">complete.cases</span>(airquality), ]
 plt &lt;-<span class="st"> </span><span class="kw">ggplot</span>(aircomplete) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Temp, <span class="dt">y=</span>Ozone))
 <span class="kw">print</span>(plt)</code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-46-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
 <p>We can run the entire script by clicking <em>Source</em> at the top of the editor pane.</p>
 <p>To run just a specific line or lines, you can select the section you want to run and then click <em>Run</em></p>
 <p>Let’s get back to our data. You may have seen a pattern in the plot we made earlier. Let’s pick up our analysis with a little more visualization and some modeling.</p>
@@ -435,7 +435,7 @@ plt &lt;-<span class="st"> </span><span class="kw">ggplot</span>(aircomplete) +<
 <p>With that info, we’re ready to add our linear model. Add the following lines to your script and <em>Source</em> it.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plt_2 &lt;-<span class="st"> </span>plt +<span class="st"> </span><span class="kw">geom_abline</span>(<span class="dt">intercept =</span> -<span class="fl">147.64607</span> , <span class="dt">slope =</span> <span class="fl">2.43911</span>)
 <span class="kw">print</span>(plt_2)</code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
 </div>
 <div id="making-a-reproducible-report" class="section level2">
 <h2><span class="header-section-number">3.7</span> Making a reproducible report</h2>
