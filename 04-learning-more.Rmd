@@ -27,6 +27,9 @@ With R and RStudio setup on your computer, you are ready to start using this boo
   * [Gettings started in R](https://www.kaggle.com/c/titanic/details/new-getting-started-with-r)
   * [Exploring Survival on the Titanic](https://www.kaggle.com/mrisdal/titanic/exploring-survival-on-the-titanic)
 * [R by example](http://www.mayin.org/ajayshah/KB/R/index.html)
+* [R Examples](http://www.rexamples.com/)
+
+### [Quick-R](http://www.statmethods.net/)
 
 ### [Data Camp](https://www.datacamp.com/)
 

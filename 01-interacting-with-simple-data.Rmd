@@ -106,7 +106,7 @@ Let's get a quick sense of what this data is like!
 Here's a table of some quick functions we can run on the data to learn about it:
 
 | Code                | Description                         |
-| ------------------- | ------------------------------------|
+| :------------------ | :-----------------------------------|
 | `names(crickets)`   | Column header names                 |
 | `dim(crickets)`     | Number of rows by number of columns |
 | `nrow(crickets)`    | Number of rows                      |
@@ -118,7 +118,7 @@ Here's a table of some quick functions we can run on the data to learn about it:
 
 We can also look at parts of the data using _verbs_ like `filter()` and `select()`, provided by the `dplyr` package.
 
-```{r}
+```{r results="hide"}
 install.packages('dplyr')
 library(dplyr)
 ```
@@ -141,13 +141,13 @@ select(crickets, Temperature)
 We can pass the output of one of these to another function to calculate the mean.
 
 ```{r}
-mean(select(crickets, Temperature))
+mean(unlist(select(crickets, Temperature)))
 ```
 
 Notice how we *nested* one function inside another? There's another way to do this, a way that's more readable and easier to reason about. We can use the pipe operator, represented by the `%>%` symbol, to achieve the same thing.
 
 ```{r}
-crickets %>% select(Temperature) %>% mean()
+crickets %>% select(Temperature) %>% unlist() %>% mean()
 ```
 
 You read this left to right, and you can see the steps the data go through in logical order.
@@ -155,20 +155,20 @@ You read this left to right, and you can see the steps the data go through in lo
 We can use this approach to calculate our own means, standard deviations, and medians:
 
 ```{r eval = FALSE}
-crickets %>% select(Chirpspersecond) %>% median()
-crickets %>% select(Chirpspersecond) %>% sd()
-crickets %>% select(Temperature) %>% mean()
-crickets %>% select(Temperature) %>% median()
-crickets %>% select(Temperature) %>% sd()
+crickets %>% select(Chirpspersecond) %>% unlist() %>% median()
+crickets %>% select(Chirpspersecond) %>% unlist() %>% sd()
+crickets %>% select(Temperature) %>% unlist() %>% mean()
+crickets %>% select(Temperature) %>% unlist() %>% median()
+crickets %>% select(Temperature) %>% unlist() %>% sd()
 ```
 
 We can also ask R for the max and the min values:
 
 ```{r eval = FALSE}
-crickets %>% select(Chirpspersecond) %>% max()
-crickets %>% select(Chirpspersecond) %>% min()
-crickets %>% select(Temperature) %>% max()
-crickets %>% select(Temperature) %>% min()
+crickets %>% select(Chirpspersecond) %>% unlist() %>% max()
+crickets %>% select(Chirpspersecond) %>% unlist() %>% min()
+crickets %>% select(Temperature) %>% unlist() %>% max()
+crickets %>% select(Temperature) %>% unlist() %>% min()
 ```
 
 There's many more calculations we can run on the data, but plotting the data will help us we a better picture of it.
@@ -179,7 +179,7 @@ Base R can plot our data, but the wonderful thing about R being open-sourced is 
 
 We can install the `ggplot2` package by calling the `install.packages` function like this:
 
-```{r}
+```{r results="hide"}
 install.packages('ggplot2')
 ```
 
@@ -187,7 +187,7 @@ While the package is installing, let's take a break!
 
 Once the package installed, we need to tell R to load it so we can use it.
 
-```{r load_packages}
+```{r load_packages, results="hide"}
 library(ggplot2)
 ```
 
@@ -228,6 +228,7 @@ ggplot(data = crickets, mapping = aes(x = Temperature, y = Chirpspersecond)) +
 Let's take some time to experiment with different visualizations using ggplot2.  See the [data visualization cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/12/ggplot2-cheatsheet-2.0.pdf) for ideas.
 
 One of the reasons that `ggplot` is so popular is that it has a very extensible syntax.  `ggplot` is built on the concept of a _grammar of graphics_.  The grammar of graphics is a way to build plots in a structured way. Every plot consists of a _dataset_, _aesthetics_ to map of the dataset, and a _geom_ that defines how to display the data.  Let's break down our function call above into its graphical grammar elements:
+
 * _dataset_ = the _crickets_ data frame
 * _aesthetics_ = the _Temperature_ and _Chirpspersecond_ variables
 * _geom_ = the _point_ geom (geom_point function call) is used to create a scatterplot
@@ -235,7 +236,7 @@ One of the reasons that `ggplot` is so popular is that it has a very extensible 
 The syntax may seem a little confusing at first, but it can create some very powerful results once you understand how it works.  It allows you to build up plots in _layers_. It also allows you to manipulate plots in a way similar to manipulating data (via function calls). For example, we can assign our plot to a variable _p_.
 
 ```{r}
- p <- ggplot(data = crickets, mapping = aes(x = Temperature, y = Chirpspersecond)) +
+p <- ggplot(data = crickets, mapping = aes(x = Temperature, y = Chirpspersecond)) +
   geom_point(mapping = aes(color = Temperature)) +
   scale_color_gradient(low = "orange", high = "red")
 
@@ -282,7 +283,7 @@ crickets_lm <- lm(Chirpspersecond ~ Temperature, data = crickets)
 
 We can use the `broom` package to help us get to the information stored in the model. Let's install that first:
 
-```{r}
+```{r results="hide"}
 install.packages('broom')
 library('broom')
 ```
