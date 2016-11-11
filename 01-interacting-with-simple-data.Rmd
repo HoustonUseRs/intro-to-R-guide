@@ -333,49 +333,49 @@ crickets <- read.csv(file = 'crickets.csv')
 
 __Learned more about the data as a whole__
 
-| Code                | Description                         |
-| ------------------- | ------------------------------------|
-| `names(crickets)`   | Column header names                 |
-| `dim(crickets)`     | Number of rows by number of columns |
-| `nrow(crickets)`    | Number of rows                      |
-| `ncol(crickets)`    | Number of columns                   |
-| `str(crickets)`     | Structure of data                   |
-| `summary(crickets)` | Summary of the data                 |
-| `View(crickets)`    | View data in file viewer            |
+| Code                  | Description                         |
+| :-------------------- | :-----------------------------------|
+| `names(crickets)`     | Column header names                 |
+| `dim(crickets)`       | Number of rows by number of columns |
+| `nrow(crickets)`      | Number of rows                      |
+| `ncol(crickets)`      | Number of columns                   |
+| `str(crickets)`       | Structure of data                   |
+| `summary(crickets)`   | Summary of the data                 |
+| `View(crickets)`      | View data in file viewer            |
 
 __Looked at the data by rows and columns__
 
-| Code                | Description                         |
-| ------------------- | ------------------------------------|
-| `filter(crickets, Temperature < 85`     | Rows with temperature less than 80  |
-| `filter(crickets, Chirpspersecond > 15`     | Rows with chirps per second greater than 15 |
-| `select(crickets, Chirpspersecond)`      | First column, Chirpspersecond       |
-| `select(crickets, Temperature)`      | Second column, Temperature          |
+| Code                                      | Description                         |
+| :---------------------------------------- | :-----------------------------------|
+| `filter(crickets, Temperature < 85`       | Rows with temperature less than 80  |
+| `filter(crickets, Chirpspersecond > 15`   | Rows with chirps per second greater than 15 |
+| `select(crickets, Chirpspersecond)`       | First column, Chirpspersecond       |
+| `select(crickets, Temperature)`           | Second column, Temperature          |
 
 __Calculated descriptive statistics on the data__
 
-| Code                    | Description                       |
-| ----------------------- | ----------------------------------|
-| `mean()`    | Average Temperature               |
-| `median()`  | Median Temperature                |
-| `sd()`      | Standard deviation of Temperature |
-| `max()`     | Maximum Temperature               |
-| `min()`     | Minimum Temperature               |
+| Code                  | Description                       |
+| :-------------------- | :---------------------------------|
+| `mean()`              | Average Temperature               |
+| `median()`            | Median Temperature                |
+| `sd()`                | Standard deviation of Temperature |
+| `max()`               | Maximum Temperature               |
+| `min()`               | Minimum Temperature               |
 
 __Made plots of our data__
 
-| Code                    | Description                       |
-| ----------------------- | ----------------------------------|
-| `ggplot()`    | create base layer of plot               |
-| `geom_point()`  | scatterplot geom                |
-| 'geom_smooth()`      | smoothing geom with confidence intervals |
-| `geom_abline()`     | line geom               |
-| `ggtitle()`     | add title to plot               |
+| Code                  | Description                       |
+| :-------------------- | :---------------------------------|
+| `ggplot()`            | create base layer of plot         |
+| `geom_point()`        | scatterplot geom                  |
+| `geom_smooth()`       | smoothing geom with confidence intervals |
+| `geom_abline()`       | line geom                         |
+| `ggtitle()`           | add title to plot                 |
 
 __Applied statistical modelling to the data__
 
 | Code                  | Description                         |
-| --------------------- | ------------------------------------|
+| :-------------------- | :-----------------------------------|
 | `cor(crickets)`       | calculate correlation coefficient   |
 | `cor.test(crickets)`  | test for statistically significant correlation  |
 | `lm(crickets)`        | create a linear model               |
