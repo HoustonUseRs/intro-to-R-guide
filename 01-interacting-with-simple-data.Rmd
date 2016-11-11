@@ -210,7 +210,7 @@ ggplot(data = crickets, mapping = aes(x = Temperature, y = Chirpspersecond)) +
   geom_point()
 ```
 
-We now have points, each with it's y mapped to Chirpspersecond and the x mapped to Temperature.  We can also mapped the color of each point to the temperature like this:
+We now have points, each with its y mapped to Chirpspersecond and the x mapped to Temperature.  We can also mapped the color of each point to the temperature like this:
 
 ```{r}
 ggplot(data = crickets, mapping = aes(x = Temperature, y = Chirpspersecond)) +
