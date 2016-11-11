@@ -118,7 +118,7 @@ Here's a table of some quick functions we can run on the data to learn about it:
 
 We can also look at parts of the data using _verbs_ like `filter()` and `select()`, provided by the `dplyr` package.
 
-```{r}
+```{r results="hide"}
 install.packages('dplyr')
 library(dplyr)
 ```
@@ -141,13 +141,13 @@ select(crickets, Temperature)
 We can pass the output of one of these to another function to calculate the mean.
 
 ```{r}
-mean(select(crickets, Temperature))
+mean(unlist(select(crickets, Temperature)))
 ```
 
 Notice how we *nested* one function inside another? There's another way to do this, a way that's more readable and easier to reason about. We can use the pipe operator, represented by the `%>%` symbol, to achieve the same thing.
 
 ```{r}
-crickets %>% select(Temperature) %>% mean()
+crickets %>% select(Temperature) %>% unlist() %>% mean()
 ```
 
 You read this left to right, and you can see the steps the data go through in logical order.
@@ -155,20 +155,20 @@ You read this left to right, and you can see the steps the data go through in lo
 We can use this approach to calculate our own means, standard deviations, and medians:
 
 ```{r eval = FALSE}
-crickets %>% select(Chirpspersecond) %>% median()
-crickets %>% select(Chirpspersecond) %>% sd()
-crickets %>% select(Temperature) %>% mean()
-crickets %>% select(Temperature) %>% median()
-crickets %>% select(Temperature) %>% sd()
+crickets %>% select(Chirpspersecond) %>% unlist() %>% median()
+crickets %>% select(Chirpspersecond) %>% unlist() %>% sd()
+crickets %>% select(Temperature) %>% unlist() %>% mean()
+crickets %>% select(Temperature) %>% unlist() %>% median()
+crickets %>% select(Temperature) %>% unlist() %>% sd()
 ```
 
 We can also ask R for the max and the min values:
 
 ```{r eval = FALSE}
-crickets %>% select(Chirpspersecond) %>% max()
-crickets %>% select(Chirpspersecond) %>% min()
-crickets %>% select(Temperature) %>% max()
-crickets %>% select(Temperature) %>% min()
+crickets %>% select(Chirpspersecond) %>% unlist() %>% max()
+crickets %>% select(Chirpspersecond) %>% unlist() %>% min()
+crickets %>% select(Temperature) %>% unlist() %>% max()
+crickets %>% select(Temperature) %>% unlist() %>% min()
 ```
 
 There's many more calculations we can run on the data, but plotting the data will help us we a better picture of it.
@@ -179,7 +179,7 @@ Base R can plot our data, but the wonderful thing about R being open-sourced is 
 
 We can install the `ggplot2` package by calling the `install.packages` function like this:
 
-```{r}
+```{r results="hide"}
 install.packages('ggplot2')
 ```
 
@@ -187,7 +187,7 @@ While the package is installing, let's take a break!
 
 Once the package installed, we need to tell R to load it so we can use it.
 
-```{r load_packages}
+```{r load_packages, results="hide"}
 library(ggplot2)
 ```
 
@@ -283,7 +283,7 @@ crickets_lm <- lm(Chirpspersecond ~ Temperature, data = crickets)
 
 We can use the `broom` package to help us get to the information stored in the model. Let's install that first:
 
-```{r}
+```{r results="hide"}
 install.packages('broom')
 library('broom')
 ```
