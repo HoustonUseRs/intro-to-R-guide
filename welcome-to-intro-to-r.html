@@ -8,7 +8,7 @@
   <title></title>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
   <meta name="description" content="">
-  <meta name="generator" content="bookdown 0.1.19 and GitBook 2.6.7">
+  <meta name="generator" content="bookdown 0.1.20 and GitBook 2.6.7">
 
   <meta property="og:title" content="" />
   <meta property="og:type" content="book" />
@@ -103,8 +103,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="1.1" data-path="welcome-to-intro-to-r.html"><a href="welcome-to-intro-to-r.html#why-r"><i class="fa fa-check"></i><b>1.1</b> Why R?</a></li>
 <li class="chapter" data-level="1.2" data-path="welcome-to-intro-to-r.html"><a href="welcome-to-intro-to-r.html#why-not-r"><i class="fa fa-check"></i><b>1.2</b> Why not R?</a></li>
 <li class="chapter" data-level="1.3" data-path="welcome-to-intro-to-r.html"><a href="welcome-to-intro-to-r.html#what-is-the-scope-of-this-workshop"><i class="fa fa-check"></i><b>1.3</b> What is the scope of this workshop?</a></li>
-<li class="chapter" data-level="1.4" data-path="welcome-to-intro-to-r.html"><a href="welcome-to-intro-to-r.html#what-is-missing-from-this-workshop"><i class="fa fa-check"></i><b>1.4</b> What is missing from this workshop?</a></li>
-<li class="chapter" data-level="1.5" data-path="welcome-to-intro-to-r.html"><a href="welcome-to-intro-to-r.html#the-plan"><i class="fa fa-check"></i><b>1.5</b> The Plan</a></li>
+<li class="chapter" data-level="1.4" data-path="welcome-to-intro-to-r.html"><a href="welcome-to-intro-to-r.html#the-plan"><i class="fa fa-check"></i><b>1.4</b> The Plan</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="interacting-with-simple-data.html"><a href="interacting-with-simple-data.html"><i class="fa fa-check"></i><b>2</b> Interacting with Simple Data</a><ul>
 <li class="chapter" data-level="2.1" data-path="interacting-with-simple-data.html"><a href="interacting-with-simple-data.html#what-is-rstudio"><i class="fa fa-check"></i><b>2.1</b> What is RStudio?</a></li>
@@ -181,28 +180,37 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="why-not-r" class="section level2">
 <h2><span class="header-section-number">1.2</span> Why not R?</h2>
-<p>While R is able to produce interactive graphics, maps, and dashboards by leveraging JavaScript, a lot of the more expressive and customized interactive data presentation cannot yet be acheived with R. The gap is closing quickly however, and you can read more about that <a href="./05-appendix">here</a>.</p>
-<p>Additionally, while data-mining, scraping and crawling for data can be done in R, those might be tasks better left to Python if you are already familar with Python. Otherwise, R can handle your data workflow from data gathering to exploration to analysis to presentation.</p>
-<p>For projects where the data needs to be analyzed or processed very quickly, we will want to consider using <a href="./05-appendix">C within R</a>.</p>
-<p>Overall, R is a great fit for data exploration, modelling, analysis, and static graphics.</p>
+<ul>
+<li>R is limited in producing highly-customized and interactive reporting visualizations</li>
+</ul>
+<p>While R is able to produce interactive graphics, maps, and dashboards, a lot of the more expressive and customized interactive data presentations will require knowledge of JavaScript. The amount you can do directly from within R is increasing rapidly, however, and you can read more about that <a href="./05-appendix">here</a>.</p>
+<ul>
+<li>R is not as expressive for general tasks such as scraping and crawling</li>
+</ul>
+<p>New additions to R like <code>tidyr</code> and <code>dplyr</code> are making R more expressive; the result is R is becoming a strong competitor in more general tasks like data-mining, data-wrangling, and scraping and crawling for data.</p>
+<ul>
+<li>R requires data to be loaded into memory</li>
+</ul>
+<p>For projects where exceptionally large data needs to be analyzed or processed very quickly, we will want to consider using <a href="./05-appendix">tools that help us work around the memory limitations</a>.</p>
+<p>Overall, R is a top choice for data exploration, modelling, analysis, and static graphics.</p>
 </div>
 <div id="what-is-the-scope-of-this-workshop" class="section level2">
 <h2><span class="header-section-number">1.3</span> What is the scope of this workshop?</h2>
 <p>This workshop will cover steps and code that can be readily adapted for small to moderate sized datasets.</p>
-</div>
-<div id="what-is-missing-from-this-workshop" class="section level2">
-<h2><span class="header-section-number">1.4</span> What is missing from this workshop?</h2>
+<p>// will include what is missing from this workshop</p>
 </div>
 <div id="the-plan" class="section level2">
-<h2><span class="header-section-number">1.5</span> The Plan</h2>
+<h2><span class="header-section-number">1.4</span> The Plan</h2>
 <p>Today, we are going to cover:</p>
-<pre><code>1. Loading in the data
-1. Exploring it
-1. Cleaning it
-1. Calculating descriptive statistics
-1. Visualizing it
-1. Modeling it
-1. Making a report</code></pre>
+<ol style="list-style-type: decimal">
+<li>Loading in the data</li>
+<li>Exploring it</li>
+<li>Cleaning it</li>
+<li>Calculating descriptive statistics</li>
+<li>Visualizing it</li>
+<li>Modeling it</li>
+<li>Making a report</li>
+</ol>
 <p>We will also cover how to get help and how to learn more about using R.</p>
 <p>While we will not be able to cover how to handle a wide variety of different datasets and visualizations, our mentors have a wide range of experiences with using R for energy data, bioinformatics, mapping, natural language processing, and much more! We hope to get to know you throughout the workshop and share domain specific experiences with you.</p>
 
