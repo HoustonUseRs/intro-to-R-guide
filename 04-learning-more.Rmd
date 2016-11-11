@@ -34,6 +34,8 @@ With R and RStudio setup on your computer, you are ready to start using this boo
 
 ### [How to learn R](https://www.r-bloggers.com/how-to-learn-r-2/)
 
+### [R Examples](http://www.rexamples.com/)
+
 ## Getting Practice
 
 ### [Houston data jams](https://houstondatavis.github.io/data-jams/)
