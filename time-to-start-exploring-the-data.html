@@ -173,18 +173,21 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="time-to-start-exploring-the-data" class="section level1">
 <h1><span class="header-section-number">4</span> Time to start exploring the data!</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(<span class="st">&#39;magrittr&#39;</span>)
+<span class="kw">require</span>(<span class="st">&#39;ggplot2&#39;</span>)
+<span class="kw">require</span>(<span class="st">&#39;Hmisc&#39;</span>)</code></pre></div>
 <p>So far we’ve loaded the dataset, we’ve done some high level exploration of the structure, cleaned up the data and even created a simple linear model. In most projects, this will be the hardest part. Once you have your data loaded and cleaned, a common next step is to use R’s powerful graphics packages to create some <em>exploratory graphics</em> to help you visualize the dataset.</p>
 <div id="r-graphics" class="section level2">
 <h2><span class="header-section-number">4.1</span> R Graphics</h2>
 <p>R has a few graphics packages to choose from. Many useful plots come ‘out of the box’ in R. For example, if we want to see a scatterplot matrix of all the data columns in the <em>airquality</em> dataset, we could use the <em>pairs</em> funtion.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairs</span>(airquality)</code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-56-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
 <p>While the basic package is nice, we will be using <em>ggplot2</em> today. It is a powerful graphics package that is designed to make your plots adaptable, scalable, and easy to produce. It is a very popular graphics package used by a large number of R users worldwide.</p>
 <p>Many times, it’s helpful to just do a scatterplot of two variables</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(airquality, <span class="kw">aes</span>(Ozone, Solar.R)) +<span class="st"> </span><span class="kw">geom_point</span>()
 p</code></pre></div>
 <pre><code>## Warning: Removed 42 rows containing missing values (geom_point).</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-57-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
 </div>
 </div>
             </section>
