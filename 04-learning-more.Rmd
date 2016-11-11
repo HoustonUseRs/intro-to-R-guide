@@ -12,22 +12,29 @@ The following resources are great next steps to take for learning more on using 
 
 To further explore basics of R, following are good resources to begin with  - 
 
-* <img src="assets/rbloggers.png" style="width:30px">
+* <a href="https://www.r-bloggers.com/how-to-learn-r-2/" target="_blank">  <img src="https://www.r-bloggers.com/wp-content/uploads/2016/04/R_02_2016-05-01.png" style="width:80px"></a>
  A good blog offering tutorials of each R function/package. Platform for R users to connect 
-* <img src="assets/swirl.png" style="width:30px">(http://swirlstats.com/) Learn R and data science interactively
-* <img src="assets/coursera.png" style="width:30px">(https://www.coursera.org/learn/r-programming) An Intermediate R course in 4 weeks
-* <img src="assets/rstudio.png" style="width:30px">(https://www.rstudio.com/online-learning/) Curated guide to learning R and its extensions
+* <a href="http://swirlstats.com/" target="_blank">  <img src="http://swirlstats.com/images/swirl_new_large_final.png" style="width:80px"></a>
+Learn R and data science interactively
+* <a href="https://www.coursera.org/learn/r-programming" target="_blank">  <img src="http://brickingtips.com/wp-content/uploads/2015/01/coursera.png" style="width:80px"></a>
+An Intermediate R course in 4 weeks
+* <a href="https://www.rstudio.com/online-learning/" target="_blank">  <img src="https://teespring-storecontent.s3.amazonaws.com/FW6s2ljYB6HuZgDe15SiOQ_store_header_image" style="width:90px"></a>
+Curated guide to learning R and its extensions
 
 ### R for Data Science
 
 These resources are good to use R as a data science/statistics tool - 
 
-* [R Cookbook](http://www.cookbook-r.com/) Excellent resource for learning base R. Contains code snippets. Available online. [R graphic cookbook](http://www.cookbook-r.com/Graphs/) covers ggplot snippets. A must have
-* [R for Data Science](http://r4ds.had.co.nz/)
-This book penned by Hadley Wickham and Garrett Grolemund covers modern standards on using R for data science with a cohesive and conversational narrative.
+* <a href="http://www.cookbook-r.com/" target="_blank">  <img src="http://akamaicovers.oreilly.com/images/9780596809164/cat.gif" style="width:50px"></a>
+<a href="http://www.cookbook-r.com/Graphs/" target="_blank">  <img src="http://www.cookbook-r.com/r_graphics_cookbook.png" style="width:50px"></a> <b>R Cookbook, R Graphics Cookbook</b> - Excellent resources for learning base R and base plotting. Contains code snippets. Available online. 
+
+* <a href="http://r4ds.had.co.nz/" target="_blank">  <img src="http://r4ds.had.co.nz/cover.png" style="width:50px"></a>
+<b>R for Data Science</b> - This book penned by Hadley Wickham and Garrett Grolemund covers modern standards on using R for data science with a cohesive and conversational narrative.
 For a great overview of what's in the book, check out [this page](http://r4ds.had.co.nz/explore-intro.html)
-* [Advanced R](http://adv-r.had.co.nz/) Master R as a programming language. Also available online.
-* [ggplot2](https://www.amazon.com/dp/0387981403/ref=cm_sw_su_dp?tag=ggplot2-20) Learn how to create elegant graphics for data analysis 
+
+* <a href="http://adv-r.had.co.nz/" target="_blank">  <img src="https://images.tandf.co.uk/common/jackets/amazon/978146658/9781466586963.jpg" style="width:50px"></a> <b> Advanced R</b> - Master R as a programming language. Also available online.
+
+* <a href="https://www.amazon.com/dp/0387981403/ref=cm_sw_su_dp?tag=ggplot2-20" target="_blank">  <img src="https://images-na.ssl-images-amazon.com/images/I/418lVZnPZXL.jpg" style="width:50px"></a> <b> ggplot2</b> - Learn how to create elegant graphics for data analysis 
 
 
 ### Practice and Learn Data Science
