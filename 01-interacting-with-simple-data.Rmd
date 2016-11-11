@@ -118,10 +118,21 @@ Here's a table of some quick functions we can run on the data to learn about it:
 
 We can also look at parts of the data using _verbs_ like `filter()` and `select()`, provided by the `dplyr` package.
 
-```{r results="hide"}
+```{r, echo=FALSE, message=FALSE}
+install.packages("pacman")
+library(pacman)
+p_load(dplyr)
+p_load(broom)
+p_load(ggplot2)
+p_load(Hmisc)
+```
+
+
+```{r results="hide", eval=FALSE}
 install.packages('dplyr')
 library(dplyr)
 ```
+
 
 We can look at just specific rows matching a certain condition, using `filter()`:
 
@@ -179,7 +190,7 @@ Base R can plot our data, but the wonderful thing about R being open-sourced is 
 
 We can install the `ggplot2` package by calling the `install.packages` function like this:
 
-```{r results="hide"}
+```{r results="hide", eval=FALSE}
 install.packages('ggplot2')
 ```
 
@@ -283,7 +294,7 @@ crickets_lm <- lm(Chirpspersecond ~ Temperature, data = crickets)
 
 We can use the `broom` package to help us get to the information stored in the model. Let's install that first:
 
-```{r results="hide"}
+```{r results="hide", eval=FALSE}
 install.packages('broom')
 library('broom')
 ```

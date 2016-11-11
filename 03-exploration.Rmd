@@ -1,14 +1,18 @@
 # Time to start exploring the data!
 
-```{r include=FALSE}
+```{r include=FALSE, echo=FALSE, eval=FALSE}
 ## Suppress this chunk in the book
 install.packages('ggplot2')
 install.packages('magrittr')
 install.packages('Hmisc')
+```
+
+```{r}
 require('magrittr')
 require('ggplot2')
 require('Hmisc')
 ```
+
 So far we've loaded the dataset, we've done some high level exploration of the structure, cleaned up the data and even created a simple linear model. In most projects, this will be the hardest part. Once you have your data loaded and cleaned, a common next step is to use R's powerful graphics packages to create some _exploratory graphics_ to help you visualize the dataset.
 
 ## R Graphics
