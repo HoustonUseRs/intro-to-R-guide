@@ -117,8 +117,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.1" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#loading-and-exploring-a-larger-dataset"><i class="fa fa-check"></i><b>3.1</b> Loading and exploring a larger dataset</a></li>
 <li class="chapter" data-level="3.2" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#counting-missing-values"><i class="fa fa-check"></i><b>3.2</b> Counting missing values</a></li>
 <li class="chapter" data-level="3.3" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#ignoring-missing-values"><i class="fa fa-check"></i><b>3.3</b> Ignoring missing values</a></li>
-<li class="chapter" data-level="3.4" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#imputing-missing-values"><i class="fa fa-check"></i><b>3.4</b> Imputing missing values</a></li>
-<li class="chapter" data-level="3.5" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#visualizing-the-data-using-a-script"><i class="fa fa-check"></i><b>3.5</b> Visualizing the data using a script</a></li>
+<li class="chapter" data-level="3.4" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#analyzing-and-visualizing-the-data-using-a-script"><i class="fa fa-check"></i><b>3.4</b> Analyzing and Visualizing the data using a script</a></li>
+<li class="chapter" data-level="3.5" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#creating-a-r-script-to-save-code-and-analysis"><i class="fa fa-check"></i><b>3.5</b> Creating a R script to save code and analysis</a></li>
 <li class="chapter" data-level="3.6" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#modeling-the-data-1"><i class="fa fa-check"></i><b>3.6</b> Modeling the data</a></li>
 <li class="chapter" data-level="3.7" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#making-a-reproducible-report"><i class="fa fa-check"></i><b>3.7</b> Making a reproducible report</a></li>
 </ul></li>
@@ -173,6 +173,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="this-time-its-for-real" class="section level1">
 <h1><span class="header-section-number">3</span> This time it’s for real!</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
+<span class="kw">library</span>(magrittr)
+<span class="kw">library</span>(Hmisc)</code></pre></div>
 <p>Let’s pick up the pace and put our newfound skills to the test. For this section, we’re gonna use a dataset that looks more like what we’ll encounter in real life. It’s bigger in both dimensions; it has more rows but also more columns. It also has some missing data (oh noes!). Now things are getting real.</p>
 <div id="loading-and-exploring-a-larger-dataset" class="section level2">
 <h2><span class="header-section-number">3.1</span> Loading and exploring a larger dataset</h2>
@@ -186,7 +189,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">3.2</span> Counting missing values</h2>
 <p>I mentioned this dataset has some missing data, you may have noticed it already when exploring. In R, missing values are represented by the <code>NA</code> symbol.</p>
 <p>It’s always a good idea to check for missing values, even if you are <em>sure</em> your data is complete. We can ask R to tell us whether there are any NAs in the dataset using the <code>is.na()</code> function.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">airquality %&gt;%<span class="st"> </span><span class="kw">is.na</span>()</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.na</span>(airquality)</code></pre></div>
 <pre><code>##        Ozone Solar.R  Wind  Temp Month   Day
 ##   [1,] FALSE   FALSE FALSE FALSE FALSE FALSE
 ##   [2,] FALSE   FALSE FALSE FALSE FALSE FALSE
@@ -343,7 +346,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 ## [153,] FALSE   FALSE FALSE FALSE FALSE FALSE</code></pre>
 <p>This will list out <code>TRUE</code> or <code>FALSE</code> for <em>every</em> value in new_data, for the question “is this value equal to NA?”. It’s kind hard to read, though.</p>
 <p>If we wanted to get a general sense of how many NAs there were in our entire dataset, we could do something like this:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">airquality %&gt;%<span class="st"> </span><span class="kw">is.na</span>() %&gt;%<span class="st"> </span><span class="kw">sum</span>()</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># library(magrittr) # load the library if its not already loaded</span>
+airquality %&gt;%<span class="st"> </span><span class="kw">is.na</span>() %&gt;%<span class="st"> </span><span class="kw">sum</span>()</code></pre></div>
 <pre><code>## [1] 44</code></pre>
 </div>
 <div id="ignoring-missing-values" class="section level2">
@@ -360,47 +364,60 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>If you call <code>nrow</code> on aircomplete, you’ll see we have 111 rows now instead of the 153 we had before.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nrow</span>(aircomplete)</code></pre></div>
 <pre><code>## [1] 111</code></pre>
+<!--- might need to skip this section
+## Imputing missing values
+
+Another way to deal with missing data is to _impute_ the values. In order to deal with missing data, you need to understand why it is missing in the first place. Is random data missing? Is it a function of how the data was collected? Were survey respondents hesitant to answer a question due to cultural or social norms?
+
+There are a number of techniques you can use to impute missing values.  This is a relatively advanced topic that we will not cover in depth today. However, we will give you one method to impute values for the _airquality_ data set. Here we will use the _impute_ function from the _Hmisc_ package to impute data using a predictive mean matching algorithm.
+
+
+```r
+require(Hmisc)
+airquality$Ozone <- with(airquality, impute(Ozone, mean))
+airquality$Solar.R <- with(airquality, impute(Solar.R, mean))
+```
+
+Now that we've addressed missingness in our dataset, we're ready to start analysis.
+-->
 </div>
-<div id="imputing-missing-values" class="section level2">
-<h2><span class="header-section-number">3.4</span> Imputing missing values</h2>
-<p>Another way to deal with missing data is to <em>impute</em> the values. In order to deal with missing data, you need to understand why it is missing in the first place. Is random data missing? Is it a function of how the data was collected? Were survey respondents hesitant to answer a question due to cultural or social norms?</p>
-<p>There are a number of techniques you can use to impute missing values. This is a relatively advanced topic that we will not cover in depth today. However, we will give you one method to impute values for the <em>airquality</em> data set. Here we will use the <em>impute</em> function from the <em>Hmisc</em> package to impute data using a predictive mean matching algorithm.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(Hmisc)</code></pre></div>
-<pre><code>## Loading required package: Hmisc</code></pre>
-<pre><code>## Loading required package: lattice</code></pre>
-<pre><code>## Loading required package: survival</code></pre>
-<pre><code>## Loading required package: Formula</code></pre>
-<pre><code>## 
-## Attaching package: &#39;Hmisc&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:dplyr&#39;:
-## 
-##     combine, src, summarize</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     format.pval, round.POSIXt, trunc.POSIXt, units</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">airquality$Ozone &lt;-<span class="st"> </span><span class="kw">with</span>(airquality, <span class="kw">impute</span>(Ozone, mean))
-airquality$Solar.R &lt;-<span class="st"> </span><span class="kw">with</span>(airquality, <span class="kw">impute</span>(Solar.R, mean))</code></pre></div>
-<p>Now that we’ve addressed missingness in our dataset, we’re ready to start analysis.</p>
-</div>
-<div id="visualizing-the-data-using-a-script" class="section level2">
-<h2><span class="header-section-number">3.5</span> Visualizing the data using a script</h2>
+<div id="analyzing-and-visualizing-the-data-using-a-script" class="section level2">
+<h2><span class="header-section-number">3.4</span> Analyzing and Visualizing the data using a script</h2>
 <p>We can start by visualizing the data. We have more data to play with now, but let’s start with the same plot we used last time.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plt &lt;-<span class="st"> </span><span class="kw">ggplot</span>(aircomplete) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Temp, <span class="dt">y=</span>Ozone))
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># plot to compare temperature vs ozone</span>
+plt &lt;-<span class="st"> </span><span class="kw">ggplot</span>(airquality) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Temp, <span class="dt">y=</span>Ozone))
 <span class="kw">print</span>(plt)</code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-48-1.png" width="672" /></p>
+<pre><code>## Don&#39;t know how to automatically pick scale for object of type impute. Defaulting to continuous.</code></pre>
+<p><img src="_main_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
 <p>You’ll notice two new things about what we did here. First, we assign the output to <code>plt</code>, this will be important when we want to make adjustments to the plot later. Second, you’ll notice when we do that, nothing appears; we have to print the plt to get it to show up.</p>
+</div>
+<div id="creating-a-r-script-to-save-code-and-analysis" class="section level2">
+<h2><span class="header-section-number">3.5</span> Creating a R script to save code and analysis</h2>
 <p>Now, I want you to go back and do <em>everything</em> we just did over again.</p>
 <p>What, you think that’s ridiculous? The reality is, we often have to go back and make changes upstream. When we do this, it can get very, very painful if we’re doing everything interactively, in the <em>console</em>.</p>
-<p>Before we move on, let’s introduce you to writing scripts.</p>
-<p>– Picture of RStudio window here, arrow pointing to New Script –</p>
+<p>In all our previous examples we have been using the interactive console. It is an excellent application to quickly analyze the data, but we need to keep a reasonable log of what we did (and possibly way).</p>
+<p>Let us start by creating a file, with all the <code>commands</code> we used in a sequence.</p>
 <p>Click the symbol for New Script and you’ll see RStudio’s built-in text editor pop up.</p>
+<p><img src="assets/create_new_file.png" style="width:400px"></p>
+<p>And then we will clear the session, to remove all the variables from the environment. This insures that we are starting with a clean slate.</p>
+<p><img src="assets/clear_session1.png" style="width:400px"></p>
+<p><img src="assets/clear_session2.png" style="width:304px"></p>
+<p>It is good practice, in programming to place all the libraries we need at the top. Imagine arranging all the ingredients before we start following a recipie for our dish.</p>
 <p>Let’s take a moment to put all our work in. I know it’s a pain but it will pay off if we want to make changes later.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(ggplot2)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># load libraries</span>
+<span class="kw">library</span>(ggplot2)
+<span class="kw">library</span>(dplyr)
+
+<span class="co"># read in data</span>
 airquality &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;airquality.csv&#39;</span>)
+
+<span class="co"># filter for only complete cases</span>
 aircomplete &lt;-<span class="st"> </span>airquality[<span class="kw">complete.cases</span>(airquality), ]
+
+<span class="co"># create a plot comparing, Ozone levels with Temperature</span>
 plt &lt;-<span class="st"> </span><span class="kw">ggplot</span>(aircomplete) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Temp, <span class="dt">y=</span>Ozone))
 <span class="kw">print</span>(plt)</code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-49-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-51-1.png" width="672" /></p>
 <p>We can run the entire script by clicking <em>Source</em> at the top of the editor pane.</p>
 <p>To run just a specific line or lines, you can select the section you want to run and then click <em>Run</em></p>
 <p>Let’s get back to our data. You may have seen a pattern in the plot we made earlier. Let’s pick up our analysis with a little more visualization and some modeling.</p>
@@ -435,12 +452,12 @@ plt &lt;-<span class="st"> </span><span class="kw">ggplot</span>(aircomplete) +<
 <p>With that info, we’re ready to add our linear model. Add the following lines to your script and <em>Source</em> it.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plt_2 &lt;-<span class="st"> </span>plt +<span class="st"> </span><span class="kw">geom_abline</span>(<span class="dt">intercept =</span> -<span class="fl">147.64607</span> , <span class="dt">slope =</span> <span class="fl">2.43911</span>)
 <span class="kw">print</span>(plt_2)</code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-54-1.png" width="672" /></p>
 </div>
 <div id="making-a-reproducible-report" class="section level2">
 <h2><span class="header-section-number">3.7</span> Making a reproducible report</h2>
 <p>Great. Now, what if we want to make a report of our work? With R, you get the power of <code>knitr</code>, which will <em>knit</em> your work together into a report. Let’s try it on our current script. Go to File -&gt; Knit Document, name the file <code>airquality_report</code> and select HTML, then watch the magic happen!</p>
-<p>– example of switching out the data set and generating a new report here? –</p>
+<p>Here is a link to an example script: <a href="example_script.R" class="uri">example_script.R</a> <a href="example_script.html" class="uri">example_script.html</a></p>
 
 </div>
 </div>
