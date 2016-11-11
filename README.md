@@ -17,4 +17,4 @@ To set up for the workshop:
 source('https://raw.githubusercontent.com/HoustonUseRs/intro-to-R-guide/master/scripts/setup.r')
 ```
 
-Read about the `setup` code [here](./setup.md).
+Read about the `setup` code [here](./setup.md) and [here](https://github.com/HoustonUseRs/intro-to-R-guide/blob/master/scripts/setup.r).
