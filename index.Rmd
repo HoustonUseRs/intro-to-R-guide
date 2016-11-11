@@ -12,16 +12,13 @@ R is a programming language designed specifically for statistics.  Because it is
 
 ## Why not R?
 
-* R is limited in producing highly-customized and interactive reporting visualizations
-
+* **R is limited in producing highly-customized and interactive reporting visualizations**<br>
   While R is able to produce interactive graphics, maps, and dashboards, a lot of the more expressive and customized interactive data presentations will require knowledge of JavaScript. The amount you can do directly from within R is increasing rapidly, however, and you can read more about that [here](./05-appendix).
 
-* R is not as expressive for general tasks such as scraping and crawling
+* **R is not as expressive for general tasks such as scraping and crawling**<br>
+  New additions to R like `tidyr` and `dplyr` are making R more expressive; the result is R is becoming a strong competitor in more general tasks like [data-mining, data-wrangling, and scraping and crawling](./05-appendix) for data.
 
-  New additions to R like `tidyr` and `dplyr` are making R more expressive; the result is R is becoming a strong competitor in more general tasks like data-mining, data-wrangling, and scraping and crawling for data.
-
-* R requires data to be loaded into memory
-
+* **R requires data to be loaded into memory**<br>
   For projects where exceptionally large data needs to be analyzed or processed very quickly, we will want to consider using [tools that help us work around the memory limitations](./05-appendix).
 
 Overall, R is a top choice for data exploration, modelling, analysis, and static graphics.
@@ -30,14 +27,9 @@ Overall, R is a top choice for data exploration, modelling, analysis, and static
 
 This workshop will cover steps and code that can be readily adapted for small to moderate sized datasets.
 
-// will include what is missing from this workshop
+Specifically, we will be:
 
-
-## The Plan
-
-Today, we are going to cover:
-
-1. Loading in the data
+1. Loading in data
 1. Exploring it
 1. Cleaning it
 1. Calculating descriptive statistics
@@ -45,6 +37,7 @@ Today, we are going to cover:
 1. Modeling it
 1. Making a report
 
-We will also cover how to get help and how to learn more about using R.
+We will also cover how to get help and how to learn more about using R.  Additionally, we've pulled together different resources for things we aren't covering into [our appendix](./05-appendix).
 
 While we will not be able to cover how to handle a wide variety of different datasets and visualizations, our mentors have a wide range of experiences with using R for energy data, bioinformatics, mapping, natural language processing, and much more!  We hope to get to know you throughout the workshop and share domain specific experiences with you.
+
