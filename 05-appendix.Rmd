@@ -1,15 +1,22 @@
 #Installation Instructions
 
 
+## R for Mac OS X
 
-##Installing R on Mac OS X
+### Option 1: CRAN
 
-###Installing R with Homebrew
+1. Go to http://cran.us.r-project.org/
+2. Click on "Download R for Mac OS X"
+3. Choose appropriate "R-x.x.x.pkg" based on your operating system version
+("R-3.3.2.pkg" is the most recent)
+4. Follow installation instructions
+
+###Option 2: Homebrew
 
 
-If you are not sure if you have *Homebrew*, open your Terminal or CLI and type `which brew`. 
+If you are not sure if you have *Homebrew*, open your Terminal or CLI and type `which brew`.
 
-If you get output like this: `/usr/local/bin/brew`, then you have *Homebrew* and you are good to go. 
+If you get output like this: `/usr/local/bin/brew`, then you have *Homebrew* and you are good to go.
 
 Otherwise, if you get:  `command not found`, you'll need to install it from here: http://brew.sh/.
 
@@ -27,9 +34,19 @@ $ brew tap homebrew/science
 $ brew install R
 ```
 
-**Trouble Shooting**
+## R for Windows/Linux
+###Windows
+1. Go to http://cran.us.r-project.org/
+2. Click on "Download R for Windows" > "base"
+3. Install R. Leave all default settings in installation options.
 
-...
+###Linux
+1. Go to http://cran.us.r-project.org/
+2. Click on "Download R for Linux"
+3. Choose appropriate directory for your linux operating system
+4. Follow R installation instructions
 
-##Installing R on Windows 
-
+## R Studio
+1. Download from https://www.rstudio.com/products/rstudio/download/preview/
+2. Select appropriate installer listed under "Desktop Version"
+3. Follow installation instructions
