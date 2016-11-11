@@ -197,7 +197,7 @@ To start, we can tell `ggplot` what our data is:
 ggplot(data = crickets)
 ```
 
-This gives us back a rather boring blank gray square.  At this point, ggplot does not know what about the data to map to where.  We can tell it to map `Chirpspersecond` as the `x`, and `Temperature` as the `y` like this:
+This gives us back a rather boring blank gray square.  At this point, ggplot does not know what about the data to map to where.  We can tell it to map `Temperature` as the `x` and `Chirpspersecond` as the `y`, like this:
 
 ```{r}
 ggplot(data = crickets, mapping = aes(x = Temperature, y = Chirpspersecond))
@@ -210,7 +210,7 @@ ggplot(data = crickets, mapping = aes(x = Temperature, y = Chirpspersecond)) +
   geom_point()
 ```
 
-We now have points, each with it's x mapped to Chirpspersecond and the y mapped to Temperature.  We can also mapped the color of each point to the temperature like this:
+We now have points, each with it's y mapped to Chirpspersecond and the x mapped to Temperature.  We can also mapped the color of each point to the temperature like this:
 
 ```{r}
 ggplot(data = crickets, mapping = aes(x = Temperature, y = Chirpspersecond)) +
@@ -232,7 +232,7 @@ One of the reasons that `ggplot` is so popular is that it has a very extensible 
 * _aesthetics_ = the _Temperature_ and _Chirpspersecond_ variables
 * _geom_ = the _point_ geom (geom_point function call) is used to create a scatterplot
 
-The syntax may seem a little confusing at first, but it can create some very powerful results once you understand how it works.  It allows you to build up plots in layers. It also allows you to manipulate plots in a way similar to manipulating data (via function calls). For example, we can assign our plot to a variable _p_.
+The syntax may seem a little confusing at first, but it can create some very powerful results once you understand how it works.  It allows you to build up plots in _layers_. It also allows you to manipulate plots in a way similar to manipulating data (via function calls). For example, we can assign our plot to a variable _p_.
 
 ```{r}
  p <- ggplot(data = crickets, mapping = aes(x = Temperature, y = Chirpspersecond)) +
@@ -242,7 +242,7 @@ The syntax may seem a little confusing at first, but it can create some very pow
 p
 ```
 
-Now we can manipulate our plot like any other variable. Let's add a title
+Now we can manipulate our plot like any other variable. Let's add a title.
 ```{r}
  p + ggtitle("Cricket Chirps vs. Temperature")
 ```
@@ -325,13 +325,13 @@ cor.test(x = crickets[,1], y = crickets[,2])
 
 So far, we've:
 
-1. Loaded in the data from a csv
+__Loaded in the data from a csv__
 
 ```{r eval=FALSE}
 crickets <- read.csv(file = 'crickets.csv')
 ```
 
-2. Learned more about the data as a whole
+__Learned more about the data as a whole__
 
 | Code                | Description                         |
 | ------------------- | ------------------------------------|
@@ -343,7 +343,7 @@ crickets <- read.csv(file = 'crickets.csv')
 | `summary(crickets)` | Summary of the data                 |
 | `View(crickets)`    | View data in file viewer            |
 
-3. Looked at the data by rows and columns
+__Looked at the data by rows and columns__
 
 | Code                | Description                         |
 | ------------------- | ------------------------------------|
@@ -352,7 +352,7 @@ crickets <- read.csv(file = 'crickets.csv')
 | `select(crickets, Chirpspersecond)`      | First column, Chirpspersecond       |
 | `select(crickets, Temperature)`      | Second column, Temperature          |
 
-4. Calculated descriptive statistics on the data
+__Calculated descriptive statistics on the data__
 
 | Code                    | Description                       |
 | ----------------------- | ----------------------------------|
@@ -362,7 +362,8 @@ crickets <- read.csv(file = 'crickets.csv')
 | `max()`     | Maximum Temperature               |
 | `min()`     | Minimum Temperature               |
 
-5. Made plots of our data
+__Made plots of our data__
+
 | Code                    | Description                       |
 | ----------------------- | ----------------------------------|
 | `ggplot()`    | create base layer of plot               |
@@ -371,7 +372,7 @@ crickets <- read.csv(file = 'crickets.csv')
 | `geom_abline()`     | line geom               |
 | `ggtitle()`     | add title to plot               |
 
-6. Applied statistical modelling to the data
+__Applied statistical modelling to the data__
 
 | Code                  | Description                         |
 | --------------------- | ------------------------------------|
