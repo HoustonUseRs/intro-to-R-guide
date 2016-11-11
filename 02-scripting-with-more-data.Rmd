@@ -5,12 +5,14 @@
 install.packages('ggplot2')
 install.packages('magrittr')
 install.packages('Hmisc')
+install.packages('dplyr')
 ```
 
 ```{r message=FALSE}
 library(ggplot2)
 library(magrittr)
 library(Hmisc)
+library(dplyr)
 ```
 
 
@@ -27,7 +29,7 @@ airquality <- read.csv('airquality.csv')
 Let's take a moment to explore the new dataset using tools we learned in the previous section. Try `str`, `head`, `summary` and get a good feel for the dataset. We can find the number of rows using `nrow`.
 
 ```{r}
-nrow(airquality)
+airquality %>% nrow()
 ```
 
 ## Counting missing values
@@ -37,7 +39,7 @@ I mentioned this dataset has some missing data, you may have noticed it already 
 It's always a good idea to check for missing values, even if you are *sure* your data is complete. We can ask R to tell us whether there are any NAs in the dataset using the `is.na()` function.
 
 ```{r}
-is.na(airquality)
+airquality %>% is.na()
 ```
 
 This will list out `TRUE` or `FALSE` for *every* value in new_data, for the question "is this value equal to NA?". It's kind hard to read, though.
@@ -54,7 +56,8 @@ airquality %>% is.na() %>% sum()
 If we try to call some descriptive statistics on any columns with `NA` values, we will get an ugly result. Let's try getting the mean for Ozone levels.
 
 ```{r}
-mean(airquality[, 1])
+# library(dplyr) # load the library if its not already loaded
+airquality %>% summarise(mean(Ozone))
 ```
 
 Not what we were looking for.
@@ -62,19 +65,182 @@ Not what we were looking for.
 By default, many functions in R will return NA if called on a vector with any NA values inside. We can override this behavior by adding the `na.rm = TRUE` argument
 
 ```{r}
-mean(airquality[, 1], na.rm = TRUE)
+airquality %>% summarise(mean(Ozone, na.rm=T))
 ```
 
 There are important questions to ask yourself when dealing with missing data, there's no one-size-fits-all answer for it. A slapdash approach is to simply _remove_ any rows with missing data.
 
 ```{r}
-aircomplete <- airquality[complete.cases(airquality), ]
+aircomplete <- airquality %>% filter(complete.cases(airquality))
 ```
  If you call `nrow` on aircomplete, you'll see we have 111 rows now instead of the 153 we had before.
  
 ```{r}
-nrow(aircomplete)
+aircomplete %>% nrow()
 ```
+
+## Non-numeric data
+
+So far, we've primarily worked with numeric data. 
+
+Let's talk briefly about how R handles string or character data. 
+
+Here's a data frame with some letters. 
+
+```{r}
+myname <- data.frame(letter=c("k","e","l","s","e","y"))
+```
+
+Let's look at the structure of the _myname_ object, and the _letter_ field of the object. 
+
+```{r}
+myname %>% str()
+myname$letter %>% str()
+```
+
+Hmm, it says Factor w/ 5 levels "e","k","l","s",..: 2 1 3 4 1 5. What does this mean? 
+
+By default, R stores string fields in data frames as _factors_. 
+
+Behind the scenes, R identifies the unique characters strings in the field, substitutes each one with a unique integer, and remembers the original strings as _levels_. 
+
+```{r}
+myname$letter %>% levels()
+myname$letter %>% as.integer()
+```
+
+For many processes and analyses, this data structure will work fine. 
+
+In some situations, however, it becomes problematic. 
+
+Let's try to modify the _myname_ data frame, and make the letters spell out _kelsie_ rather than _kelsey_. 
+
+We need to change the letter in the 6th position to e and the letter in the 5th position to i. 
+
+```{r}
+myname$letter[6] <- "e"
+myname$letter[5] <- "i"
+```
+
+Let's print the updated data frame. 
+
+Not what we want. 
+
+There are a couple of ways to override R's default behavior of storing text fields as columns. 
+
+If we're creating a data frame from scratch, we can set the _stringsAsFactors_ parameter equal to _FALSE_. 
+
+```{r}
+myname <- data.frame(letter=c("k","e","l","s","e","y"), stringsAsFactors=F)
+```
+
+Check out the structure _str_ and see what is different. 
+
+Let's try making the same modifications now. 
+
+```{r}
+myname$letter[6] <- "e"
+myname$letter[5] <- "i"
+```
+
+The character data type is much more flexible. 
+
+If we've already created (or read) a data frame, we can use the _as.character_ function on the text field itself. 
+
+```{r}
+myname <- data.frame(letter=c("k","e","l","s","e","y"))
+myname %>% str()
+myname$letter <- myname$letter %>% as.character()
+myname %>% str()
+myname$letter[6] <- "e"
+myname$letter[5] <- "i"
+```
+
+Looking out for factors is critical when typecasting numeric data that is mistakenly stored as text. 
+
+Here's another data frame. 
+
+```{r}
+fives <- data.frame(v1=c("5","10","15","20"))
+```
+
+Let's look at the structure and levels:
+
+```{r}
+fives %>% str()
+fives$v1 %>% levels()
+```
+
+We want these data points stored as a numeric type, but currently, they're stored as text, and specifically as a factor. 
+
+What does it look like if we convert the factor to numeric? 
+
+```{r}
+fives$v1 %>% as.numeric()
+```
+
+So problematic! Why did this happen?
+
+```{r}
+fives$v1 %>% as.character() %>% as.numeric()
+```
+
+That works as expected. 
+
+Are factors _ever_ useful? Yes. 
+
+Here's some pretend survey data.
+
+```{r}
+survey <- data.frame(gender=rep(c("Male","Female"),c(5,7)),response=rep(c("Excellent","Good","Fair","Poor"),3))
+```
+
+Let's change the levels of the gender field. 
+
+```{r}
+survey$gender %>% levels()
+levels(survey$gender) <- c("F","M")
+```
+
+What does it look like now? 
+
+We can also take advantage of our understanding of the factor data type to convert the response variable into a numeric field. 
+
+I want _excellent_ to map to 4, _good_ to map to 3, _fair_ to map to 2 and _poor_ to map to 1. 
+
+We'll use the _as.numeric_ function eventually, but first we need to see if the levels are in the order that we want them. 
+
+```{r}
+survey$response %>% levels()
+```
+
+They're not. Let's change them, so that less favorable responses will appear before more favorable responses when alphabetized. 
+
+After we change the levels, we'll need to turn the response field into a character field, and then re-factor. 
+
+```{r}
+levels(survey$response) <- c("D Excellent","B Fair","C Good","A Poor")
+survey$response <- survey$response %>% as.character() %>% as.factor()
+survey$response %>% levels()
+```
+
+Much better. Now we can call the _as.numeric_ function.
+
+```{r}
+survey %>% mutate(as.numeric(response))
+```
+
+How useful!
+
+The takeaway: 
+
+By default, R stores text fields as factors. And factors are strange. 
+
+At times it seems like they are working against us. 
+
+But if we understand how they work, we can make them work for us! 
+
+Now, back to numeric data. 
 
 <!--- might need to skip this section
 ## Imputing missing values
