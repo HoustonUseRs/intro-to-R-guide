@@ -200,32 +200,57 @@ ggplot(data = crickets)
 This gives us back a rather boring blank gray square.  At this point, ggplot does not know what about the data to map to where.  We can tell it to map `Chirpspersecond` as the `x`, and `Temperature` as the `y` like this:
 
 ```{r}
-ggplot(data = crickets, mapping = aes(x = Chirpspersecond, y = Temperature))
+ggplot(data = crickets, mapping = aes(x = Temperature, y = Chirpspersecond))
 ```
 
 At this point, `ggplot` seems to know where things should go, but there's no points.  This base layer is ready with our coordinates and axis, but we would also like `ggplot` to map the data in the same way to a layer of markings that represent the data.  Let's try points:
 
 ```{r}
-ggplot(data = crickets, mapping = aes(x = Chirpspersecond, y = Temperature)) +
+ggplot(data = crickets, mapping = aes(x = Temperature, y = Chirpspersecond)) +
   geom_point()
 ```
 
 We now have points, each with it's x mapped to Chirpspersecond and the y mapped to Temperature.  We can also mapped the color of each point to the temperature like this:
 
 ```{r}
-ggplot(data = crickets, mapping = aes(x = Chirpspersecond, y = Temperature)) +
+ggplot(data = crickets, mapping = aes(x = Temperature, y = Chirpspersecond)) +
   geom_point(mapping = aes(color = Temperature))
 ```
 
 This gives the points colors mapped from the Temperature along a default scale.  We can adjust the scale to give a sense of the temperature like this:
 
 ```{r}
-ggplot(data = crickets, mapping = aes(x = Chirpspersecond, y = Temperature)) +
+ggplot(data = crickets, mapping = aes(x = Temperature, y = Chirpspersecond)) +
   geom_point(mapping = aes(color = Temperature)) +
   scale_color_gradient(low = "orange", high = "red")
 ```
 
 Let's take some time to experiment with different visualizations using ggplot2.  See the [data visualization cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/12/ggplot2-cheatsheet-2.0.pdf) for ideas.
+
+One of the reasons that `ggplot` is so popular is that it has a very extensible syntax.  `ggplot` is built on the concept of a _grammar of graphics_.  The grammar of graphics is a way to build plots in a structured way. Every plot consists of a _dataset_, _aesthetics_ to map of the dataset, and a _geom_ that defines how to display the data.  Let's break down our function call above into its graphical grammar elements:
+* _dataset_ = the _crickets_ data frame
+* _aesthetics_ = the _Temperature_ and _Chirpspersecond_ variables
+* _geom_ = the _point_ geom (geom_point function call) is used to create a scatterplot
+
+The syntax may seem a little confusing at first, but it can create some very powerful results once you understand how it works.  It allows you to build up plots in layers. It also allows you to manipulate plots in a way similar to manipulating data (via function calls). For example, we can assign our plot to a variable _p_.
+
+```{r}
+ p <- ggplot(data = crickets, mapping = aes(x = Temperature, y = Chirpspersecond)) +
+  geom_point(mapping = aes(color = Temperature)) +
+  scale_color_gradient(low = "orange", high = "red")
+
+p
+```
+
+Now we can manipulate our plot like any other variable. Let's add a title
+```{r}
+ p + ggtitle("Cricket Chirps vs. Temperature")
+```
+
+We can also add another _geom_ just as easily. Let's add a smoothing function to show what a linear model might look like.
+```{r}
+ p + ggtitle("Cricket Chirps vs. Temperature") + geom_smooth()
+```
 
 Once we have a plot we like, we can save our last plot to an image file very easily:
 
@@ -252,7 +277,7 @@ lm(Chirpspersecond ~ Temperature, data = crickets)
 There's actually more information that `lm` tells us.  Let's take a look by first telling the computer the remember the result as a variable called `crickets_lm`.
 
 ```{r}
-crickets_lm <- lm(Temperature ~ Chirpspersecond, data = crickets)
+crickets_lm <- lm(Chirpspersecond ~ Temperature, data = crickets)
 ```
 
 We can use the `broom` package to help us get to the information stored in the model. Let's install that first:
@@ -272,12 +297,12 @@ We get the slope and the intercept from the `estimate` column.
 Let's use `tidy()` and `geom_abline()` to add a line on top of our scatterplot so we can eyeball how our linear model fits.
 
 ```{r}
-lm_slope <- crickets_lm %>% tidy %>% filter(term == "(Intercept)") %>% select(estimate) %>% unlist()
-lm_intercept <- crickets_lm %>% tidy %>% filter(term == "Chirpspersecond") %>% select(estimate) %>% unlist()
-ggplot(data = crickets, mapping = aes(x = Chirpspersecond, y = Temperature)) +
+lm_intercept <- crickets_lm %>% tidy %>% filter(term == "(Intercept)") %>% select(estimate) %>% unlist()
+lm_slope <- crickets_lm %>% tidy %>% filter(term == "Temperature") %>% select(estimate) %>% unlist()
+ggplot(data = crickets, mapping = aes(x = Temperature, y = Chirpspersecond)) +
     geom_point(mapping = aes(color = Temperature)) +
     scale_color_gradient(low = "orange", high = "red") +
-    geom_abline(slope = lm_slope, intercept = lm_intercept)
+    geom_abline(slope = lm_slope, intercept = lm_intercept, color = "maroon")
 ```
 
 Additionally, `cor` and `cor.test` are two functions that can tell us about correlations between paired samples.
@@ -338,16 +363,20 @@ crickets <- read.csv(file = 'crickets.csv')
 | `min()`     | Minimum Temperature               |
 
 5. Made plots of our data
-
-
+| Code                    | Description                       |
+| ----------------------- | ----------------------------------|
+| `ggplot()`    | create base layer of plot               |
+| `geom_point()`  | scatterplot geom                |
+| 'geom_smooth()`      | smoothing geom with confidence intervals |
+| `geom_abline()`     | line geom               |
+| `ggtitle()`     | add title to plot               |
 
 6. Applied statistical modelling to the data
 
 | Code                  | Description                         |
 | --------------------- | ------------------------------------|
-| `cor(crickets)`       |                                     |
-| `cor.test(crickets)`  |                                     |
-| `lm(crickets)`        |                                     |
-
+| `cor(crickets)`       | calculate correlation coefficient   |
+| `cor.test(crickets)`  | test for statistically significant correlation  |
+| `lm(crickets)`        | create a linear model               |
 
 Crickets is a rather small and well-formed dataset.  Let's practice our new skills on a slightly more realistic dataset and learn additional skills for cleaning the data and making a report.
