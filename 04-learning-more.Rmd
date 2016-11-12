@@ -8,49 +8,53 @@ There are many ways to continue learning R.  No matter what you choose to be you
 
 The following resources are great next steps to take for learning more on using R after this workshop.
 
-### [R for Data Science](http://r4ds.had.co.nz/)
+### R Basics 
 
-This book penned by Hadley Wickham and Garrett Grolemund covers modern standards on using R for data science with a cohesive and conversational narrative.  The book covers in more detail some topics we touched on during this workshop for:
+To further explore basics of R, following are good resources to begin with  - 
 
-* Getting your data into R
-* Cleaning your data
-* Exploring your data by transforming, visualizing, and modeling
-* Creating reproducible reports
+* <a href="https://www.r-bloggers.com/how-to-learn-r-2/" target="_blank">  <img src="https://www.r-bloggers.com/wp-content/uploads/2016/04/R_02_2016-05-01.png" style="width:80px"></a>
+ A good blog offering tutorials of each R function/package. Platform for R users to connect 
+* <a href="http://swirlstats.com/" target="_blank">  <img src="http://swirlstats.com/images/swirl_new_large_final.png" style="width:80px"></a>
+Learn R and data science interactively
+* <a href="https://www.coursera.org/learn/r-programming" target="_blank">  <img src="http://brickingtips.com/wp-content/uploads/2015/01/coursera.png" style="width:80px"></a>
+An Intermediate R course in 4 weeks
+* <a href="https://www.rstudio.com/online-learning/" target="_blank">  <img src="https://teespring-storecontent.s3.amazonaws.com/FW6s2ljYB6HuZgDe15SiOQ_store_header_image" style="width:90px"></a>
+Curated guide to learning R and its extensions
 
-For a great overview of what's in the book, check out [this page](http://r4ds.had.co.nz/explore-intro.html).
+### R for Data Science
 
-With R and RStudio setup on your computer, you are ready to start using this book right away.
+These resources are good to use R as a data science/statistics tool - 
 
-### Read other people's scripts
+* <a href="http://www.cookbook-r.com/" target="_blank">  <img src="http://akamaicovers.oreilly.com/images/9780596809164/cat.gif" style="width:50px"></a>
+<a href="http://www.cookbook-r.com/Graphs/" target="_blank">  <img src="http://www.cookbook-r.com/r_graphics_cookbook.png" style="width:50px"></a> <b>R Cookbook, R Graphics Cookbook</b> - Excellent resources for learning base R and base plotting. Contains code snippets. Available online. 
 
-* Kaggle Titantic examples
+* <a href="http://r4ds.had.co.nz/" target="_blank">  <img src="http://r4ds.had.co.nz/cover.png" style="width:50px"></a>
+<b>R for Data Science</b> - This book penned by Hadley Wickham and Garrett Grolemund covers modern standards on using R for data science with a cohesive and conversational narrative.
+For a great overview of what's in the book, check out [this page](http://r4ds.had.co.nz/explore-intro.html)
+
+* <a href="http://adv-r.had.co.nz/" target="_blank">  <img src="https://images.tandf.co.uk/common/jackets/amazon/978146658/9781466586963.jpg" style="width:50px"></a> <b> Advanced R</b> - Master R as a programming language. Also available online.
+
+* <a href="https://www.amazon.com/dp/0387981403/ref=cm_sw_su_dp?tag=ggplot2-20" target="_blank">  <img src="https://images-na.ssl-images-amazon.com/images/I/418lVZnPZXL.jpg" style="width:50px"></a> <b> ggplot2</b> - Learn how to create elegant graphics for data analysis 
+
+
+### Practice and Learn Data Science
+Once you have learnt R, try your coding skills on analyzing a collection of public datasets. 
+
+* Kaggle Titantic examples - Learn how to tackle a machine learning problem and participate in competetions
   * [Gettings started in R](https://www.kaggle.com/c/titanic/details/new-getting-started-with-r)
   * [Exploring Survival on the Titanic](https://www.kaggle.com/mrisdal/titanic/exploring-survival-on-the-titanic)
-* [R by example](http://www.mayin.org/ajayshah/KB/R/index.html)
-* [R Examples](http://www.rexamples.com/)
+ * [Houston data jams](https://houstondatavis.github.io/data-jams/) Attend data visualization meetups in Houston.
 
-### [Quick-R](http://www.statmethods.net/)
+* Others resources to check [R by example](http://www.mayin.org/ajayshah/KB/R/index.html), [R Examples](http://www.rexamples.com/), [Quick-R](http://www.statmethods.net/), [Data Camp](https://www.datacamp.com/), [drivendata](https://www.drivendata.org/)
 
-### [Data Camp](https://www.datacamp.com/)
+### Getting Help
 
-### [How to learn R](https://www.r-bloggers.com/how-to-learn-r-2/)
+* Houston R UseRs [Slack](https://hrug.slack.com) and [Meetup](http://www.meetup.com/houstonr/)
 
-## Getting Practice
+* [Stack Overflow](http://stackoverflow.com/)
 
-### [Houston data jams](https://houstondatavis.github.io/data-jams/)
+### Staying up to date
 
-### [Kaggle](https://www.kaggle.com)
+* [RWeekly](https://rweekly.org/)
 
-### [drivendata](https://www.drivendata.org/)
-
-## Getting Help
-
-### Houston R UseRs [Slack](https://hrug.slack.com) and [Meetup](http://www.meetup.com/houstonr/)
-
-### [Stack Overflow](http://stackoverflow.com/)
-
-## Staying up to date
-
-### [RWeekly](https://rweekly.org/)
-
-### [Awesome-R](https://awesome-r.com/)
+* [Awesome-R](https://awesome-r.com/)
