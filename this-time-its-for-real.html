@@ -146,6 +146,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="installation-instructions.html"><a href="installation-instructions.html#r-studio"><i class="fa fa-check"></i><b>6.3</b> R Studio</a></li>
 </ul></li>
+<li class="chapter" data-level="7" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>7</b> Appendix</a><ul>
+<li class="chapter" data-level="7.1" data-path="appendix.html"><a href="appendix.html#webscraping-and-text-analysis"><i class="fa fa-check"></i><b>7.1</b> Webscraping and text analysis</a></li>
+<li class="chapter" data-level="7.2" data-path="appendix.html"><a href="appendix.html#machine-learning-in-r"><i class="fa fa-check"></i><b>7.2</b> Machine Learning in R</a></li>
+<li class="chapter" data-level="7.3" data-path="appendix.html"><a href="appendix.html#interactive-r-graphics"><i class="fa fa-check"></i><b>7.3</b> Interactive R Graphics</a></li>
+<li class="chapter" data-level="7.4" data-path="appendix.html"><a href="appendix.html#maps"><i class="fa fa-check"></i><b>7.4</b> Maps</a></li>
+<li class="chapter" data-level="7.5" data-path="appendix.html"><a href="appendix.html#handling-more-data"><i class="fa fa-check"></i><b>7.5</b> Handling more data</a></li>
+<li class="chapter" data-level="7.6" data-path="appendix.html"><a href="appendix.html#tips-on-search-for-how-to-do-things"><i class="fa fa-check"></i><b>7.6</b> Tips on search for how to do things</a></li>
+<li class="chapter" data-level="7.7" data-path="appendix.html"><a href="appendix.html#general"><i class="fa fa-check"></i><b>7.7</b> General</a></li>
+</ul></li>
 </ul>
 
       </nav>
@@ -170,8 +179,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">3.1</span> Loading and exploring a larger dataset</h2>
 <p>We can load our new dataset the same way as before, using the <code>read.csv()</code> function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">airquality &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;airquality.csv&#39;</span>)</code></pre></div>
+<p>We can also load our dataset from an Excel file using the <code>openxlsx</code> package.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&#39;openxlsx&#39;</span>)
+<span class="kw">library</span>(openxlsx)
+airquality &lt;-<span class="st"> </span><span class="kw">read.xlsx</span>(<span class="st">&#39;airquality.xlsx&#39;</span>)</code></pre></div>
 <p>Let’s take a moment to explore the new dataset using tools we learned in the previous section. Try <code>str</code>, <code>head</code>, <code>summary</code> and get a good feel for the dataset. For example, we can find the number of rows using <code>nrow</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(magrittr)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(magrittr) <span class="co"># load using `library` if not already loaded</span>
 airquality %&gt;%<span class="st"> </span><span class="kw">nrow</span>()</code></pre></div>
 <pre><code>## [1] 153</code></pre>
 </div>
@@ -188,7 +201,7 @@ airquality %&gt;%<span class="st"> </span><span class="kw">nrow</span>()</code><
 <div id="ignoring-missing-values" class="section level2">
 <h2><span class="header-section-number">3.3</span> Ignoring missing values</h2>
 <p>If we try to call some descriptive statistics on any columns with <code>NA</code> values, we will get an ugly result. Let’s try getting the mean for Ozone levels.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(dplyr) <span class="co"># load using `library` if not already loaded</span>
 airquality %&gt;%<span class="st"> </span><span class="kw">summarise</span>(<span class="kw">mean</span>(Ozone))</code></pre></div>
 <pre><code>##   mean(Ozone)
 ## 1          NA</code></pre>
@@ -318,7 +331,7 @@ survey$response %&gt;%<span class="st"> </span><span class="kw">levels</span>()<
 plt &lt;-<span class="st"> </span><span class="kw">ggplot</span>(airquality) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Temp, <span class="dt">y=</span>Ozone))
 <span class="kw">print</span>(plt)</code></pre></div>
 <pre><code>## Warning: Removed 37 rows containing missing values (geom_point).</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-65-1.png" width="672" /></p>
 <p>You’ll notice two new things about what we did here. First, we assign the output to <code>plt</code>, this will be important when we want to make adjustments to the plot later. Second, you’ll notice when we do that, nothing appears; we have to print the plt to get it to show up.</p>
 </div>
 <div id="creating-a-r-script-to-save-code-and-analysis" class="section level2">
@@ -347,7 +360,7 @@ aircomplete &lt;-<span class="st"> </span>airquality[<span class="kw">complete.c
 <span class="co"># create a plot comparing, Ozone levels with Temperature</span>
 plt &lt;-<span class="st"> </span><span class="kw">ggplot</span>(aircomplete) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Temp, <span class="dt">y=</span>Ozone))
 <span class="kw">print</span>(plt)</code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-66-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-67-1.png" width="672" /></p>
 <p>We can run the entire script by clicking <em>Source</em> at the top of the editor pane.</p>
 <p>To run just a specific line or lines, you can select the section you want to run and then click <em>Run</em></p>
 <p>Let’s get back to our data. You may have seen a pattern in the plot we made earlier. Let’s pick up our analysis with a little more visualization and some modeling.</p>
@@ -382,7 +395,7 @@ plt &lt;-<span class="st"> </span><span class="kw">ggplot</span>(aircomplete) +<
 <p>With that info, we’re ready to add our linear model. Add the following lines to your script and <em>Source</em> it.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plt_2 &lt;-<span class="st"> </span>plt +<span class="st"> </span><span class="kw">geom_abline</span>(<span class="dt">intercept =</span> -<span class="fl">147.64607</span> , <span class="dt">slope =</span> <span class="fl">2.43911</span>)
 <span class="kw">print</span>(plt_2)</code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-69-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-70-1.png" width="672" /></p>
 </div>
 <div id="making-a-reproducible-report" class="section level2">
 <h2><span class="header-section-number">3.8</span> Making a reproducible report</h2>

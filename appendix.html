@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="learning-more.html">
-<link rel="next" href="appendix.html">
+<link rel="prev" href="installation-instructions.html">
+
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -172,65 +172,66 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="installation-instructions" class="section level1">
-<h1><span class="header-section-number">6</span> Installation Instructions</h1>
-<div id="r-for-mac-os-x" class="section level2">
-<h2><span class="header-section-number">6.1</span> R for Mac OS X</h2>
-<div id="option-1-cran" class="section level3">
-<h3><span class="header-section-number">6.1.1</span> Option 1: CRAN</h3>
-<ol style="list-style-type: decimal">
-<li>Go to <a href="http://cran.us.r-project.org/" class="uri">http://cran.us.r-project.org/</a></li>
-<li>Click on “Download R for Mac OS X”</li>
-<li>Choose appropriate “R-x.x.x.pkg” based on your operating system version (“R-3.3.2.pkg” is the most recent)</li>
-<li>Follow installation instructions</li>
-</ol>
+<div id="appendix" class="section level1">
+<h1><span class="header-section-number">7</span> Appendix</h1>
+<div id="webscraping-and-text-analysis" class="section level2">
+<h2><span class="header-section-number">7.1</span> Webscraping and text analysis</h2>
+<ul>
+<li><a href="http://datascienceplus.com/goodreads-webscraping-and-text-analysis-with-r-part-1/">Webscraping and text analysis</a></li>
+<li><a href="https://www.r-bloggers.com/search/web%20scraping/">R-Bloggers search for web scraping</a></li>
+<li><a href="https://rpubs.com/Radcliffe/superbowl">A tutorial using Super Bowl Data</a></li>
+<li><a href="https://www.r-bloggers.com/rvest-easy-web-scraping-with-r/">Scraping with rvest</a></li>
+<li><a href="https://www.r-bloggers.com/scraping-with-selenium/">Scraping with Selenium</a></li>
+</ul>
 </div>
-<div id="option-2-homebrew" class="section level3">
-<h3><span class="header-section-number">6.1.2</span> Option 2: Homebrew</h3>
-<p>If you are not sure if you have <em>Homebrew</em>, open your Terminal or CLI and type <code>which brew</code>.</p>
-<p>If you get output like this: <code>/usr/local/bin/brew</code>, then you have <em>Homebrew</em> and you are good to go.</p>
-<p>Otherwise, if you get: <code>command not found</code>, you’ll need to install it from here: <a href="http://brew.sh/" class="uri">http://brew.sh/</a>.</p>
-<p>After confirming you have <em>Homebrew</em>, proceed with instructions:</p>
-<ol style="list-style-type: decimal">
-<li>Open Terminal.</li>
-<li>Before installing anything, run <code>brew update &amp;&amp; brew upgrade</code></li>
-<li><p>Copy/paste the comands below to install R:</p>
-<div class="sourceCode"><pre class="sourceCode bash"><code class="sourceCode bash">$ <span class="kw">brew</span> tap caskroom/cask
-$ <span class="kw">brew</span> install homebrew/completions/brew-cask-completion
-$ <span class="kw">brew</span> install Caskroom/cask/xquartz
-$ <span class="kw">brew</span> cask install java
-$ <span class="kw">brew</span> tap homebrew/science
-$ <span class="kw">brew</span> install R</code></pre></div></li>
-</ol>
+<div id="machine-learning-in-r" class="section level2">
+<h2><span class="header-section-number">7.2</span> Machine Learning in R</h2>
+<ul>
+<li><a href="https://www.r-bloggers.com/a-simple-workflow-for-deep-learning/">Deep learning</a></li>
+<li><a href="https://www.r-bloggers.com/machine-learning-with-r/">Machine learning in R</a></li>
+<li><a href="https://ocw.mit.edu/courses/sloan-school-of-management/15-097-prediction-machine-learning-and-statistics-spring-2012/lecture-notes/MIT15_097S12_lec02.pdf">R for Machine Learning notes</a></li>
+<li><a href="https://www.reddit.com/r/MachineLearning/comments/575jz8/discussion_join_us_on_rlearnmachinelearning/#bottom-comments">R Machine Learning Group on Reddit</a></li>
+</ul>
 </div>
+<div id="interactive-r-graphics" class="section level2">
+<h2><span class="header-section-number">7.3</span> Interactive R Graphics</h2>
+<ul>
+<li><a href="http://ouzor.github.io/blog/2014/11/21/interactive-visualizations.html">Interactive visualizations with R</a></li>
+<li><em>“A minireview of R packages ggvis, rCharts, plotly and googleVis for interactive visualizations”</em></li>
+<li><a href="http://shiny.rstudio.com/tutorial/">Shiny Tutorial</a></li>
+<li><a href="https://plot.ly/ggplot2/">Plotly ggplot</a></li>
+<li><a href="http://rmarkdown.rstudio.com/flexdashboard/">Flex Dashboard</a></li>
+</ul>
 </div>
-<div id="r-for-windowslinux" class="section level2">
-<h2><span class="header-section-number">6.2</span> R for Windows/Linux</h2>
-<div id="windows" class="section level3">
-<h3><span class="header-section-number">6.2.1</span> Windows</h3>
-<ol style="list-style-type: decimal">
-<li>Go to <a href="http://cran.us.r-project.org/" class="uri">http://cran.us.r-project.org/</a></li>
-<li>Click on “Download R for Windows” &gt; “base”</li>
-<li>Install R. Leave all default settings in installation options.</li>
-</ol>
+<div id="maps" class="section level2">
+<h2><span class="header-section-number">7.4</span> Maps</h2>
+<ul>
+<li><a href="http://rstudio.github.io/leaflet/">Leaflet for R</a></li>
+<li>Intro to making interactive maps in R</li>
+<li><a href="http://robinlovelace.net/r/2014/01/30/spatial-data-with-R-tutorial.html">Spatial Data with R</a></li>
+<li><a href="http://www.molecularecologist.com/2012/09/making-maps-with-r/">Making Maps with R</a></li>
+<li><a href="https://www.r-bloggers.com/search/maps/">R-Bloggers search for maps</a></li>
+</ul>
 </div>
-<div id="linux" class="section level3">
-<h3><span class="header-section-number">6.2.2</span> Linux</h3>
-<ol style="list-style-type: decimal">
-<li>Go to <a href="http://cran.us.r-project.org/" class="uri">http://cran.us.r-project.org/</a></li>
-<li>Click on “Download R for Linux”</li>
-<li>Choose appropriate directory for your linux operating system</li>
-<li>Follow R installation instructions</li>
-</ol>
+<div id="handling-more-data" class="section level2">
+<h2><span class="header-section-number">7.5</span> Handling more data</h2>
+<ul>
+<li><a href="https://rstudio-pubs-static.s3.amazonaws.com/72295_692737b667614d369bd87cb0f51c9a4b.html">Handling large data sets in R</a></li>
+<li><a href="http://davetang.org/muse/2013/09/03/handling-big-data-in-r/">A quick tutorial</a></li>
+<li><a href="http://stackoverflow.com/questions/1875795/best-practices-for-storing-and-using-data-frames-too-large-for-memory">Best practices for storing and using data frames too large for memory</a></li>
+<li><a href="http://theodi.org/blog/fig-data-11-tips-how-handle-big-data-r-and-1-bad-pun">11 tips</a></li>
+<li><a href="https://www.r-bloggers.com/five-ways-to-handle-big-data-in-r/">5 strategies</a></li>
+</ul>
 </div>
+<div id="tips-on-search-for-how-to-do-things" class="section level2">
+<h2><span class="header-section-number">7.6</span> Tips on search for how to do things</h2>
 </div>
-<div id="r-studio" class="section level2">
-<h2><span class="header-section-number">6.3</span> R Studio</h2>
-<ol style="list-style-type: decimal">
-<li>Download from <a href="https://www.rstudio.com/products/rstudio/download/preview/" class="uri">https://www.rstudio.com/products/rstudio/download/preview/</a></li>
-<li>Select appropriate installer listed under “Desktop Version”</li>
-<li>Follow installation instructions</li>
-</ol>
+<div id="general" class="section level2">
+<h2><span class="header-section-number">7.7</span> General</h2>
+<ul>
+<li><a href="https://cran.r-project.org/web/views/">Task Views</a></li>
+<li><a href="http://adv-r.had.co.nz/Data-structures.html">Data Structures</a></li>
+</ul>
 
 </div>
 </div>
@@ -239,8 +240,8 @@ $ <span class="kw">brew</span> install R</code></pre></div></li>
           </div>
         </div>
       </div>
-<a href="learning-more.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="appendix.html" class="navigation navigation-next " aria-label="Next page""><i class="fa fa-angle-right"></i></a>
+<a href="installation-instructions.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
 
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
