@@ -1,6 +1,6 @@
 # About this Guide {-}
 
-Houston R Users are hosting a [guided intro workshop](http://www.meetup.com/houstonr/events/234653360/) on November 12, 2016.  This guide is the full version of the short guide handed out at the workshop.  This should be a good reference for reviewing things we covered in person, or for a self-guided introduction to R.
+[Houston R Users](https://hrug-slack.herokuapp.com/) are hosting a [guided intro workshop](http://www.meetup.com/houstonr/events/234653360/) on November 12, 2016.  This guide is the full version of the short guide handed out at the workshop.  This is a reference for reviewing things we covered in person, or for a self-guided introduction to R.
 
 # Welcome to Intro to R
 
@@ -13,13 +13,13 @@ R is a programming language designed specifically for statistics.  Because it is
 ## When to use R?
 
 * **R is limited in producing highly-customized and interactive reporting visualizations**<br>
-  While R is able to produce interactive graphics, maps, and dashboards, a lot of the more expressive and customized interactive data presentations will require knowledge of JavaScript. The amount you can do directly from within R is increasing rapidly, however, and you can read more about that [here](./05-appendix).
+  While R is able to produce interactive graphics, maps, and dashboards, a lot of the more expressive and customized interactive data presentations will require knowledge of JavaScript. The amount you can do directly from within R is increasing rapidly, however, and you can read more about that [here](/appendix.html#interactive-r-graphics).
 
 * **R is not as expressive for general tasks such as scraping and crawling**<br>
-  New additions to R like `tidyr` and `dplyr` are making R more expressive; the result is R is becoming a strong competitor in more general tasks like [data-mining, data-wrangling, and scraping and crawling](./05-appendix) for data.
+  New additions to R like `tidyr` and `dplyr` are making R more expressive; the result is R is becoming a strong competitor in more general tasks like [data-mining, data-wrangling, and scraping and crawling](./appendix.html#webscraping-and-text-analysis) for data.
 
 * **R requires data to be loaded into memory**<br>
-  For projects where exceptionally large data needs to be analyzed or processed very quickly, we will want to consider using [tools that help us work around the memory limitations](./05-appendix).
+  For projects where exceptionally large data needs to be analyzed or processed very quickly, we will want to consider using [tools that help us work around the memory limitations](./appendix.html#handling-more-data).
 
 Overall, R is a top choice for data exploration, modelling, analysis, and static graphics.
 
