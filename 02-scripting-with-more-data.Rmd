@@ -240,22 +240,9 @@ Now, back to numeric data.
 
 ## Analyzing and Visualizing the data using a script
 
-
-We can start by visualizing the data. We have more data to play with now, but let's start with the same plot we used last time.
-
-```{r}
-# plot to compare temperature vs ozone
-plt <- ggplot(airquality) + geom_point(aes(x=Temp, y=Ozone))
-print(plt)
-```
-
-You'll notice two new things about what we did here. First, we assign the output to `plt`, this will be important when we want to make adjustments to the plot later. Second, you'll notice when we do that, nothing appears; we have to print the plt to get it to show up.
- 
- 
-## Creating a R script to save code and analysis
+### Creating a R script to save code and analysis
 
 Now, I want you to go back and do _everything_ we just did over again.
-
 
 What, you think that's ridiculous? The reality is, we often have to go back and make changes upstream. When we do this, it can get very, very painful if we're doing everything interactively, in the _console_.
 
@@ -278,22 +265,31 @@ And then we will clear the session, to remove all the variables from the environ
 
 
 
-It is good practice, in programming to place all the libraries we need at the top. Imagine arranging all the ingredients before we start following a recipie for our dish.
-
-```{r}
-```
-
-
 Let's take a moment to put all our work in. I know it's a pain but it will pay off if we want to make changes later.
 
-```{r}
+It is good practice, in programming to place all the libraries we need at the top. Imagine arranging all the ingredients before we start following a recipie for our dish.
+
+```{r message=FALSE}
 # load libraries
 library(ggplot2)
 library(dplyr)
 
 # read in data
 airquality <- read.csv('airquality.csv')
+```
 
+
+We can start by visualizing the data. We have more data to play with now, but let's start with the same plot we used last time.
+
+```{r}
+# plot to compare temperature vs ozone
+plt <- ggplot(airquality) + geom_point(aes(x=Temp, y=Ozone))
+print(plt)
+```
+
+You'll notice two new things about what we did here. First, we assign the output to `plt`, this will be important when we want to make adjustments to the plot later. Second, you'll notice when we do that, nothing appears; we have to print the plt to get it to show up.
+ 
+```{r}
 # filter for only complete cases
 aircomplete <- airquality[complete.cases(airquality), ]
 
@@ -301,6 +297,7 @@ aircomplete <- airquality[complete.cases(airquality), ]
 plt <- ggplot(aircomplete) + geom_point(aes(x=Temp, y=Ozone))
 print(plt)
 ```
+
 
 We can run the entire script by clicking *Source* at the top of the editor pane.
  
@@ -332,6 +329,7 @@ plt_2 <- plt + geom_abline(intercept = -147.64607 , slope = 2.43911)
 print(plt_2)
 ```
 
+
 ## Making a reproducible report
 
 Great. Now, what if we want to make a report of our work? With R, you get the power of `knitr`, which will _knit_ your work together into a report. Let's try it on our current script. Go to File -> Knit Document, name the file `airquality_report` and select HTML, then watch the magic happen!
@@ -341,6 +339,16 @@ Here is a link to an example script:
 
 * [example_script.R](https://github.com/HoustonUseRs/intro-to-R-guide/blob/master/example_script.R)
 * [example_script.html](example_script.html)
+
+R basically convert the R script into markdown, and then into HTML. So have have the option 
+of including some additional markdown instructions in this set. 
+We need just to prefix all lines with a `#'` to use markdown
+
+Here are a set of a few markdown examples.
+
+<img src="assets/markdown_help.png" style="width:304px">
+
+
 
 
 
