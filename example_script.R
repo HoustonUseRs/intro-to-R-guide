@@ -26,11 +26,11 @@ aircomplete <- airquality[complete.cases(airquality), ]
 plt <- ggplot(aircomplete) + geom_point(aes(x=Temp, y=Ozone, color = Solar.R))
 print(plt)
 
-# let change the colors of solar radiation, and save it in 
+# let change the colors of solar radiation, and save it in
 # a new variable
 plt = plt + scale_color_gradient(low = "orange", high = "red")
 
-#' ## run a linear model 
+#' ## run a linear model
 # ozone = a + bT + e
 ozone_model <- lm(Ozone ~ Temp, data = aircomplete)
 
@@ -53,9 +53,6 @@ ggplot(aircomplete) + geom_boxplot(aes(x=temp2, y=Ozone))
 #' So we can use factors, as explained in the previous section to switch their position.
 aircomplete = mutate(aircomplete, temp_fac = factor(temp2, levels = c("low", "high")))
 ggplot(aircomplete) + geom_boxplot(aes(x=temp_fac, y=Ozone))
-
-
-
 
 
 
