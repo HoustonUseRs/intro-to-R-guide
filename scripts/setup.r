@@ -8,7 +8,7 @@ setup_packages <- function(){
   #' 
   #' Assign to `packages_workshop` a vector of packages used in the workshop.
   #+ eval=FALSE
-  packages_workshop <- c('dplyr', 'ggplot2', 'broom', 'magrittr', 'openxlsx')
+  packages_workshop <- c('dplyr', 'ggplot2', 'broom', 'magrittr')
   #' Also, assign to `packages_utils` a vector of packages being used in this setup script only.
   #+ eval=FALSE
   packages_utils <- c('purrr')
@@ -85,7 +85,7 @@ write_dataset_to_files <- function(dataset_name, working_path, source_url_path) 
   #' `working_path`.
   #+ eval=FALSE
   xlsx_file_path <- paste0(working_path, '/', dataset_name, '.xlsx')
-  openxlsx::write.xlsx(x = dataset_as_dataframe, file = xlsx_file_path)
+  # openxlsx::write.xlsx(x = dataset_as_dataframe, file = xlsx_file_path)
   
   #' Put a nice message in the console.
   #+ eval=FALSE
