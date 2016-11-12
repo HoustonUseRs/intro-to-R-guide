@@ -1,18 +1,8 @@
 # This time it's for real!
 
-```{r include=FALSE, eval=FALSE}
-## Suppress this chunk in the book
-install.packages('ggplot2')
-install.packages('magrittr')
-install.packages('dplyr')
+```{r, echo=FALSE, message=FALSE}
+p_load(openxlsx)
 ```
-
-[//]: <> (```{r message=FALSE})
-[//]: <> (library(ggplot2))
-[//]: <> (library(magrittr))
-[//]: <> (library(dplyr))
-[//]: <> (```)
-
 
 Let's pick up the pace and put our newfound skills to the test. For this section, we're gonna use a dataset that looks more like what we'll encounter in real life. It's bigger in both dimensions; it has more rows but also more columns. It also has some missing data (oh noes!). Now things are getting real.
 
@@ -24,10 +14,18 @@ We can load our new dataset the same way as before, using the `read.csv()` funct
 airquality <- read.csv('airquality.csv')
 ```
 
+We can also load our dataset from an Excel file using the `openxlsx` package.
+
+```{r results="hide", eval=FALSE}
+install.packages('openxlsx')
+library(openxlsx)
+airquality <- read.xlsx('airquality.xlsx')
+```
+
 Let's take a moment to explore the new dataset using tools we learned in the previous section. Try `str`, `head`, `summary` and get a good feel for the dataset. For example, we can find the number of rows using `nrow`.
 
 ```{r}
-library(magrittr)
+library(magrittr) # load using `library` if not already loaded
 airquality %>% nrow()
 ```
 
@@ -54,7 +52,7 @@ airquality %>% is.na() %>% sum()
 If we try to call some descriptive statistics on any columns with `NA` values, we will get an ugly result. Let's try getting the mean for Ozone levels.
 
 ```{r}
-library(dplyr)
+library(dplyr) # load using `library` if not already loaded
 airquality %>% summarise(mean(Ozone))
 ```
 

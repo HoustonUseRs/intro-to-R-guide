@@ -8,10 +8,10 @@ setup_packages <- function(){
   #' 
   #' Assign to `packages_workshop` a vector of packages used in the workshop.
   #+ eval=FALSE
-  packages_workshop <- c('dplyr', 'ggplot2', 'broom', 'magrittr')
+  packages_workshop <- c('dplyr', 'ggplot2', 'broom', 'magrittr', 'openxlsx')
   #' Also, assign to `packages_utils` a vector of packages being used in this setup script only.
   #+ eval=FALSE
-  packages_utils <- c('openxlsx', 'purrr')
+  packages_utils <- c('purrr')
   
   #' The `installed.packages` function returns a dataframe of packages that are installed.
   #' Assign to `installed_packages_as_vector` a vector of installed packages by name.
