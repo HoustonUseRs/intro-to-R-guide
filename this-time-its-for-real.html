@@ -117,10 +117,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.1" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#loading-and-exploring-a-larger-dataset"><i class="fa fa-check"></i><b>3.1</b> Loading and exploring a larger dataset</a></li>
 <li class="chapter" data-level="3.2" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#counting-missing-values"><i class="fa fa-check"></i><b>3.2</b> Counting missing values</a></li>
 <li class="chapter" data-level="3.3" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#ignoring-missing-values"><i class="fa fa-check"></i><b>3.3</b> Ignoring missing values</a></li>
-<li class="chapter" data-level="3.4" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#analyzing-and-visualizing-the-data-using-a-script"><i class="fa fa-check"></i><b>3.4</b> Analyzing and Visualizing the data using a script</a></li>
-<li class="chapter" data-level="3.5" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#creating-a-r-script-to-save-code-and-analysis"><i class="fa fa-check"></i><b>3.5</b> Creating a R script to save code and analysis</a></li>
-<li class="chapter" data-level="3.6" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#modeling-the-data-1"><i class="fa fa-check"></i><b>3.6</b> Modeling the data</a></li>
-<li class="chapter" data-level="3.7" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#making-a-reproducible-report"><i class="fa fa-check"></i><b>3.7</b> Making a reproducible report</a></li>
+<li class="chapter" data-level="3.4" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#non-numeric-data"><i class="fa fa-check"></i><b>3.4</b> Non-numeric data</a></li>
+<li class="chapter" data-level="3.5" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#analyzing-and-visualizing-the-data-using-a-script"><i class="fa fa-check"></i><b>3.5</b> Analyzing and Visualizing the data using a script</a></li>
+<li class="chapter" data-level="3.6" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#creating-a-r-script-to-save-code-and-analysis"><i class="fa fa-check"></i><b>3.6</b> Creating a R script to save code and analysis</a></li>
+<li class="chapter" data-level="3.7" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#modeling-the-data-1"><i class="fa fa-check"></i><b>3.7</b> Modeling the data</a></li>
+<li class="chapter" data-level="3.8" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#making-a-reproducible-report"><i class="fa fa-check"></i><b>3.8</b> Making a reproducible report</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="time-to-start-exploring-the-data.html"><a href="time-to-start-exploring-the-data.html"><i class="fa fa-check"></i><b>4</b> Time to start exploring the data!</a><ul>
 <li class="chapter" data-level="4.1" data-path="time-to-start-exploring-the-data.html"><a href="time-to-start-exploring-the-data.html#r-graphics"><i class="fa fa-check"></i><b>4.1</b> R Graphics</a></li>
@@ -180,21 +181,22 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1><span class="header-section-number">3</span> This time it’s for real!</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)
 <span class="kw">library</span>(magrittr)
-<span class="kw">library</span>(Hmisc)</code></pre></div>
+<span class="kw">library</span>(Hmisc)
+<span class="kw">library</span>(dplyr)</code></pre></div>
 <p>Let’s pick up the pace and put our newfound skills to the test. For this section, we’re gonna use a dataset that looks more like what we’ll encounter in real life. It’s bigger in both dimensions; it has more rows but also more columns. It also has some missing data (oh noes!). Now things are getting real.</p>
 <div id="loading-and-exploring-a-larger-dataset" class="section level2">
 <h2><span class="header-section-number">3.1</span> Loading and exploring a larger dataset</h2>
 <p>We can load our new dataset the same way as before, using the <code>read.csv()</code> function.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">airquality &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;airquality.csv&#39;</span>)</code></pre></div>
 <p>Let’s take a moment to explore the new dataset using tools we learned in the previous section. Try <code>str</code>, <code>head</code>, <code>summary</code> and get a good feel for the dataset. We can find the number of rows using <code>nrow</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nrow</span>(airquality)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">airquality %&gt;%<span class="st"> </span><span class="kw">nrow</span>()</code></pre></div>
 <pre><code>## [1] 153</code></pre>
 </div>
 <div id="counting-missing-values" class="section level2">
 <h2><span class="header-section-number">3.2</span> Counting missing values</h2>
 <p>I mentioned this dataset has some missing data, you may have noticed it already when exploring. In R, missing values are represented by the <code>NA</code> symbol.</p>
 <p>It’s always a good idea to check for missing values, even if you are <em>sure</em> your data is complete. We can ask R to tell us whether there are any NAs in the dataset using the <code>is.na()</code> function.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">is.na</span>(airquality)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">airquality %&gt;%<span class="st"> </span><span class="kw">is.na</span>()</code></pre></div>
 <pre><code>##        Ozone Solar.R  Wind  Temp Month   Day
 ##   [1,] FALSE   FALSE FALSE FALSE FALSE FALSE
 ##   [2,] FALSE   FALSE FALSE FALSE FALSE FALSE
@@ -358,17 +360,126 @@ airquality %&gt;%<span class="st"> </span><span class="kw">is.na</span>() %&gt;%
 <div id="ignoring-missing-values" class="section level2">
 <h2><span class="header-section-number">3.3</span> Ignoring missing values</h2>
 <p>If we try to call some descriptive statistics on any columns with <code>NA</code> values, we will get an ugly result. Let’s try getting the mean for Ozone levels.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(airquality[, <span class="dv">1</span>])</code></pre></div>
-<pre><code>## [1] NA</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># library(dplyr) # load the library if its not already loaded</span>
+airquality %&gt;%<span class="st"> </span><span class="kw">summarise</span>(<span class="kw">mean</span>(Ozone))</code></pre></div>
+<pre><code>##   mean(Ozone)
+## 1          NA</code></pre>
 <p>Not what we were looking for.</p>
 <p>By default, many functions in R will return NA if called on a vector with any NA values inside. We can override this behavior by adding the <code>na.rm = TRUE</code> argument</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">mean</span>(airquality[, <span class="dv">1</span>], <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</code></pre></div>
-<pre><code>## [1] 42.12931</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">airquality %&gt;%<span class="st"> </span><span class="kw">summarise</span>(<span class="kw">mean</span>(Ozone, <span class="dt">na.rm=</span>T))</code></pre></div>
+<pre><code>##   mean(Ozone, na.rm = T)
+## 1               42.12931</code></pre>
 <p>There are important questions to ask yourself when dealing with missing data, there’s no one-size-fits-all answer for it. A slapdash approach is to simply <em>remove</em> any rows with missing data.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aircomplete &lt;-<span class="st"> </span>airquality[<span class="kw">complete.cases</span>(airquality), ]</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aircomplete &lt;-<span class="st"> </span>airquality %&gt;%<span class="st"> </span><span class="kw">filter</span>(<span class="kw">complete.cases</span>(airquality))</code></pre></div>
 <p>If you call <code>nrow</code> on aircomplete, you’ll see we have 111 rows now instead of the 153 we had before.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">nrow</span>(aircomplete)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aircomplete %&gt;%<span class="st"> </span><span class="kw">nrow</span>()</code></pre></div>
 <pre><code>## [1] 111</code></pre>
+</div>
+<div id="non-numeric-data" class="section level2">
+<h2><span class="header-section-number">3.4</span> Non-numeric data</h2>
+<p>So far, we’ve primarily worked with numeric data.</p>
+<p>Let’s talk briefly about how R handles string or character data.</p>
+<p>Here’s a data frame with some letters.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myname &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">letter=</span><span class="kw">c</span>(<span class="st">&quot;k&quot;</span>,<span class="st">&quot;e&quot;</span>,<span class="st">&quot;l&quot;</span>,<span class="st">&quot;s&quot;</span>,<span class="st">&quot;e&quot;</span>,<span class="st">&quot;y&quot;</span>))</code></pre></div>
+<p>Let’s look at the structure of the <em>myname</em> object, and the <em>letter</em> field of the object.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myname %&gt;%<span class="st"> </span><span class="kw">str</span>()</code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    6 obs. of  1 variable:
+##  $ letter: Factor w/ 5 levels &quot;e&quot;,&quot;k&quot;,&quot;l&quot;,&quot;s&quot;,..: 2 1 3 4 1 5</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myname$letter %&gt;%<span class="st"> </span><span class="kw">str</span>()</code></pre></div>
+<pre><code>##  Factor w/ 5 levels &quot;e&quot;,&quot;k&quot;,&quot;l&quot;,&quot;s&quot;,..: 2 1 3 4 1 5</code></pre>
+<p>Hmm, it says Factor w/ 5 levels “e”,“k”,“l”,“s”,..: 2 1 3 4 1 5. What does this mean?</p>
+<p>By default, R stores string fields in data frames as <em>factors</em>.</p>
+<p>Behind the scenes, R identifies the unique characters strings in the field, substitutes each one with a unique integer, and remembers the original strings as <em>levels</em>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myname$letter %&gt;%<span class="st"> </span><span class="kw">levels</span>()</code></pre></div>
+<pre><code>## [1] &quot;e&quot; &quot;k&quot; &quot;l&quot; &quot;s&quot; &quot;y&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myname$letter %&gt;%<span class="st"> </span><span class="kw">as.integer</span>()</code></pre></div>
+<pre><code>## [1] 2 1 3 4 1 5</code></pre>
+<p>For many processes and analyses, this data structure will work fine.</p>
+<p>In some situations, however, it becomes problematic.</p>
+<p>Let’s try to modify the <em>myname</em> data frame, and make the letters spell out <em>kelsie</em> rather than <em>kelsey</em>.</p>
+<p>We need to change the letter in the 6th position to e and the letter in the 5th position to i.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myname$letter[<span class="dv">6</span>] &lt;-<span class="st"> &quot;e&quot;</span>
+myname$letter[<span class="dv">5</span>] &lt;-<span class="st"> &quot;i&quot;</span></code></pre></div>
+<pre><code>## Warning in `[&lt;-.factor`(`*tmp*`, 5, value = structure(c(2L, 1L, 3L, 4L, :
+## invalid factor level, NA generated</code></pre>
+<p>Let’s print the updated data frame.</p>
+<p>Not what we want.</p>
+<p>There are a couple of ways to override R’s default behavior of storing text fields as columns.</p>
+<p>If we’re creating a data frame from scratch, we can set the <em>stringsAsFactors</em> parameter equal to <em>FALSE</em>.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myname &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">letter=</span><span class="kw">c</span>(<span class="st">&quot;k&quot;</span>,<span class="st">&quot;e&quot;</span>,<span class="st">&quot;l&quot;</span>,<span class="st">&quot;s&quot;</span>,<span class="st">&quot;e&quot;</span>,<span class="st">&quot;y&quot;</span>), <span class="dt">stringsAsFactors=</span>F)</code></pre></div>
+<p>Check out the structure <em>str</em> and see what is different.</p>
+<p>Let’s try making the same modifications now.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myname$letter[<span class="dv">6</span>] &lt;-<span class="st"> &quot;e&quot;</span>
+myname$letter[<span class="dv">5</span>] &lt;-<span class="st"> &quot;i&quot;</span></code></pre></div>
+<p>The character data type is much more flexible.</p>
+<p>If we’ve already created (or read) a data frame, we can use the <em>as.character</em> function on the text field itself.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myname &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">letter=</span><span class="kw">c</span>(<span class="st">&quot;k&quot;</span>,<span class="st">&quot;e&quot;</span>,<span class="st">&quot;l&quot;</span>,<span class="st">&quot;s&quot;</span>,<span class="st">&quot;e&quot;</span>,<span class="st">&quot;y&quot;</span>))
+myname %&gt;%<span class="st"> </span><span class="kw">str</span>()</code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    6 obs. of  1 variable:
+##  $ letter: Factor w/ 5 levels &quot;e&quot;,&quot;k&quot;,&quot;l&quot;,&quot;s&quot;,..: 2 1 3 4 1 5</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myname$letter &lt;-<span class="st"> </span>myname$letter %&gt;%<span class="st"> </span><span class="kw">as.character</span>()
+myname %&gt;%<span class="st"> </span><span class="kw">str</span>()</code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    6 obs. of  1 variable:
+##  $ letter: chr  &quot;k&quot; &quot;e&quot; &quot;l&quot; &quot;s&quot; ...</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">myname$letter[<span class="dv">6</span>] &lt;-<span class="st"> &quot;e&quot;</span>
+myname$letter[<span class="dv">5</span>] &lt;-<span class="st"> &quot;i&quot;</span></code></pre></div>
+<p>Looking out for factors is critical when typecasting numeric data that is mistakenly stored as text.</p>
+<p>Here’s another data frame.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fives &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">v1=</span><span class="kw">c</span>(<span class="st">&quot;5&quot;</span>,<span class="st">&quot;10&quot;</span>,<span class="st">&quot;15&quot;</span>,<span class="st">&quot;20&quot;</span>))</code></pre></div>
+<p>Let’s look at the structure and levels:</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fives %&gt;%<span class="st"> </span><span class="kw">str</span>()</code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    4 obs. of  1 variable:
+##  $ v1: Factor w/ 4 levels &quot;10&quot;,&quot;15&quot;,&quot;20&quot;,..: 4 1 2 3</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fives$v1 %&gt;%<span class="st"> </span><span class="kw">levels</span>()</code></pre></div>
+<pre><code>## [1] &quot;10&quot; &quot;15&quot; &quot;20&quot; &quot;5&quot;</code></pre>
+<p>We want these data points stored as a numeric type, but currently, they’re stored as text, and specifically as a factor.</p>
+<p>What does it look like if we convert the factor to numeric?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fives$v1 %&gt;%<span class="st"> </span><span class="kw">as.numeric</span>()</code></pre></div>
+<pre><code>## [1] 4 1 2 3</code></pre>
+<p>So problematic! Why did this happen?</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">fives$v1 %&gt;%<span class="st"> </span><span class="kw">as.character</span>() %&gt;%<span class="st"> </span><span class="kw">as.numeric</span>()</code></pre></div>
+<pre><code>## [1]  5 10 15 20</code></pre>
+<p>That works as expected.</p>
+<p>Are factors <em>ever</em> useful? Yes.</p>
+<p>Here’s some pretend survey data.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">survey &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">gender=</span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;Male&quot;</span>,<span class="st">&quot;Female&quot;</span>),<span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">7</span>)),<span class="dt">response=</span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="st">&quot;Excellent&quot;</span>,<span class="st">&quot;Good&quot;</span>,<span class="st">&quot;Fair&quot;</span>,<span class="st">&quot;Poor&quot;</span>),<span class="dv">3</span>))</code></pre></div>
+<p>Let’s change the levels of the gender field.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">survey$gender %&gt;%<span class="st"> </span><span class="kw">levels</span>()</code></pre></div>
+<pre><code>## [1] &quot;Female&quot; &quot;Male&quot;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(survey$gender) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;F&quot;</span>,<span class="st">&quot;M&quot;</span>)</code></pre></div>
+<p>What does it look like now?</p>
+<p>We can also take advantage of our understanding of the factor data type to convert the response variable into a numeric field.</p>
+<p>I want <em>excellent</em> to map to 4, <em>good</em> to map to 3, <em>fair</em> to map to 2 and <em>poor</em> to map to 1.</p>
+<p>We’ll use the <em>as.numeric</em> function eventually, but first we need to see if the levels are in the order that we want them.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">survey$response %&gt;%<span class="st"> </span><span class="kw">levels</span>()</code></pre></div>
+<pre><code>## [1] &quot;Excellent&quot; &quot;Fair&quot;      &quot;Good&quot;      &quot;Poor&quot;</code></pre>
+<p>They’re not. Let’s change them, so that less favorable responses will appear before more favorable responses when alphabetized.</p>
+<p>After we change the levels, we’ll need to turn the response field into a character field, and then re-factor.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">levels</span>(survey$response) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;D Excellent&quot;</span>,<span class="st">&quot;B Fair&quot;</span>,<span class="st">&quot;C Good&quot;</span>,<span class="st">&quot;A Poor&quot;</span>)
+survey$response &lt;-<span class="st"> </span>survey$response %&gt;%<span class="st"> </span><span class="kw">as.character</span>() %&gt;%<span class="st"> </span><span class="kw">as.factor</span>()
+survey$response %&gt;%<span class="st"> </span><span class="kw">levels</span>()</code></pre></div>
+<pre><code>## [1] &quot;A Poor&quot;      &quot;B Fair&quot;      &quot;C Good&quot;      &quot;D Excellent&quot;</code></pre>
+<p>Much better. Now we can call the <em>as.numeric</em> function.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">survey %&gt;%<span class="st"> </span><span class="kw">mutate</span>(<span class="kw">as.numeric</span>(response))</code></pre></div>
+<pre><code>##    gender    response as.numeric(response)
+## 1       M D Excellent                    4
+## 2       M      C Good                    3
+## 3       M      B Fair                    2
+## 4       M      A Poor                    1
+## 5       M D Excellent                    4
+## 6       F      C Good                    3
+## 7       F      B Fair                    2
+## 8       F      A Poor                    1
+## 9       F D Excellent                    4
+## 10      F      C Good                    3
+## 11      F      B Fair                    2
+## 12      F      A Poor                    1</code></pre>
+<p>How useful!</p>
+<p>The takeaway:</p>
+<p>By default, R stores text fields as factors. And factors are strange.</p>
+<p>At times it seems like they are working against us.</p>
+<p>But if we understand how they work, we can make them work for us!</p>
+<p>Now, back to numeric data.</p>
 <!--- might need to skip this section
 ## Imputing missing values
 
@@ -387,17 +498,17 @@ Now that we've addressed missingness in our dataset, we're ready to start analys
 -->
 </div>
 <div id="analyzing-and-visualizing-the-data-using-a-script" class="section level2">
-<h2><span class="header-section-number">3.4</span> Analyzing and Visualizing the data using a script</h2>
+<h2><span class="header-section-number">3.5</span> Analyzing and Visualizing the data using a script</h2>
 <p>We can start by visualizing the data. We have more data to play with now, but let’s start with the same plot we used last time.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># plot to compare temperature vs ozone</span>
 plt &lt;-<span class="st"> </span><span class="kw">ggplot</span>(airquality) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Temp, <span class="dt">y=</span>Ozone))
 <span class="kw">print</span>(plt)</code></pre></div>
 <pre><code>## Don&#39;t know how to automatically pick scale for object of type impute. Defaulting to continuous.</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-50-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-66-1.png" width="672" /></p>
 <p>You’ll notice two new things about what we did here. First, we assign the output to <code>plt</code>, this will be important when we want to make adjustments to the plot later. Second, you’ll notice when we do that, nothing appears; we have to print the plt to get it to show up.</p>
 </div>
 <div id="creating-a-r-script-to-save-code-and-analysis" class="section level2">
-<h2><span class="header-section-number">3.5</span> Creating a R script to save code and analysis</h2>
+<h2><span class="header-section-number">3.6</span> Creating a R script to save code and analysis</h2>
 <p>Now, I want you to go back and do <em>everything</em> we just did over again.</p>
 <p>What, you think that’s ridiculous? The reality is, we often have to go back and make changes upstream. When we do this, it can get very, very painful if we’re doing everything interactively, in the <em>console</em>.</p>
 <p>In all our previous examples we have been using the interactive console. It is an excellent application to quickly analyze the data, but we need to keep a reasonable log of what we did (and possibly way).</p>
@@ -422,13 +533,13 @@ aircomplete &lt;-<span class="st"> </span>airquality[<span class="kw">complete.c
 <span class="co"># create a plot comparing, Ozone levels with Temperature</span>
 plt &lt;-<span class="st"> </span><span class="kw">ggplot</span>(aircomplete) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Temp, <span class="dt">y=</span>Ozone))
 <span class="kw">print</span>(plt)</code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-52-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-68-1.png" width="672" /></p>
 <p>We can run the entire script by clicking <em>Source</em> at the top of the editor pane.</p>
 <p>To run just a specific line or lines, you can select the section you want to run and then click <em>Run</em></p>
 <p>Let’s get back to our data. You may have seen a pattern in the plot we made earlier. Let’s pick up our analysis with a little more visualization and some modeling.</p>
 </div>
 <div id="modeling-the-data-1" class="section level2">
-<h2><span class="header-section-number">3.6</span> Modeling the data</h2>
+<h2><span class="header-section-number">3.7</span> Modeling the data</h2>
 <p>We’ll model the data using the reliable <code>lm()</code> function again. Let’s add the following to the end of our script and <em>Source</em> it.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ozone_model &lt;-<span class="st"> </span><span class="kw">lm</span>(Ozone ~<span class="st"> </span>Temp, <span class="dt">data =</span> aircomplete)
 <span class="kw">print</span>(<span class="kw">summary</span>(ozone_model))</code></pre></div>
@@ -457,10 +568,10 @@ plt &lt;-<span class="st"> </span><span class="kw">ggplot</span>(aircomplete) +<
 <p>With that info, we’re ready to add our linear model. Add the following lines to your script and <em>Source</em> it.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plt_2 &lt;-<span class="st"> </span>plt +<span class="st"> </span><span class="kw">geom_abline</span>(<span class="dt">intercept =</span> -<span class="fl">147.64607</span> , <span class="dt">slope =</span> <span class="fl">2.43911</span>)
 <span class="kw">print</span>(plt_2)</code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-55-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-71-1.png" width="672" /></p>
 </div>
 <div id="making-a-reproducible-report" class="section level2">
-<h2><span class="header-section-number">3.7</span> Making a reproducible report</h2>
+<h2><span class="header-section-number">3.8</span> Making a reproducible report</h2>
 <p>Great. Now, what if we want to make a report of our work? With R, you get the power of <code>knitr</code>, which will <em>knit</em> your work together into a report. Let’s try it on our current script. Go to File -&gt; Knit Document, name the file <code>airquality_report</code> and select HTML, then watch the magic happen!</p>
 <p>Here is a link to an example script: <a href="example_script.R" class="uri">example_script.R</a> <a href="example_script.html" class="uri">example_script.html</a></p>
 

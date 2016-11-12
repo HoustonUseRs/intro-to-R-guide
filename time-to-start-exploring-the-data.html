@@ -117,10 +117,11 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.1" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#loading-and-exploring-a-larger-dataset"><i class="fa fa-check"></i><b>3.1</b> Loading and exploring a larger dataset</a></li>
 <li class="chapter" data-level="3.2" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#counting-missing-values"><i class="fa fa-check"></i><b>3.2</b> Counting missing values</a></li>
 <li class="chapter" data-level="3.3" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#ignoring-missing-values"><i class="fa fa-check"></i><b>3.3</b> Ignoring missing values</a></li>
-<li class="chapter" data-level="3.4" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#analyzing-and-visualizing-the-data-using-a-script"><i class="fa fa-check"></i><b>3.4</b> Analyzing and Visualizing the data using a script</a></li>
-<li class="chapter" data-level="3.5" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#creating-a-r-script-to-save-code-and-analysis"><i class="fa fa-check"></i><b>3.5</b> Creating a R script to save code and analysis</a></li>
-<li class="chapter" data-level="3.6" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#modeling-the-data-1"><i class="fa fa-check"></i><b>3.6</b> Modeling the data</a></li>
-<li class="chapter" data-level="3.7" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#making-a-reproducible-report"><i class="fa fa-check"></i><b>3.7</b> Making a reproducible report</a></li>
+<li class="chapter" data-level="3.4" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#non-numeric-data"><i class="fa fa-check"></i><b>3.4</b> Non-numeric data</a></li>
+<li class="chapter" data-level="3.5" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#analyzing-and-visualizing-the-data-using-a-script"><i class="fa fa-check"></i><b>3.5</b> Analyzing and Visualizing the data using a script</a></li>
+<li class="chapter" data-level="3.6" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#creating-a-r-script-to-save-code-and-analysis"><i class="fa fa-check"></i><b>3.6</b> Creating a R script to save code and analysis</a></li>
+<li class="chapter" data-level="3.7" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#modeling-the-data-1"><i class="fa fa-check"></i><b>3.7</b> Modeling the data</a></li>
+<li class="chapter" data-level="3.8" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#making-a-reproducible-report"><i class="fa fa-check"></i><b>3.8</b> Making a reproducible report</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="time-to-start-exploring-the-data.html"><a href="time-to-start-exploring-the-data.html"><i class="fa fa-check"></i><b>4</b> Time to start exploring the data!</a><ul>
 <li class="chapter" data-level="4.1" data-path="time-to-start-exploring-the-data.html"><a href="time-to-start-exploring-the-data.html#r-graphics"><i class="fa fa-check"></i><b>4.1</b> R Graphics</a></li>
@@ -186,13 +187,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h2><span class="header-section-number">4.1</span> R Graphics</h2>
 <p>R has a few graphics packages to choose from. Many useful plots come ‘out of the box’ in R. For example, if we want to see a scatterplot matrix of all the data columns in the <em>airquality</em> dataset, we could use the <em>pairs</em> funtion.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">pairs</span>(airquality)</code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-58-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
 <p>While the basic package is nice, we will be using <em>ggplot2</em> today. It is a powerful graphics package that is designed to make your plots adaptable, scalable, and easy to produce. It is a very popular graphics package used by a large number of R users worldwide.</p>
 <p>Many times, it’s helpful to just do a scatterplot of two variables</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(airquality, <span class="kw">aes</span>(Ozone, Solar.R)) +<span class="st"> </span><span class="kw">geom_point</span>()
 p</code></pre></div>
 <pre><code>## Warning: Removed 42 rows containing missing values (geom_point).</code></pre>
-<p><img src="_main_files/figure-html/unnamed-chunk-59-1.png" width="672" /></p>
+<p><img src="_main_files/figure-html/unnamed-chunk-75-1.png" width="672" /></p>
 </div>
 </div>
             </section>
