@@ -1,6 +1,6 @@
 # Learning More
 
-There are many ways to continue learning R.  No matter what you choose to be your next step, we're here and eager to share experiences and questions!  Join us in person for our [Houston R UseRs Meetups](http://www.meetup.com/houstonr/) or online in our [Slack](https://hrug.slack.com) chat anytime.
+There are many ways to continue learning R.  No matter what you choose to be your next step, we're here and eager to share experiences and questions!  Join us in person for our [Houston R UseRs Meetups](http://www.meetup.com/houstonr/) or online in our [Slack](https://hrug-slack.herokuapp.com/) chat anytime.
 
 ## Next Steps
 
@@ -43,18 +43,20 @@ Once you have learnt R, try your coding skills on analyzing a collection of publ
 * Kaggle Titantic examples - Learn how to tackle a machine learning problem and participate in competetions
   * [Gettings started in R](https://www.kaggle.com/c/titanic/details/new-getting-started-with-r)
   * [Exploring Survival on the Titanic](https://www.kaggle.com/mrisdal/titanic/exploring-survival-on-the-titanic)
- * [Houston data jams](https://houstondatavis.github.io/data-jams/) Attend data visualization meetups in Houston.
+* [Houston data jams](https://houstondatavis.github.io/data-jams/) Attend data visualization meetups in Houston.
+* [Quick-R](http://www.statmethods.net/) A collection of tutorials on how to do various things in R
+* [drivendata](https://www.drivendata.org/) Like Kaggle, with a focus on good will and non-profits
+* [Data Camp](https://www.datacamp.com/) Full online, interactive curriculum, some free, some not
 
-* Others resources to check [R by example](http://www.mayin.org/ajayshah/KB/R/index.html), [R Examples](http://www.rexamples.com/), [Quick-R](http://www.statmethods.net/), [Data Camp](https://www.datacamp.com/), [drivendata](https://www.drivendata.org/)
+* Others resources to check [R by example](http://www.mayin.org/ajayshah/KB/R/index.html), [R Examples](http://www.rexamples.com/)
 
 ### Getting Help
 
-* Houston R UseRs [Slack](https://hrug.slack.com) and [Meetup](http://www.meetup.com/houstonr/)
-
+* Houston R UseRs [Slack](https://hrug-slack.herokuapp.com/) and [Meetup](http://www.meetup.com/houstonr/)
+* [Cross Validated](http://stats.stackexchange.com/)
 * [Stack Overflow](http://stackoverflow.com/)
 
 ### Staying up to date
 
 * [RWeekly](https://rweekly.org/)
-
 * [Awesome-R](https://awesome-r.com/)

@@ -8,10 +8,10 @@ setup_packages <- function(){
   #' 
   #' Assign to `packages_workshop` a vector of packages used in the workshop.
   #+ eval=FALSE
-  packages_workshop <- c('dplyr', 'ggplot2', 'broom', 'magrittr')
+  packages_workshop <- c('dplyr', 'ggplot2', 'broom', 'magrittr', 'openxlsx')
   #' Also, assign to `packages_utils` a vector of packages being used in this setup script only.
   #+ eval=FALSE
-  packages_utils <- c('openxlsx', 'purrr')
+  packages_utils <- c('purrr')
   
   #' The `installed.packages` function returns a dataframe of packages that are installed.
   #' Assign to `installed_packages_as_vector` a vector of installed packages by name.
@@ -81,7 +81,7 @@ write_dataset_to_files <- function(dataset_name, working_path, source_url_path) 
   #+ eval=FALSE
   message(paste0("Creating ", working_path, " in ", getwd()))
   
-  #' From the `xlsx` package, use the `write.xlsx` function to write the dataset as a xlsx to the
+  #' From the `openxlsx` package, use the `write.xlsx` function to write the dataset as a xlsx to the
   #' `working_path`.
   #+ eval=FALSE
   xlsx_file_path <- paste0(working_path, '/', dataset_name, '.xlsx')
@@ -111,7 +111,7 @@ setup_datasets <- function(working_path, source_url_path){
   library('magrittr')
   #' Assign to `datasets` a vector of the datasets we as files on this computer.
   #+ eval=FALSE
-  datasets <- c('crickets', 'airquality')
+  datasets <- c('crickets', 'airquality', 'Test_Titanic', 'Train_Titanic')
   
   #' Take the `datasets`
   #' and using `walk` from the `purrr` package,

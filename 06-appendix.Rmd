@@ -1,0 +1,49 @@
+# Appendix
+
+## Webscraping and text analysis
+
+* [Webscraping and text analysis](http://datascienceplus.com/goodreads-webscraping-and-text-analysis-with-r-part-1/)
+* [R-Bloggers search for web scraping](https://www.r-bloggers.com/search/web%20scraping/)
+* [A tutorial using Super Bowl Data](https://rpubs.com/Radcliffe/superbowl)
+* [Scraping with rvest](https://www.r-bloggers.com/rvest-easy-web-scraping-with-r/)
+* [Scraping with Selenium](https://www.r-bloggers.com/scraping-with-selenium/)
+
+## Machine Learning in R
+
+* [Deep learning](https://www.r-bloggers.com/a-simple-workflow-for-deep-learning/)
+* [Machine learning in R](https://www.r-bloggers.com/machine-learning-with-r/)
+* [R for Machine Learning notes](https://ocw.mit.edu/courses/sloan-school-of-management/15-097-prediction-machine-learning-and-statistics-spring-2012/lecture-notes/MIT15_097S12_lec02.pdf)
+* [R Machine Learning Group on Reddit](https://www.reddit.com/r/MachineLearning/comments/575jz8/discussion_join_us_on_rlearnmachinelearning/#bottom-comments)
+
+## Interactive R Graphics
+
+* [Interactive visualizations with R](http://ouzor.github.io/blog/2014/11/21/interactive-visualizations.html)
+  * _"A minireview of R packages ggvis, rCharts, plotly and googleVis for interactive visualizations"_
+* [Shiny Tutorial](http://shiny.rstudio.com/tutorial/)
+* [Plotly ggplot](https://plot.ly/ggplot2/)
+* [Flex Dashboard](http://rmarkdown.rstudio.com/flexdashboard/)
+
+## Maps
+
+* [Leaflet for R](http://rstudio.github.io/leaflet/)
+  * Intro to making interactive maps in R
+* [Spatial Data with R](http://robinlovelace.net/r/2014/01/30/spatial-data-with-R-tutorial.html)
+* [Making Maps with R](http://www.molecularecologist.com/2012/09/making-maps-with-r/)
+* [R-Bloggers search for maps](https://www.r-bloggers.com/search/maps/)
+
+## Handling more data
+
+* [Handling large data sets in R](https://rstudio-pubs-static.s3.amazonaws.com/72295_692737b667614d369bd87cb0f51c9a4b.html)
+* [A quick tutorial](http://davetang.org/muse/2013/09/03/handling-big-data-in-r/)
+* [Best practices for storing and using data frames too large for memory](http://stackoverflow.com/questions/1875795/best-practices-for-storing-and-using-data-frames-too-large-for-memory)
+* [11 tips](http://theodi.org/blog/fig-data-11-tips-how-handle-big-data-r-and-1-bad-pun)
+* [5 strategies](https://www.r-bloggers.com/five-ways-to-handle-big-data-in-r/)
+
+## Tips on search for how to do things
+
+
+
+## General
+
+* [Task Views](https://cran.r-project.org/web/views/)
+* [Data Structures](http://adv-r.had.co.nz/Data-structures.html)
