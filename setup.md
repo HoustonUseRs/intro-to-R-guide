@@ -12,7 +12,7 @@ Assign to `packages_workshop` a vector of packages used in the workshop.
 
 
 ```r
-  packages_workshop <- c('dplyr', 'ggplot2', 'broom', 'magrittr', 'Hmisc')
+  packages_workshop <- c('dplyr', 'ggplot2', 'broom', 'magrittr')
 ```
 
 Also, assign to `packages_utils` a vector of packages being used in this setup script only.

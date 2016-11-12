@@ -10,7 +10,7 @@ We are very excited you could make it to this Intro to R workshop!  We hope to l
 
 R is a programming language designed specifically for statistics.  Because it is a free and open source language, many people have contributed to the R ecosystem.  In addition to being very powerful and expressive for statistical analysis, R has become very popular for doing exploratory data visualization and reporting as well.
 
-## Why not R?
+## When to use R?
 
 * **R is limited in producing highly-customized and interactive reporting visualizations**<br>
   While R is able to produce interactive graphics, maps, and dashboards, a lot of the more expressive and customized interactive data presentations will require knowledge of JavaScript. The amount you can do directly from within R is increasing rapidly, however, and you can read more about that [here](./05-appendix).

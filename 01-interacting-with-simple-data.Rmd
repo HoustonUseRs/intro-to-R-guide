@@ -124,7 +124,6 @@ library(pacman)
 p_load(dplyr)
 p_load(broom)
 p_load(ggplot2)
-p_load(Hmisc)
 ```
 
 
