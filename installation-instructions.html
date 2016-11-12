@@ -149,10 +149,15 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="7" data-path="installation-instructions.html"><a href="installation-instructions.html"><i class="fa fa-check"></i><b>7</b> Installation Instructions</a><ul>
-<li class="chapter" data-level="7.1" data-path="installation-instructions.html"><a href="installation-instructions.html#installing-r-on-mac-os-x"><i class="fa fa-check"></i><b>7.1</b> Installing R on Mac OS X</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="installation-instructions.html"><a href="installation-instructions.html#installing-r-with-homebrew"><i class="fa fa-check"></i><b>7.1.1</b> Installing R with Homebrew</a></li>
+<li class="chapter" data-level="7.1" data-path="installation-instructions.html"><a href="installation-instructions.html#r-for-mac-os-x"><i class="fa fa-check"></i><b>7.1</b> R for Mac OS X</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="installation-instructions.html"><a href="installation-instructions.html#option-1-cran"><i class="fa fa-check"></i><b>7.1.1</b> Option 1: CRAN</a></li>
+<li class="chapter" data-level="7.1.2" data-path="installation-instructions.html"><a href="installation-instructions.html#option-2-homebrew"><i class="fa fa-check"></i><b>7.1.2</b> Option 2: Homebrew</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="installation-instructions.html"><a href="installation-instructions.html#installing-r-on-windows"><i class="fa fa-check"></i><b>7.2</b> Installing R on Windows</a></li>
+<li class="chapter" data-level="7.2" data-path="installation-instructions.html"><a href="installation-instructions.html#r-for-windowslinux"><i class="fa fa-check"></i><b>7.2</b> R for Windows/Linux</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="installation-instructions.html"><a href="installation-instructions.html#windows"><i class="fa fa-check"></i><b>7.2.1</b> Windows</a></li>
+<li class="chapter" data-level="7.2.2" data-path="installation-instructions.html"><a href="installation-instructions.html#linux"><i class="fa fa-check"></i><b>7.2.2</b> Linux</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="installation-instructions.html"><a href="installation-instructions.html#r-studio"><i class="fa fa-check"></i><b>7.3</b> R Studio</a></li>
 </ul></li>
 </ul>
 
@@ -173,10 +178,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="installation-instructions" class="section level1">
 <h1><span class="header-section-number">7</span> Installation Instructions</h1>
-<div id="installing-r-on-mac-os-x" class="section level2">
-<h2><span class="header-section-number">7.1</span> Installing R on Mac OS X</h2>
-<div id="installing-r-with-homebrew" class="section level3">
-<h3><span class="header-section-number">7.1.1</span> Installing R with Homebrew</h3>
+<div id="r-for-mac-os-x" class="section level2">
+<h2><span class="header-section-number">7.1</span> R for Mac OS X</h2>
+<div id="option-1-cran" class="section level3">
+<h3><span class="header-section-number">7.1.1</span> Option 1: CRAN</h3>
+<ol style="list-style-type: decimal">
+<li>Go to <a href="http://cran.us.r-project.org/" class="uri">http://cran.us.r-project.org/</a></li>
+<li>Click on “Download R for Mac OS X”</li>
+<li>Choose appropriate “R-x.x.x.pkg” based on your operating system version (“R-3.3.2.pkg” is the most recent)</li>
+<li>Follow installation instructions</li>
+</ol>
+</div>
+<div id="option-2-homebrew" class="section level3">
+<h3><span class="header-section-number">7.1.2</span> Option 2: Homebrew</h3>
 <p>If you are not sure if you have <em>Homebrew</em>, open your Terminal or CLI and type <code>which brew</code>.</p>
 <p>If you get output like this: <code>/usr/local/bin/brew</code>, then you have <em>Homebrew</em> and you are good to go.</p>
 <p>Otherwise, if you get: <code>command not found</code>, you’ll need to install it from here: <a href="http://brew.sh/" class="uri">http://brew.sh/</a>.</p>
@@ -192,12 +206,35 @@ $ <span class="kw">brew</span> cask install java
 $ <span class="kw">brew</span> tap homebrew/science
 $ <span class="kw">brew</span> install R</code></pre></div></li>
 </ol>
-<p><strong>Trouble Shooting</strong></p>
-<p>…</p>
 </div>
 </div>
-<div id="installing-r-on-windows" class="section level2">
-<h2><span class="header-section-number">7.2</span> Installing R on Windows</h2>
+<div id="r-for-windowslinux" class="section level2">
+<h2><span class="header-section-number">7.2</span> R for Windows/Linux</h2>
+<div id="windows" class="section level3">
+<h3><span class="header-section-number">7.2.1</span> Windows</h3>
+<ol style="list-style-type: decimal">
+<li>Go to <a href="http://cran.us.r-project.org/" class="uri">http://cran.us.r-project.org/</a></li>
+<li>Click on “Download R for Windows” &gt; “base”</li>
+<li>Install R. Leave all default settings in installation options.</li>
+</ol>
+</div>
+<div id="linux" class="section level3">
+<h3><span class="header-section-number">7.2.2</span> Linux</h3>
+<ol style="list-style-type: decimal">
+<li>Go to <a href="http://cran.us.r-project.org/" class="uri">http://cran.us.r-project.org/</a></li>
+<li>Click on “Download R for Linux”</li>
+<li>Choose appropriate directory for your linux operating system</li>
+<li>Follow R installation instructions</li>
+</ol>
+</div>
+</div>
+<div id="r-studio" class="section level2">
+<h2><span class="header-section-number">7.3</span> R Studio</h2>
+<ol style="list-style-type: decimal">
+<li>Download from <a href="https://www.rstudio.com/products/rstudio/download/preview/" class="uri">https://www.rstudio.com/products/rstudio/download/preview/</a></li>
+<li>Select appropriate installer listed under “Desktop Version”</li>
+<li>Follow installation instructions</li>
+</ol>
 
 </div>
 </div>
