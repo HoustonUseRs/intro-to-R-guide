@@ -8,7 +8,7 @@ setup_packages <- function(){
   #' 
   #' Assign to `packages_workshop` a vector of packages used in the workshop.
   #+ eval=FALSE
-  packages_workshop <- c('dplyr', 'ggplot2', 'broom', 'magrittr', 'Hmisc')
+  packages_workshop <- c('dplyr', 'ggplot2', 'broom', 'magrittr')
   #' Also, assign to `packages_utils` a vector of packages being used in this setup script only.
   #+ eval=FALSE
   packages_utils <- c('openxlsx', 'purrr')

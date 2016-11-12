@@ -1,37 +1,7 @@
-# Time to start exploring the data!
+# Time to explore!
 
-```{r include=FALSE, echo=FALSE, eval=FALSE}
-## Suppress this chunk in the book
-install.packages('ggplot2')
-install.packages('magrittr')
-install.packages('Hmisc')
-```
+Now that you're equipped with a number of tools, try your hand at this dataset from the Titanic. This dataset contains passenger data including name, sex, age, cabin. See if you can predict passenger's survival based on the given information!
 
-```{r}
-require('magrittr')
-require('ggplot2')
-require('Hmisc')
-```
+Here is a link to more information.
 
-So far we've loaded the dataset, we've done some high level exploration of the structure, cleaned up the data and even created a simple linear model. In most projects, this will be the hardest part. Once you have your data loaded and cleaned, a common next step is to use R's powerful graphics packages to create some _exploratory graphics_ to help you visualize the dataset.
-
-## R Graphics
-
-R has a few graphics packages to choose from. Many useful plots come 'out of the box' in R.  For example, if we want to see a scatterplot matrix of all the data columns in the _airquality_ dataset, we could use the _pairs_ funtion.
-
-```{r}
-pairs(airquality)
-```
-
-
-While the basic package is nice, we will be using _ggplot2_ today. It is a powerful graphics package that is designed to make your plots adaptable, scalable, and easy to produce.  It is a very popular graphics package used by a large number of R users worldwide.
-
-Many times, it's helpful to just do a scatterplot of two variables
-
-```{r}
-p <- ggplot(airquality, aes(Ozone, Solar.R)) + geom_point()
-p
-```
-
-# Exploring further
-
+https://www.kaggle.com/c/titanic/data

@@ -4,16 +4,14 @@
 ## Suppress this chunk in the book
 install.packages('ggplot2')
 install.packages('magrittr')
-install.packages('Hmisc')
 install.packages('dplyr')
 ```
 
-```{r message=FALSE}
-library(ggplot2)
-library(magrittr)
-library(Hmisc)
-library(dplyr)
-```
+[//]: <> (```{r message=FALSE})
+[//]: <> (library(ggplot2))
+[//]: <> (library(magrittr))
+[//]: <> (library(dplyr))
+[//]: <> (```)
 
 
 Let's pick up the pace and put our newfound skills to the test. For this section, we're gonna use a dataset that looks more like what we'll encounter in real life. It's bigger in both dimensions; it has more rows but also more columns. It also has some missing data (oh noes!). Now things are getting real.
@@ -26,28 +24,28 @@ We can load our new dataset the same way as before, using the `read.csv()` funct
 airquality <- read.csv('airquality.csv')
 ```
 
-Let's take a moment to explore the new dataset using tools we learned in the previous section. Try `str`, `head`, `summary` and get a good feel for the dataset. We can find the number of rows using `nrow`.
+Let's take a moment to explore the new dataset using tools we learned in the previous section. Try `str`, `head`, `summary` and get a good feel for the dataset. For example, we can find the number of rows using `nrow`.
 
 ```{r}
+library(magrittr)
 airquality %>% nrow()
 ```
 
 ## Counting missing values
 
-I mentioned this dataset has some missing data, you may have noticed it already when exploring. In R, missing values are represented by the `NA` symbol.
+I mentioned this dataset has some missing data.  You may have noticed it already when exploring. In R, missing values are represented by the `NA` symbol.
 
-It's always a good idea to check for missing values, even if you are *sure* your data is complete. We can ask R to tell us whether there are any NAs in the dataset using the `is.na()` function.
+It's always a good idea to check for missing values, even if you are *sure* your data is complete. We can ask R to tell us whether there are any `NA`s in the dataset using the `is.na()` function.
 
-```{r}
+```{r results="hide"}
 airquality %>% is.na()
 ```
 
-This will list out `TRUE` or `FALSE` for *every* value in new_data, for the question "is this value equal to NA?". It's kind hard to read, though.
+This will list out `TRUE` or `FALSE` for *every* value in `new_data`, for the question "is this value equal to `NA`?". It's kind hard to read, though.
 
-If we wanted to get a general sense of how many NAs there were in our entire dataset, we could do something like this:
+If we wanted to get a general sense of how many `NA`s there were in our entire dataset, we could do something like this:
 
 ```{r}
-# library(magrittr) # load the library if its not already loaded
 airquality %>% is.na() %>% sum()
 ```
 
@@ -56,19 +54,19 @@ airquality %>% is.na() %>% sum()
 If we try to call some descriptive statistics on any columns with `NA` values, we will get an ugly result. Let's try getting the mean for Ozone levels.
 
 ```{r}
-# library(dplyr) # load the library if its not already loaded
+library(dplyr)
 airquality %>% summarise(mean(Ozone))
 ```
 
 Not what we were looking for.
 
-By default, many functions in R will return NA if called on a vector with any NA values inside. We can override this behavior by adding the `na.rm = TRUE` argument
+By default, many functions in R will return `NA` if called on a vector with any `NA` values inside. We can override this behavior by adding the `na.rm = TRUE` argument
 
 ```{r}
-airquality %>% summarise(mean(Ozone, na.rm=T))
+airquality %>% summarise(mean(Ozone, na.rm=TRUE))
 ```
 
-There are important questions to ask yourself when dealing with missing data, there's no one-size-fits-all answer for it. A slapdash approach is to simply _remove_ any rows with missing data.
+There are important questions to ask yourself when dealing with missing data; there's no one-size-fits-all answer for it. A slapdash approach is to simply _remove_ any rows with missing data.
 
 ```{r}
 aircomplete <- airquality %>% filter(complete.cases(airquality))
@@ -98,11 +96,11 @@ myname %>% str()
 myname$letter %>% str()
 ```
 
-Hmm, it says Factor w/ 5 levels "e","k","l","s",..: 2 1 3 4 1 5. What does this mean? 
+Hmm, it says `Factor w/ 5 levels "e","k","l","s",..: 2 1 3 4 1 5`. What does this mean? 
 
 By default, R stores string fields in data frames as _factors_. 
 
-Behind the scenes, R identifies the unique characters strings in the field, substitutes each one with a unique integer, and remembers the original strings as _levels_. 
+Behind the scenes, R identifies the unique character strings in the field, substitutes each one with a unique integer, and remembers the original strings as _levels_. 
 
 ```{r}
 myname$letter %>% levels()
@@ -115,7 +113,7 @@ In some situations, however, it becomes problematic.
 
 Let's try to modify the _myname_ data frame, and make the letters spell out _kelsie_ rather than _kelsey_. 
 
-We need to change the letter in the 6th position to e and the letter in the 5th position to i. 
+We need to change the letter in the 6th position to `e` and the letter in the 5th position to `i`. 
 
 ```{r}
 myname$letter[6] <- "e"
@@ -131,7 +129,7 @@ There are a couple of ways to override R's default behavior of storing text fiel
 If we're creating a data frame from scratch, we can set the _stringsAsFactors_ parameter equal to _FALSE_. 
 
 ```{r}
-myname <- data.frame(letter=c("k","e","l","s","e","y"), stringsAsFactors=F)
+myname <- data.frame(letter=c("k","e","l","s","e","y"), stringsAsFactors=FALSE)
 ```
 
 Check out the structure _str_ and see what is different. 
@@ -192,7 +190,7 @@ Are factors _ever_ useful? Yes.
 Here's some pretend survey data.
 
 ```{r}
-survey <- data.frame(gender=rep(c("Male","Female"),c(5,7)),response=rep(c("Excellent","Good","Fair","Poor"),3))
+survey <- data.frame(gender=rep(c("Male", "Female"), c(5, 7)), response=rep(c("Excellent", "Good", "Fair", "Poor"), 3))
 ```
 
 Let's change the levels of the gender field. 
@@ -232,7 +230,7 @@ survey %>% mutate(as.numeric(response))
 
 How useful!
 
-The takeaway: 
+### The takeaway
 
 By default, R stores text fields as factors. And factors are strange. 
 
@@ -241,22 +239,6 @@ At times it seems like they are working against us.
 But if we understand how they work, we can make them work for us! 
 
 Now, back to numeric data. 
-
-<!--- might need to skip this section
-## Imputing missing values
-
-Another way to deal with missing data is to _impute_ the values. In order to deal with missing data, you need to understand why it is missing in the first place. Is random data missing? Is it a function of how the data was collected? Were survey respondents hesitant to answer a question due to cultural or social norms?
-
-There are a number of techniques you can use to impute missing values.  This is a relatively advanced topic that we will not cover in depth today. However, we will give you one method to impute values for the _airquality_ data set. Here we will use the _impute_ function from the _Hmisc_ package to impute data using a predictive mean matching algorithm.
-
-```{r}
-require(Hmisc)
-airquality$Ozone <- with(airquality, impute(Ozone, mean))
-airquality$Solar.R <- with(airquality, impute(Solar.R, mean))
-```
-
-Now that we've addressed missingness in our dataset, we're ready to start analysis.
--->
 
 ## Analyzing and Visualizing the data using a script
 
@@ -358,8 +340,9 @@ Great. Now, what if we want to make a report of our work? With R, you get the po
 
 
 Here is a link to an example script:
-[example_script.R](example_script.R)
-[example_script.html](example_script.html)
+
+* [example_script.R](https://github.com/HoustonUseRs/intro-to-R-guide/blob/master/example_script.R)
+* [example_script.html](example_script.html)
 
 
 
