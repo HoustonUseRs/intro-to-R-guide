@@ -1,6 +1,7 @@
 # This time it's for real!
 
 ```{r, echo=FALSE, message=FALSE}
+library(pacman)
 p_load(openxlsx)
 ```
 
@@ -70,78 +71,78 @@ There are important questions to ask yourself when dealing with missing data; th
 aircomplete <- airquality %>% filter(complete.cases(airquality))
 ```
  If you call `nrow` on aircomplete, you'll see we have 111 rows now instead of the 153 we had before.
- 
+
 ```{r}
 aircomplete %>% nrow()
 ```
 
 ## Non-numeric data
 
-So far, we've primarily worked with numeric data. 
+So far, we've primarily worked with numeric data.
 
-Let's talk briefly about how R handles string or character data. 
+Let's talk briefly about how R handles string or character data.
 
-Here's a data frame with some letters. 
+Here's a data frame with some letters.
 
 ```{r}
 myname <- data.frame(letter=c("k","e","l","s","e","y"))
 ```
 
-Let's look at the structure of the _myname_ object, and the _letter_ field of the object. 
+Let's look at the structure of the _myname_ object, and the _letter_ field of the object.
 
 ```{r}
 myname %>% str()
 myname$letter %>% str()
 ```
 
-Hmm, it says `Factor w/ 5 levels "e","k","l","s",..: 2 1 3 4 1 5`. What does this mean? 
+Hmm, it says `Factor w/ 5 levels "e","k","l","s",..: 2 1 3 4 1 5`. What does this mean?
 
-By default, R stores string fields in data frames as _factors_. 
+By default, R stores string fields in data frames as _factors_.
 
-Behind the scenes, R identifies the unique character strings in the field, substitutes each one with a unique integer, and remembers the original strings as _levels_. 
+Behind the scenes, R identifies the unique character strings in the field, substitutes each one with a unique integer, and remembers the original strings as _levels_.
 
 ```{r}
 myname$letter %>% levels()
 myname$letter %>% as.integer()
 ```
 
-For many processes and analyses, this data structure will work fine. 
+For many processes and analyses, this data structure will work fine.
 
-In some situations, however, it becomes problematic. 
+In some situations, however, it becomes problematic.
 
-Let's try to modify the _myname_ data frame, and make the letters spell out _kelsie_ rather than _kelsey_. 
+Let's try to modify the _myname_ data frame, and make the letters spell out _kelsie_ rather than _kelsey_.
 
-We need to change the letter in the 6th position to `e` and the letter in the 5th position to `i`. 
+We need to change the letter in the 6th position to `e` and the letter in the 5th position to `i`.
 
 ```{r}
 myname$letter[6] <- "e"
 myname$letter[5] <- "i"
 ```
 
-Let's print the updated data frame. 
+Let's print the updated data frame.
 
-Not what we want. 
+Not what we want.
 
-There are a couple of ways to override R's default behavior of storing text fields as columns. 
+There are a couple of ways to override R's default behavior of storing text fields as columns.
 
-If we're creating a data frame from scratch, we can set the _stringsAsFactors_ parameter equal to _FALSE_. 
+If we're creating a data frame from scratch, we can set the _stringsAsFactors_ parameter equal to _FALSE_.
 
 ```{r}
 myname <- data.frame(letter=c("k","e","l","s","e","y"), stringsAsFactors=FALSE)
 ```
 
-Check out the structure _str_ and see what is different. 
+Check out the structure _str_ and see what is different.
 
-Let's try making the same modifications now. 
+Let's try making the same modifications now.
 
 ```{r}
 myname$letter[6] <- "e"
 myname$letter[5] <- "i"
 ```
 
-The character data type is much more flexible. 
+The character data type is much more flexible.
 
-If we've already created (or read) a data frame, we can use the _as.character_ function on the text field itself. 
+If we've already created (or read) a data frame, we can use the _as.character_ function on the text field itself.
 
 ```{r}
 myname <- data.frame(letter=c("k","e","l","s","e","y"))
@@ -152,9 +153,9 @@ myname$letter[6] <- "e"
 myname$letter[5] <- "i"
 ```
 
-Looking out for factors is critical when typecasting numeric data that is mistakenly stored as text. 
+Looking out for factors is critical when typecasting numeric data that is mistakenly stored as text.
 
-Here's another data frame. 
+Here's another data frame.
 
 ```{r}
 fives <- data.frame(v1=c("5","10","15","20"))
@@ -167,9 +168,9 @@ fives %>% str()
 fives$v1 %>% levels()
 ```
 
-We want these data points stored as a numeric type, but currently, they're stored as text, and specifically as a factor. 
+We want these data points stored as a numeric type, but currently, they're stored as text, and specifically as a factor.
 
-What does it look like if we convert the factor to numeric? 
+What does it look like if we convert the factor to numeric?
 
 ```{r}
 fives$v1 %>% as.numeric()
@@ -181,9 +182,9 @@ So problematic! Why did this happen?
 fives$v1 %>% as.character() %>% as.numeric()
 ```
 
-That works as expected. 
+That works as expected.
 
-Are factors _ever_ useful? Yes. 
+Are factors _ever_ useful? Yes.
 
 Here's some pretend survey data.
 
@@ -191,28 +192,28 @@ Here's some pretend survey data.
 survey <- data.frame(gender=rep(c("Male", "Female"), c(5, 7)), response=rep(c("Excellent", "Good", "Fair", "Poor"), 3))
 ```
 
-Let's change the levels of the gender field. 
+Let's change the levels of the gender field.
 
 ```{r}
 survey$gender %>% levels()
 levels(survey$gender) <- c("F","M")
 ```
 
-What does it look like now? 
+What does it look like now?
 
-We can also take advantage of our understanding of the factor data type to convert the response variable into a numeric field. 
+We can also take advantage of our understanding of the factor data type to convert the response variable into a numeric field.
 
-I want _excellent_ to map to 4, _good_ to map to 3, _fair_ to map to 2 and _poor_ to map to 1. 
+I want _excellent_ to map to 4, _good_ to map to 3, _fair_ to map to 2 and _poor_ to map to 1.
 
-We'll use the _as.numeric_ function eventually, but first we need to see if the levels are in the order that we want them. 
+We'll use the _as.numeric_ function eventually, but first we need to see if the levels are in the order that we want them.
 
 ```{r}
 survey$response %>% levels()
 ```
 
-They're not. Let's change them, so that less favorable responses will appear before more favorable responses when alphabetized. 
+They're not. Let's change them, so that less favorable responses will appear before more favorable responses when alphabetized.
 
-After we change the levels, we'll need to turn the response field into a character field, and then re-factor. 
+After we change the levels, we'll need to turn the response field into a character field, and then re-factor.
 
 ```{r}
 levels(survey$response) <- c("D Excellent","B Fair","C Good","A Poor")
@@ -230,13 +231,13 @@ How useful!
 
 ### The takeaway
 
-By default, R stores text fields as factors. And factors are strange. 
+By default, R stores text fields as factors. And factors are strange.
 
-At times it seems like they are working against us. 
+At times it seems like they are working against us.
 
-But if we understand how they work, we can make them work for us! 
+But if we understand how they work, we can make them work for us!
 
-Now, back to numeric data. 
+Now, back to numeric data.
 
 ## Analyzing and Visualizing the data using a script
 
@@ -247,8 +248,8 @@ Now, I want you to go back and do _everything_ we just did over again.
 What, you think that's ridiculous? The reality is, we often have to go back and make changes upstream. When we do this, it can get very, very painful if we're doing everything interactively, in the _console_.
 
 
-In all our previous examples we have been using the interactive console. 
-It is an excellent application to quickly analyze the data, but we need to 
+In all our previous examples we have been using the interactive console.
+It is an excellent application to quickly analyze the data, but we need to
 keep a reasonable log of what we did (and possibly way).
 
 Let us start by creating a file, with all the `commands` we used in a sequence.
@@ -278,30 +279,33 @@ library(dplyr)
 airquality <- read.csv('airquality.csv')
 ```
 
-
 We can start by visualizing the data. We have more data to play with now, but let's start with the same plot we used last time.
 
 ```{r}
 # plot to compare temperature vs ozone
-plt <- ggplot(airquality) + geom_point(aes(x=Temp, y=Ozone))
-print(plt)
+p <- ggplot(airquality) + geom_point(aes(x=Temp, y=Ozone))
+print(p)
 ```
 
-You'll notice two new things about what we did here. First, we assign the output to `plt`, this will be important when we want to make adjustments to the plot later. Second, you'll notice when we do that, nothing appears; we have to print the plt to get it to show up.
- 
+You'll notice two new things about what we did here. First, we assign the output to `p`, this will be important when we want to make adjustments to the plot later. Second, you'll notice when we do that, nothing appears; we have to print the `p` to get it to show up.
+
+Notice how we get warning messages, with NA's, let use
+`complete.cases` function, to filter out such rows.
+
+
 ```{r}
 # filter for only complete cases
-aircomplete <- airquality[complete.cases(airquality), ]
+aircomplete <- filter(airquality, complete.cases(airquality))
 
 # create a plot comparing, Ozone levels with Temperature
-plt <- ggplot(aircomplete) + geom_point(aes(x=Temp, y=Ozone))
-print(plt)
+p <- ggplot(aircomplete) + geom_point(aes(x=Temp, y=Ozone))
+print(p)
 ```
 
 
 We can run the entire script by clicking *Source* at the top of the editor pane.
- 
-To run just a specific line or lines, you can select the section you want to run and then click *Run*
+
+To run just a specific line or lines, you can select the section you want to run and then click *Run*.
 
 Let's get back to our data. You may have seen a pattern in the plot we made earlier. Let's pick up our analysis with a little more visualization and some modeling.
 
@@ -309,7 +313,7 @@ Let's get back to our data. You may have seen a pattern in the plot we made earl
 ## Modeling the data
 
 
-We'll model the data using the reliable `lm()` function again. Let's add the following to the end of our script and *Source* it. 
+We'll model the data using the reliable `lm()` function again. Let's add the following to the end of our script and *source* it.
 
 ```{r}
 ozone_model <- lm(Ozone ~ Temp, data = aircomplete)
@@ -319,14 +323,52 @@ print(summary(ozone_model))
 Our model tells us there is a *statistically significant* relationship between Ozone and Temperature. If we want to add the linear model to our plot, we can use the `geom_abline()` function. `geom_abline()` takes two arguments, the intercept and slope. We can use the `coef()` function to extract those values from the model. Add the following lines to your script and *Source* it.
 
 ```{r}
-coef(ozone_model)
+lm_coefs = coef(ozone_model)
+print(lm_coefs)
 ```
 
 With that info, we're ready to add our linear model. Add the following lines to your script and *Source* it.
 
 ```{r}
-plt_2 <- plt + geom_abline(intercept = -147.64607 , slope = 2.43911)
-print(plt_2)
+p2 <- p + geom_abline(intercept = -147.64607 , slope = 2.43911)
+print(p2)
+```
+
+**bonus**
+
+We would go a little further, and bin the temperature
+variable into `high` and `low`, to enable comparison with
+ozone levels.
+
+```{r}
+aircomplete = mutate(aircomplete,
+  temp2 = ifelse(Temp > 80, "high", "low"))
+```
+
+Next, let us create a box plot using this new `temp2` variable. We would use `geom_boxplot` from ggplot2 to create this plot.
+
+```{r}
+ggplot(aircomplete) + geom_boxplot(aes(x=temp2, y=Ozone))
+```
+
+We see that low shows up after high on the x axis, and it is counter intuitive. This is because `temp2` is a character,
+and ggplot2 sorts this variable alphabetically (**h** of high orders before **l** of low).
+So we can use factors, as explained in the previous section to switch their position.
+
+```{r}
+aircomplete = mutate(aircomplete,
+  temp_fac = factor(temp2, levels = c("low", "high")))
+```
+
+We are using `mutate` from `dplyr` to add a new column
+`temp_fac`; which is a factor version of `temp2`.
+Also, you will notice we have explicitly specified
+the levels in a order we would like (`low` and `high`).
+
+Alright! Now lets see how `temp_fac`, comes to use in our boxplot.
+
+```{r}
+ggplot(aircomplete) + geom_boxplot(aes(x=temp_fac, y=Ozone))
 ```
 
 
@@ -340,15 +382,10 @@ Here is a link to an example script:
 * [example_script.R](https://github.com/HoustonUseRs/intro-to-R-guide/blob/master/example_script.R)
 * [example_script.html](example_script.html)
 
-R basically convert the R script into markdown, and then into HTML. So have have the option 
-of including some additional markdown instructions in this set. 
+R basically convert the R script into markdown, and then into HTML. So have have the option
+of including some additional markdown instructions in this set.
 We need just to prefix all lines with a `#'` to use markdown
 
 Here are a set of a few markdown examples.
 
 <img src="assets/markdown_help.png" style="width:304px">
-
-
-
-
-
