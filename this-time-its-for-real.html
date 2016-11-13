@@ -348,26 +348,27 @@ survey$response %&gt;%<span class="st"> </span><span class="kw">levels</span>()<
 airquality &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&#39;airquality.csv&#39;</span>)</code></pre></div>
 <p>We can start by visualizing the data. We have more data to play with now, but let’s start with the same plot we used last time.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># plot to compare temperature vs ozone</span>
-plt &lt;-<span class="st"> </span><span class="kw">ggplot</span>(airquality) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Temp, <span class="dt">y=</span>Ozone))
-<span class="kw">print</span>(plt)</code></pre></div>
+p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(airquality) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Temp, <span class="dt">y=</span>Ozone))
+<span class="kw">print</span>(p)</code></pre></div>
 <pre><code>## Warning: Removed 37 rows containing missing values (geom_point).</code></pre>
 <p><img src="_main_files/figure-html/unnamed-chunk-66-1.png" width="672" /></p>
-<p>You’ll notice two new things about what we did here. First, we assign the output to <code>plt</code>, this will be important when we want to make adjustments to the plot later. Second, you’ll notice when we do that, nothing appears; we have to print the plt to get it to show up.</p>
+<p>You’ll notice two new things about what we did here. First, we assign the output to <code>p</code>, this will be important when we want to make adjustments to the plot later. Second, you’ll notice when we do that, nothing appears; we have to print the <code>p</code> to get it to show up.</p>
+<p>Notice how we get warning messages, with NA’s, let use <code>complete.cases</code> function, to filter out such rows.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># filter for only complete cases</span>
-aircomplete &lt;-<span class="st"> </span>airquality[<span class="kw">complete.cases</span>(airquality), ]
+aircomplete &lt;-<span class="st"> </span><span class="kw">filter</span>(airquality, <span class="kw">complete.cases</span>(airquality))
 
 <span class="co"># create a plot comparing, Ozone levels with Temperature</span>
-plt &lt;-<span class="st"> </span><span class="kw">ggplot</span>(aircomplete) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Temp, <span class="dt">y=</span>Ozone))
-<span class="kw">print</span>(plt)</code></pre></div>
+p &lt;-<span class="st"> </span><span class="kw">ggplot</span>(aircomplete) +<span class="st"> </span><span class="kw">geom_point</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Temp, <span class="dt">y=</span>Ozone))
+<span class="kw">print</span>(p)</code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-67-1.png" width="672" /></p>
 <p>We can run the entire script by clicking <em>Source</em> at the top of the editor pane.</p>
-<p>To run just a specific line or lines, you can select the section you want to run and then click <em>Run</em></p>
+<p>To run just a specific line or lines, you can select the section you want to run and then click <em>Run</em>.</p>
 <p>Let’s get back to our data. You may have seen a pattern in the plot we made earlier. Let’s pick up our analysis with a little more visualization and some modeling.</p>
 </div>
 </div>
 <div id="modeling-the-data-1" class="section level2">
 <h2><span class="header-section-number">3.6</span> Modeling the data</h2>
-<p>We’ll model the data using the reliable <code>lm()</code> function again. Let’s add the following to the end of our script and <em>Source</em> it.</p>
+<p>We’ll model the data using the reliable <code>lm()</code> function again. Let’s add the following to the end of our script and <em>source</em> it.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">ozone_model &lt;-<span class="st"> </span><span class="kw">lm</span>(Ozone ~<span class="st"> </span>Temp, <span class="dt">data =</span> aircomplete)
 <span class="kw">print</span>(<span class="kw">summary</span>(ozone_model))</code></pre></div>
 <pre><code>## 
@@ -389,13 +390,28 @@ plt &lt;-<span class="st"> </span><span class="kw">ggplot</span>(aircomplete) +<
 ## Multiple R-squared:  0.488,  Adjusted R-squared:  0.4833 
 ## F-statistic: 103.9 on 1 and 109 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Our model tells us there is a <em>statistically significant</em> relationship between Ozone and Temperature. If we want to add the linear model to our plot, we can use the <code>geom_abline()</code> function. <code>geom_abline()</code> takes two arguments, the intercept and slope. We can use the <code>coef()</code> function to extract those values from the model. Add the following lines to your script and <em>Source</em> it.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">coef</span>(ozone_model)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">lm_coefs =<span class="st"> </span><span class="kw">coef</span>(ozone_model)
+<span class="kw">print</span>(lm_coefs)</code></pre></div>
 <pre><code>## (Intercept)        Temp 
 ##  -147.64607     2.43911</code></pre>
 <p>With that info, we’re ready to add our linear model. Add the following lines to your script and <em>Source</em> it.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">plt_2 &lt;-<span class="st"> </span>plt +<span class="st"> </span><span class="kw">geom_abline</span>(<span class="dt">intercept =</span> -<span class="fl">147.64607</span> , <span class="dt">slope =</span> <span class="fl">2.43911</span>)
-<span class="kw">print</span>(plt_2)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p2 &lt;-<span class="st"> </span>p +<span class="st"> </span><span class="kw">geom_abline</span>(<span class="dt">intercept =</span> -<span class="fl">147.64607</span> , <span class="dt">slope =</span> <span class="fl">2.43911</span>)
+<span class="kw">print</span>(p2)</code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-70-1.png" width="672" /></p>
+<p><strong>bonus</strong></p>
+<p>We would go a little further, and bin the temperature variable into <code>high</code> and <code>low</code>, to enable comparison with ozone levels.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aircomplete =<span class="st"> </span><span class="kw">mutate</span>(aircomplete,
+  <span class="dt">temp2 =</span> <span class="kw">ifelse</span>(Temp &gt;<span class="st"> </span><span class="dv">80</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>))</code></pre></div>
+<p>Next, let us create a box plot using this new <code>temp2</code> variable. We would use <code>geom_boxplot</code> from ggplot2 to create this plot.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(aircomplete) +<span class="st"> </span><span class="kw">geom_boxplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>temp2, <span class="dt">y=</span>Ozone))</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-72-1.png" width="672" /></p>
+<p>We see that low shows up after high on the x axis, and it is counter intuitive. This is because <code>temp2</code> is a character, and ggplot2 sorts this variable alphabetically (<strong>h</strong> of high orders before <strong>l</strong> of low). So we can use factors, as explained in the previous section to switch their position.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aircomplete =<span class="st"> </span><span class="kw">mutate</span>(aircomplete,
+  <span class="dt">temp_fac =</span> <span class="kw">factor</span>(temp2, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>)))</code></pre></div>
+<p>We are using <code>mutate</code> from <code>dplyr</code> to add a new column <code>temp_fac</code>; which is a factor version of <code>temp2</code>. Also, you will notice we have explicitly specified the levels in a order we would like (<code>low</code> and <code>high</code>).</p>
+<p>Alright! Now lets see how <code>temp_fac</code>, comes to use in our boxplot.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(aircomplete) +<span class="st"> </span><span class="kw">geom_boxplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>temp_fac, <span class="dt">y=</span>Ozone))</code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-74-1.png" width="672" /></p>
 </div>
 <div id="making-a-reproducible-report" class="section level2">
 <h2><span class="header-section-number">3.7</span> Making a reproducible report</h2>
