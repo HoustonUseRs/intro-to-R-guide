@@ -39,10 +39,6 @@
 * [11 tips](http://theodi.org/blog/fig-data-11-tips-how-handle-big-data-r-and-1-bad-pun)
 * [5 strategies](https://www.r-bloggers.com/five-ways-to-handle-big-data-in-r/)
 
-## Tips on search for how to do things
-
-
-
 ## General
 
 * [Task Views](https://cran.r-project.org/web/views/)
