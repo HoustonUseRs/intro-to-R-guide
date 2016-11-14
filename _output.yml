@@ -1,0 +1,3 @@
+bookdown::gitbook:
+  includes:
+    after_body: google-analytics.html
