@@ -18,7 +18,7 @@
 ## Interactive R Graphics
 
 * [Interactive visualizations with R](http://ouzor.github.io/blog/2014/11/21/interactive-visualizations.html)
-  * _"A minireview of R packages ggvis, rCharts, plotly and googleVis for interactive visualizations"_
+    * _"A minireview of R packages ggvis, rCharts, plotly and googleVis for interactive visualizations"_
 * [Shiny Tutorial](http://shiny.rstudio.com/tutorial/)
 * [Plotly ggplot](https://plot.ly/ggplot2/)
 * [Flex Dashboard](http://rmarkdown.rstudio.com/flexdashboard/)
@@ -26,7 +26,7 @@
 ## Maps
 
 * [Leaflet for R](http://rstudio.github.io/leaflet/)
-  * Intro to making interactive maps in R
+    * Intro to making interactive maps in R
 * [Spatial Data with R](http://robinlovelace.net/r/2014/01/30/spatial-data-with-R-tutorial.html)
 * [Making Maps with R](http://www.molecularecologist.com/2012/09/making-maps-with-r/)
 * [R-Bloggers search for maps](https://www.r-bloggers.com/search/maps/)
@@ -38,10 +38,6 @@
 * [Best practices for storing and using data frames too large for memory](http://stackoverflow.com/questions/1875795/best-practices-for-storing-and-using-data-frames-too-large-for-memory)
 * [11 tips](http://theodi.org/blog/fig-data-11-tips-how-handle-big-data-r-and-1-bad-pun)
 * [5 strategies](https://www.r-bloggers.com/five-ways-to-handle-big-data-in-r/)
-
-## Tips on search for how to do things
-
-
 
 ## General
 
