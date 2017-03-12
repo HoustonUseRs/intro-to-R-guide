@@ -1,6 +1,6 @@
 # About this Guide {-}
 
-[Houston R Users](https://hrug-slack.herokuapp.com/) are hosting a [guided intro workshop](http://www.meetup.com/houstonr/events/234653360/) on November 12, 2016.  This guide is the full version of the short guide handed out at the workshop.  This is a reference for reviewing things we covered in person, or for a self-guided introduction to R.
+[Houston R Users](https://hrug-slack.herokuapp.com/) are hosting a [guided intro workshop](https://www.meetup.com/houstonr/events/238362557/) on April 15, 2017.  This guide is the full version of the short guide handed out at the workshop.  This is a reference for reviewing things we covered in person, or for a self-guided introduction to R.
 
 # Welcome to Intro to R
 
