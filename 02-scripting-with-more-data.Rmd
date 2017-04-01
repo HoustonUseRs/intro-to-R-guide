@@ -219,6 +219,7 @@ After we change the levels, we'll need to turn the response field into a charact
 levels(survey$response) <- c("D Excellent","B Fair","C Good","A Poor")
 survey$response <- survey$response %>% as.character() %>% as.factor()
 survey$response %>% levels()
+levels(survey$response) <- c("Poor","Fair","Good","Excellent")
 ```
 
 Much better. Now we can call the _as.numeric_ function.
@@ -250,7 +251,7 @@ What, you think that's ridiculous? The reality is, we often have to go back and 
 
 In all our previous examples we have been using the interactive console.
 It is an excellent application to quickly analyze the data, but we need to
-keep a reasonable log of what we did (and possibly way).
+keep a reasonable log of what we did (and possibly why).
 
 Let us start by creating a file, with all the `commands` we used in a sequence.
 
@@ -295,11 +296,11 @@ Notice how we get warning messages, with NA's, let use
 
 ```{r}
 # filter for only complete cases
-aircomplete <- filter(airquality, complete.cases(airquality))
+aircomplete <- airquality %>% filter(complete.cases(airquality))
 
 # create a plot comparing, Ozone levels with Temperature
 p <- ggplot(aircomplete) + geom_point(aes(x=Temp, y=Ozone))
-print(p)
+p
 ```
 
 
@@ -317,28 +318,28 @@ We'll model the data using the reliable `lm()` function again. Let's add the fol
 
 ```{r}
 ozone_model <- lm(Ozone ~ Temp, data = aircomplete)
-print(summary(ozone_model))
+ozone_model %>% summary()
 ```
 
 Our model tells us there is a *statistically significant* relationship between Ozone and Temperature. If we want to add the linear model to our plot, we can use the `geom_abline()` function. `geom_abline()` takes two arguments, the intercept and slope. We can use the `coef()` function to extract those values from the model. Add the following lines to your script and *Source* it.
 
 ```{r}
-lm_coefs = coef(ozone_model)
-print(lm_coefs)
+ozone_coefs = ozone_model %>% coef()
+ozone_coefs
+ozone_intercept <- ozone_model %>% tidy %>% filter(term == "(Intercept)") %>% select(estimate) %>% unlist()
+ozone_slope <- ozone_model %>% tidy %>% filter(term == "Temp") %>% select(estimate) %>% unlist()
 ```
 
 With that info, we're ready to add our linear model. Add the following lines to your script and *Source* it.
 
 ```{r}
-p2 <- p + geom_abline(intercept = -147.64607 , slope = 2.43911)
-print(p2)
+p2 <- p + geom_abline(intercept = ozone_intercept , slope = ozone_slope)
+p2
 ```
 
 **bonus**
 
-We would go a little further, and bin the temperature
-variable into `high` and `low`, to enable comparison with
-ozone levels.
+We would go a little further, and bin the temperature variable into `high` and `low`, to enable comparison with ozone levels.
 
 ```{r}
 aircomplete = mutate(aircomplete,
@@ -356,8 +357,7 @@ and ggplot2 sorts this variable alphabetically (**h** of high orders before **l*
 So we can use factors, as explained in the previous section to switch their position.
 
 ```{r}
-aircomplete = mutate(aircomplete,
-  temp_fac = factor(temp2, levels = c("low", "high")))
+aircomplete <- aircomplete %>% mutate(temp_fac = factor(temp2, levels = c("low", "high")))
 ```
 
 We are using `mutate` from `dplyr` to add a new column
