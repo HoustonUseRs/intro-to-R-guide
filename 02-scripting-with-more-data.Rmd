@@ -119,7 +119,7 @@ myname <- myname %>% rbind("s")
 myname <- myname %>% rbind("m")
 ```
 
-An Error! That's not what we want.
+An Error! That's not what we want. This happened because "m" is not a registerd factor for `letter`, so R won't add it.
 
 There are a couple of ways to override R's default behavior of storing text fields as columns.
 
