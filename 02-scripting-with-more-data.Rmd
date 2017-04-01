@@ -40,7 +40,7 @@ It's always a good idea to check for missing values, even if you are *sure* your
 airquality %>% is.na()
 ```
 
-This will list out `TRUE` or `FALSE` for *every* value in `new_data`, for the question "is this value equal to `NA`?". It's kind hard to read, though.
+This will list out `TRUE` or `FALSE` for *every* value in `airquality` for the question "is this value equal to `NA`?". It's kind of hard to read, though.
 
 If we wanted to get a general sense of how many `NA`s there were in our entire dataset, we could do something like this:
 
@@ -110,18 +110,16 @@ For many processes and analyses, this data structure will work fine.
 
 In some situations, however, it becomes problematic.
 
-Let's try to modify the _myname_ data frame, and make the letters spell out _kelsie_ rather than _kelsey_.
+Let's try to modify the _myname_ data frame, and make the letters spell out _kelseysm_ rather than _kelsey_.
 
-We need to change the letter in the 6th position to `e` and the letter in the 5th position to `i`.
+We need to add letters `s` and  `m` to the next rows. We can do that with the `rbind` function.
 
 ```{r}
-myname$letter[6] <- "e"
-myname$letter[5] <- "i"
+myname <- myname %>% rbind("s")
+myname <- myname %>% rbind("m")
 ```
 
-Let's print the updated data frame.
-
-Not what we want.
+An Error! That's not what we want.
 
 There are a couple of ways to override R's default behavior of storing text fields as columns.
 
@@ -136,8 +134,8 @@ Check out the structure _str_ and see what is different.
 Let's try making the same modifications now.
 
 ```{r}
-myname$letter[6] <- "e"
-myname$letter[5] <- "i"
+myname <- myname %>% rbind("s")
+myname <- myname %>% rbind("m")
 ```
 
 The character data type is much more flexible.
@@ -149,8 +147,8 @@ myname <- data.frame(letter=c("k","e","l","s","e","y"))
 myname %>% str()
 myname$letter <- myname$letter %>% as.character()
 myname %>% str()
-myname$letter[6] <- "e"
-myname$letter[5] <- "i"
+myname <- myname %>% rbind("s")
+myname <- myname %>% rbind("m")
 ```
 
 Looking out for factors is critical when typecasting numeric data that is mistakenly stored as text.
@@ -168,7 +166,7 @@ fives %>% str()
 fives$v1 %>% levels()
 ```
 
-We want these data points stored as a numeric type, but currently, they're stored as text, and specifically as a factor.
+We want these data points stored as a numeric type, but currently, they're stored as text and, specifically, as a factor.
 
 What does it look like if we convert the factor to numeric?
 
@@ -177,6 +175,8 @@ fives$v1 %>% as.numeric()
 ```
 
 So problematic! Why did this happen?
+
+Because the factor levels are what is converted to numbers, not the characters inside the strings. Let's first convert factors to characters and then convert to numbers.
 
 ```{r}
 fives$v1 %>% as.character() %>% as.numeric()
