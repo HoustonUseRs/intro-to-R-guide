@@ -275,6 +275,7 @@ It is good practice, in programming to place all the libraries we need at the to
 # load libraries
 library(ggplot2)
 library(dplyr)
+library(broom)
 
 # read in data
 airquality <- read.csv('airquality.csv')
@@ -339,33 +340,31 @@ p2
 
 **bonus**
 
-We would go a little further, and bin the temperature variable into `high` and `low`, to enable comparison with ozone levels.
+We could go a little further and bin the temperature variable into `high` and `low` values to enable comparison with ozone levels.
 
 ```{r}
-aircomplete = mutate(aircomplete,
-  temp2 = ifelse(Temp > 80, "high", "low"))
+aircomplete <- aircomplete %>% mutate(temp2 = ifelse(Temp > 80, "high", "low"))
 ```
 
-Next, let us create a box plot using this new `temp2` variable. We would use `geom_boxplot` from ggplot2 to create this plot.
+We are using `mutate` from the `dplyr` package to add a new column `temp2`, which is a character data type based on the variable `Temp`.
+
+Next, let us create a box plot using this new `temp2` variable. We can use `geom_boxplot` to create this plot.
 
 ```{r}
 ggplot(aircomplete) + geom_boxplot(aes(x=temp2, y=Ozone))
 ```
 
-We see that low shows up after high on the x axis, and it is counter intuitive. This is because `temp2` is a character,
-and ggplot2 sorts this variable alphabetically (**h** of high orders before **l** of low).
-So we can use factors, as explained in the previous section to switch their position.
+We see that `low` shows up after `high` on the x axis, and it is counter-intuitive. This is because `temp2` is a character,
+which is sorted alphabetically (**h** before **l**). So we can use factors, as explained in the previous section, to switch their position.
 
 ```{r}
 aircomplete <- aircomplete %>% mutate(temp_fac = factor(temp2, levels = c("low", "high")))
+aircomplete %>% str()
 ```
 
-We are using `mutate` from `dplyr` to add a new column
-`temp_fac`; which is a factor version of `temp2`.
-Also, you will notice we have explicitly specified
-the levels in a order we would like (`low` and `high`).
+Again, we use `mutate` to add another new column `temp_fac`, which is a factor version of `temp2`. Also, you will notice we have explicitly specified the levels in an order we would like (`low` and then `high`). This is confirmed in the `str` command.
 
-Alright! Now lets see how `temp_fac`, comes to use in our boxplot.
+Alright! Now let's see how `temp_fac` looks in our boxplot.
 
 ```{r}
 ggplot(aircomplete) + geom_boxplot(aes(x=temp_fac, y=Ozone))
@@ -382,9 +381,7 @@ Here is a link to an example script:
 * [example_script.R](https://github.com/HoustonUseRs/intro-to-R-guide/blob/master/example_script.R)
 * [example_script.html](example_script.html)
 
-R basically convert the R script into markdown, and then into HTML. So have have the option
-of including some additional markdown instructions in this set.
-We need just to prefix all lines with a `#'` to use markdown
+R basically converts the R script into markdown, and then into HTML. So have have the option of including some additional markdown instructions in this set. We need just to prefix all lines with a `#'` to use markdown
 
 Here are a set of a few markdown examples.
 
