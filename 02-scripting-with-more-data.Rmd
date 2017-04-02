@@ -248,23 +248,19 @@ Now, I want you to go back and do _everything_ we just did over again.
 
 What, you think that's ridiculous? The reality is, we often have to go back and make changes upstream. When we do this, it can get very, very painful if we're doing everything interactively, in the _console_.
 
-
-In all our previous examples we have been using the interactive console.
-It is an excellent application to quickly analyze the data, but we need to
-keep a reasonable log of what we did (and possibly why).
+In all our previous examples we have been using the interactive console. It is an excellent application to quickly analyze the data, but we need to keep a reasonable log of what we did (and possibly why).
 
 Let us start by creating a file, with all the `commands` we used in a sequence.
 
 Click the symbol for New Script and you'll see RStudio's built-in text editor pop up.
 
-<img src="assets/create_new_file.png" style="width:400px">
+<img src="assets/create_new_file.png" style="width:200px">
 
 And then we will clear the session, to remove all the variables from the environment. This insures that we are starting with a clean slate.
 
-<img src="assets/clear_session1.png" style="width:400px">
+<img src="assets/clear_session1.png" style="width:200px">
 
-<img src="assets/clear_session2.png" style="width:304px">
-
+<img src="assets/clear_session2.png" style="width:200px">
 
 
 Let's take a moment to put all our work in. I know it's a pain but it will pay off if we want to make changes later.
@@ -291,8 +287,7 @@ print(p)
 
 You'll notice two new things about what we did here. First, we assign the output to `p`, this will be important when we want to make adjustments to the plot later. Second, you'll notice when we do that, nothing appears; we have to print the `p` to get it to show up.
 
-Notice how we get warning messages, with NA's, let use
-`complete.cases` function, to filter out such rows.
+Notice how we get warning messages, with NA's, let use `complete.cases` function, to filter out such rows.
 
 
 ```{r}
