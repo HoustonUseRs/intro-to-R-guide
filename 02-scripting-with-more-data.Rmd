@@ -254,7 +254,7 @@ Let us start by creating a file, with all the `commands` we used in a sequence.
 
 Click the symbol for New Script and you'll see RStudio's built-in text editor pop up.
 
-<img src="assets/create_new_file.png" style="width:200px">
+<img src="assets/create_new_file.png" style="width:100px; height:100px">
 
 And then we will clear the session, to remove all the variables from the environment. This insures that we are starting with a clean slate.
 
@@ -317,11 +317,18 @@ ozone_model <- lm(Ozone ~ Temp, data = aircomplete)
 ozone_model %>% summary()
 ```
 
-Our model tells us there is a *statistically significant* relationship between Ozone and Temperature. If we want to add the linear model to our plot, we can use the `geom_abline()` function. `geom_abline()` takes two arguments, the intercept and slope. We can use the `coef()` function to extract those values from the model. Add the following lines to your script and *Source* it.
+Our model tells us there is a *statistically significant* relationship between Ozone and Temperature. We can also check to see if any other parameters influence Ozone.
 
 ```{r}
-ozone_coefs = ozone_model %>% coef()
-ozone_coefs
+two_model <- lm(Ozone ~ Temp + Solar.R, data = aircomplete)
+two_model %>% summary()
+```
+
+We see that `Temp` is still *statistically significant* but `Solar.R` is not as much, so we can leave it out of our model.
+
+If we want to add the single linear model to our plot, we can use the `geom_abline()` function. `geom_abline()` takes two arguments, the intercept and slope. We can use the pipeline to extract those values from the model. Add the following lines to your script and *Source* it.
+
+```{r}
 ozone_intercept <- ozone_model %>% tidy %>% filter(term == "(Intercept)") %>% select(estimate) %>% unlist()
 ozone_slope <- ozone_model %>% tidy %>% filter(term == "Temp") %>% select(estimate) %>% unlist()
 ```
@@ -333,36 +340,43 @@ p2 <- p + geom_abline(intercept = ozone_intercept , slope = ozone_slope)
 p2
 ```
 
+There's also another way to get the line drawn on your plot using `geom_smooth`. It will run the model for you, and then it will draw the line and the confidence intervals.
+
+```{r}
+p3 <- p + geom_smooth(aes(Temp, Ozone), method="lm")
+p3
+```
+
 **bonus**
 
 We could go a little further and bin the temperature variable into `high` and `low` values to enable comparison with ozone levels.
 
 ```{r}
-aircomplete <- aircomplete %>% mutate(temp2 = ifelse(Temp > 80, "high", "low"))
+aircomplete <- aircomplete %>% mutate(Temp2 = ifelse(Temp > 80, "high", "low"))
 ```
 
-We are using `mutate` from the `dplyr` package to add a new column `temp2`, which is a character data type based on the variable `Temp`.
+We are using `mutate` from the `dplyr` package to add a new column `Temp2`, which is a character data type based on the variable `Temp`.
 
-Next, let us create a box plot using this new `temp2` variable. We can use `geom_boxplot` to create this plot.
+Next, let us create a box plot using this new `Temp2` variable. We can use `geom_boxplot` to create this plot.
 
 ```{r}
-ggplot(aircomplete) + geom_boxplot(aes(x=temp2, y=Ozone))
+ggplot(aircomplete) + geom_boxplot(aes(x=Temp2, y=Ozone))
 ```
 
-We see that `low` shows up after `high` on the x axis, and it is counter-intuitive. This is because `temp2` is a character,
+We see that `low` shows up after `high` on the x axis, and it is counter-intuitive. This is because `Temp2` is a character,
 which is sorted alphabetically (**h** before **l**). So we can use factors, as explained in the previous section, to switch their position.
 
 ```{r}
-aircomplete <- aircomplete %>% mutate(temp_fac = factor(temp2, levels = c("low", "high")))
+aircomplete <- aircomplete %>% mutate(Temp_factor = factor(Temp2, levels = c("low", "high")))
 aircomplete %>% str()
 ```
 
-Again, we use `mutate` to add another new column `temp_fac`, which is a factor version of `temp2`. Also, you will notice we have explicitly specified the levels in an order we would like (`low` and then `high`). This is confirmed in the `str` command.
+Again, we use `mutate` to add another new column `Temp_factor`, which is a factor version of `Temp2`. Also, you will notice we have explicitly specified the levels in an order we would like (`low` and then `high`). This is confirmed in the `str` command.
 
-Alright! Now let's see how `temp_fac` looks in our boxplot.
+Alright! Now let's see how `Temp_factor` looks in our boxplot.
 
 ```{r}
-ggplot(aircomplete) + geom_boxplot(aes(x=temp_fac, y=Ozone))
+ggplot(aircomplete) + geom_boxplot(aes(x=Temp_factor, y=Ozone))
 ```
 
 
