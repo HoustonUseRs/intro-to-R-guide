@@ -1,5 +1,33 @@
 #Installation Instructions
 
+## Quick installs
+
+### Mac
+
+1. [Install R](https://cran.r-project.org/bin/macosx/R-3.3.3.pkg)
+2. [Install RStudio](https://download1.rstudio.org/RStudio-1.0.136.dmg)
+3. Copy and paste this into RStudio, press enter to run
+```
+source('https://raw.githubusercontent.com/HoustonUseRs/intro-to-R-guide/master/scripts/setup.r')
+```
+
+### Windows
+
+1. [Install R](https://cran.r-project.org/bin/windows/base/R-3.3.3-win.exe)
+2. [Install RStudio](https://download1.rstudio.org/RStudio-1.0.136.exe)
+3. Copy and paste this into RStudio, press enter to run
+```
+source('https://raw.githubusercontent.com/HoustonUseRs/intro-to-R-guide/master/scripts/setup.r')
+```
+
+### Ubuntu
+
+1. [Install R](https://cran.r-project.org/bin/linux/ubuntu/README.html)
+2. [Install RStudio](https://download1.rstudio.org/rstudio-1.0.136-amd64.deb)
+3. Copy and paste this into RStudio, press enter to run
+```
+source('https://raw.githubusercontent.com/HoustonUseRs/intro-to-R-guide/master/scripts/setup.r')
+```
 
 ## R for Mac OS X
 
@@ -8,7 +36,7 @@
 1. Go to http://cran.us.r-project.org/
 2. Click on "Download R for Mac OS X"
 3. Choose appropriate "R-x.x.x.pkg" based on your operating system version
-("R-3.3.2.pkg" is the most recent)
+("R-3.3.3.pkg" is the most recent)
 4. Follow installation instructions
 
 ###Option 2: Homebrew
