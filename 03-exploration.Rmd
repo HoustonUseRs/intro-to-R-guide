@@ -1,7 +1,0 @@
-# Time to explore!
-
-Now that you're equipped with a number of tools, try your hand at this dataset from the Titanic. This dataset contains passenger data including name, sex, age, cabin. See if you can predict passenger's survival based on the given information!
-
-Here is a link to more information.
-
-https://www.kaggle.com/c/titanic/data

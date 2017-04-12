@@ -111,7 +111,7 @@ setup_datasets <- function(working_path, source_url_path){
   library('magrittr')
   #' Assign to `datasets` a vector of the datasets we as files on this computer.
   #+ eval=FALSE
-  datasets <- c('crickets', 'airquality', 'Test_Titanic', 'Train_Titanic')
+  datasets <- c('crickets', 'airquality')
   
   #' Take the `datasets`
   #' and using `walk` from the `purrr` package,
