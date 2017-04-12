@@ -15,8 +15,7 @@ source('https://raw.githubusercontent.com/HoustonUseRs/intro-to-R-guide/master/s
 
 1. [Install R](https://cran.r-project.org/bin/windows/base/R-3.3.3-win.exe)
 2. [Install RStudio](https://download1.rstudio.org/RStudio-1.0.136.exe)
-3. [Install RTools](https://cran.r-project.org/bin/windows/Rtools/Rtools34.exe)
-4. Copy and paste this into RStudio, press enter to run
+3. Copy and paste this into RStudio, press enter to run
 ```
 source('https://raw.githubusercontent.com/HoustonUseRs/intro-to-R-guide/master/scripts/setup.r')
 ```

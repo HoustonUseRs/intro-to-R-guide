@@ -81,16 +81,6 @@ write_dataset_to_files <- function(dataset_name, working_path, source_url_path) 
   #+ eval=FALSE
   message(paste0("Creating ", working_path, " in ", getwd()))
   
-  #' From the `openxlsx` package, use the `write.xlsx` function to write the dataset as a xlsx to the
-  #' `working_path`.
-  #+ eval=FALSE
-  xlsx_file_path <- paste0(working_path, '/', dataset_name, '.xlsx')
-  # openxlsx::write.xlsx(x = dataset_as_dataframe, file = xlsx_file_path)
-  
-  #' Put a nice message in the console.
-  #+ eval=FALSE
-  message(paste0("Creating ", xlsx_file_path, " in ", getwd()))
-  
   #' Use the `write.csv` function to write the dataset as a csv to the `working_path`.
   #+ eval=FALSE
   csv_file_path <- paste0(working_path, '/', dataset_name, '.csv')
