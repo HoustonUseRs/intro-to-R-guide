@@ -390,8 +390,9 @@ __Applied statistical modelling to the data__
 
 | Code                  | Description                         |
 | :-------------------- | :-----------------------------------|
+| `lm(crickets)`        | create a linear model               |
 | `cor(crickets)`       | calculate correlation coefficient   |
 | `cor.test(crickets)`  | test for statistically significant correlation  |
-| `lm(crickets)`        | create a linear model               |
+
 
 Crickets is a rather small and well-formed dataset.  Let's practice our new skills on a slightly more realistic dataset and learn additional skills for cleaning the data and making a report.
