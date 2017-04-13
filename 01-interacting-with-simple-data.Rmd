@@ -319,7 +319,7 @@ ggplot(data = crickets, mapping = aes(x = Temperature, y = Chirpspersecond)) +
     geom_abline(slope = lm_slope, intercept = lm_intercept, color = "maroon")
 ```
 
-Additionally, `cor` and `cor.test` are two functions that can tell us about correlations between paired samples.
+Additionally, `cor` and `cor.test` are two functions that can tell us about correlations between paired samples. The `cor` function will tell us the _correlation coefficient_ of two vectors. The `cor.test` function will allow us to test the strength of the association using one of several well-known correlation tests.
 
 As before, the `?` can help us learn more:
 
@@ -334,6 +334,8 @@ We can run these functions on our data by using `crickets$Chirpspersecond` as th
 cor(x = crickets$Chirpspersecond, y = crickets$Temperature)
 cor.test(x = crickets$Chirpspersecond, y = crickets$Temperature)
 ```
+
+You can see that we've calculated the correlation coefficient and run a Pearson's product moment correlation coefficient.
 
 ## Working with a simple dataset
 
