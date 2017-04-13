@@ -328,7 +328,7 @@ As before, the `?` can help us learn more:
 ?cor.test
 ```
 
-We can run these functions on our data by using `crickets[,1]` as the x, and `crickets[,2]` as the y like so:
+We can run these functions on our data by using `crickets$Chirpspersecond` as the x, and `crickets$Temperature` as the y like so:
 
 ```{r}
 cor(x = crickets$Chirpspersecond, y = crickets$Temperature)
