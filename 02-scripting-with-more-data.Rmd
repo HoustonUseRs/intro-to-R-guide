@@ -254,13 +254,13 @@ Let us start by creating a file, with all the `commands` we used in a sequence.
 
 Click the symbol for New Script and you'll see RStudio's built-in text editor pop up.
 
-<img src="assets/create_new_file.png" style="width:100px; height:100px">
+<img src="assets/create_new_file.png" style="width:400px">
 
 And then we will clear the session, to remove all the variables from the environment. This insures that we are starting with a clean slate.
 
-<img src="assets/clear_session1.png" style="width:200px">
+<img src="assets/clear_session1.png" style="width:400px">
 
-<img src="assets/clear_session2.png" style="width:200px">
+<img src="assets/clear_session2.png" style="width:400px">
 
 
 Let's take a moment to put all our work in. I know it's a pain but it will pay off if we want to make changes later.
