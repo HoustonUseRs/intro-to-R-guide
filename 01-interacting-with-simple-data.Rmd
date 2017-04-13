@@ -328,14 +328,14 @@ As before, the `?` can help us learn more:
 ?cor.test
 ```
 
-We can run these functions on our data by using `crickets$Chirpspersecond` as the x, and `crickets$Temperature` as the y like so:
+We can run these functions on our data by using `crickets$Chirpspersecond` as the y, and `crickets$Temperature` as the x like so:
 
 ```{r}
-cor(x = crickets$Chirpspersecond, y = crickets$Temperature)
-cor.test(x = crickets$Chirpspersecond, y = crickets$Temperature)
+cor(x = crickets$Temperature, y = crickets$Chirpspersecond)
+cor.test(x = crickets$Temperature, y = crickets$Chirpspersecond)
 ```
 
-You can see that we've calculated the correlation coefficient and run a Pearson's product moment correlation coefficient.
+You can see that we've calculated the correlation coefficient and run a Pearson's product moment correlation coefficient.  We are pretty confident based on this info that the temperature outside is strongly correlated with the number of cricket chirps per second.
 
 ## Working with a simple dataset
 
