@@ -32,7 +32,7 @@ It's always a good idea to check for missing values, even if you are *sure* your
 airquality %>% is.na()
 ```
 
-This will list out `TRUE` or `FALSE` for *every* value in `new_data`, for the question "is this value equal to `NA`?". It's kind hard to read, though.
+This will list out `TRUE` or `FALSE` for *every* value in `airquality` for the question "is this value equal to `NA`?". It's kind of hard to read, though.
 
 If we wanted to get a general sense of how many `NA`s there were in our entire dataset, we could do something like this:
 
@@ -102,18 +102,16 @@ For many processes and analyses, this data structure will work fine.
 
 In some situations, however, it becomes problematic.
 
-Let's try to modify the _myname_ data frame, and make the letters spell out _kelsie_ rather than _kelsey_.
+Let's try to modify the _myname_ data frame, and make the letters spell out _kelseysm_ rather than _kelsey_.
 
-We need to change the letter in the 6th position to `e` and the letter in the 5th position to `i`.
+We need to add letters `s` and  `m` to the next rows. We can do that with the `rbind` function.
 
 ```{r}
-myname$letter[6] <- "e"
-myname$letter[5] <- "i"
+myname <- myname %>% rbind("s")
+myname <- myname %>% rbind("m")
 ```
 
-Let's print the updated data frame.
-
-Not what we want.
+An Error! That's not what we want. This happened because "m" is not a registerd factor for `letter`, so R won't add it.
 
 There are a couple of ways to override R's default behavior of storing text fields as columns.
 
@@ -128,8 +126,8 @@ Check out the structure _str_ and see what is different.
 Let's try making the same modifications now.
 
 ```{r}
-myname$letter[6] <- "e"
-myname$letter[5] <- "i"
+myname <- myname %>% rbind("s")
+myname <- myname %>% rbind("m")
 ```
 
 The character data type is much more flexible.
@@ -141,8 +139,8 @@ myname <- data.frame(letter=c("k","e","l","s","e","y"))
 myname %>% str()
 myname$letter <- myname$letter %>% as.character()
 myname %>% str()
-myname$letter[6] <- "e"
-myname$letter[5] <- "i"
+myname <- myname %>% rbind("s")
+myname <- myname %>% rbind("m")
 ```
 
 Looking out for factors is critical when typecasting numeric data that is mistakenly stored as text.
@@ -160,7 +158,7 @@ fives %>% str()
 fives$v1 %>% levels()
 ```
 
-We want these data points stored as a numeric type, but currently, they're stored as text, and specifically as a factor.
+We want these data points stored as a numeric type, but currently, they're stored as text and, specifically, as a factor.
 
 What does it look like if we convert the factor to numeric?
 
@@ -169,6 +167,8 @@ fives$v1 %>% as.numeric()
 ```
 
 So problematic! Why did this happen?
+
+Because the factor levels are what is converted to numbers, not the characters inside the strings. Let's first convert factors to characters and then convert to numbers.
 
 ```{r}
 fives$v1 %>% as.character() %>% as.numeric()
@@ -211,6 +211,7 @@ After we change the levels, we'll need to turn the response field into a charact
 levels(survey$response) <- c("D Excellent","B Fair","C Good","A Poor")
 survey$response <- survey$response %>% as.character() %>% as.factor()
 survey$response %>% levels()
+levels(survey$response) <- c("Poor","Fair","Good","Excellent")
 ```
 
 Much better. Now we can call the _as.numeric_ function.
@@ -239,23 +240,19 @@ Now, I want you to go back and do _everything_ we just did over again.
 
 What, you think that's ridiculous? The reality is, we often have to go back and make changes upstream. When we do this, it can get very, very painful if we're doing everything interactively, in the _console_.
 
-
-In all our previous examples we have been using the interactive console.
-It is an excellent application to quickly analyze the data, but we need to
-keep a reasonable log of what we did (and possibly way).
+In all our previous examples we have been using the interactive console. It is an excellent application to quickly analyze the data, but we need to keep a reasonable log of what we did (and possibly why).
 
 Let us start by creating a file, with all the `commands` we used in a sequence.
 
 Click the symbol for New Script and you'll see RStudio's built-in text editor pop up.
 
-<img src="assets/create_new_file.png" style="width:400px">
+<img src="assets/create_new_file.png" style="width:100px; height:100px">
 
 And then we will clear the session, to remove all the variables from the environment. This insures that we are starting with a clean slate.
 
-<img src="assets/clear_session1.png" style="width:400px">
+<img src="assets/clear_session1.png" style="width:200px">
 
-<img src="assets/clear_session2.png" style="width:304px">
-
+<img src="assets/clear_session2.png" style="width:200px">
 
 
 Let's take a moment to put all our work in. I know it's a pain but it will pay off if we want to make changes later.
@@ -266,6 +263,7 @@ It is good practice, in programming to place all the libraries we need at the to
 # load libraries
 library(ggplot2)
 library(dplyr)
+library(broom)
 
 # read in data
 airquality <- read.csv('airquality.csv')
@@ -281,17 +279,16 @@ print(p)
 
 You'll notice two new things about what we did here. First, we assign the output to `p`, this will be important when we want to make adjustments to the plot later. Second, you'll notice when we do that, nothing appears; we have to print the `p` to get it to show up.
 
-Notice how we get warning messages, with NA's, let use
-`complete.cases` function, to filter out such rows.
+Notice how we get warning messages, with NA's, let use `complete.cases` function, to filter out such rows.
 
 
 ```{r}
 # filter for only complete cases
-aircomplete <- filter(airquality, complete.cases(airquality))
+aircomplete <- airquality %>% filter(complete.cases(airquality))
 
 # create a plot comparing, Ozone levels with Temperature
 p <- ggplot(aircomplete) + geom_point(aes(x=Temp, y=Ozone))
-print(p)
+p
 ```
 
 
@@ -309,58 +306,69 @@ We'll model the data using the reliable `lm()` function again. Let's add the fol
 
 ```{r}
 ozone_model <- lm(Ozone ~ Temp, data = aircomplete)
-print(summary(ozone_model))
+ozone_model %>% summary()
 ```
 
-Our model tells us there is a *statistically significant* relationship between Ozone and Temperature. If we want to add the linear model to our plot, we can use the `geom_abline()` function. `geom_abline()` takes two arguments, the intercept and slope. We can use the `coef()` function to extract those values from the model. Add the following lines to your script and *Source* it.
+Our model tells us there is a *statistically significant* relationship between Ozone and Temperature. We can also check to see if any other parameters influence Ozone.
 
 ```{r}
-lm_coefs = coef(ozone_model)
-print(lm_coefs)
+two_model <- lm(Ozone ~ Temp + Solar.R, data = aircomplete)
+two_model %>% summary()
+```
+
+We see that `Temp` is still *statistically significant* but `Solar.R` is not as much, so we can leave it out of our model.
+
+If we want to add the single linear model to our plot, we can use the `geom_abline()` function. `geom_abline()` takes two arguments, the intercept and slope. We can use the pipeline to extract those values from the model. Add the following lines to your script and *Source* it.
+
+```{r}
+ozone_intercept <- ozone_model %>% tidy %>% filter(term == "(Intercept)") %>% select(estimate) %>% unlist()
+ozone_slope <- ozone_model %>% tidy %>% filter(term == "Temp") %>% select(estimate) %>% unlist()
 ```
 
 With that info, we're ready to add our linear model. Add the following lines to your script and *Source* it.
 
 ```{r}
-p2 <- p + geom_abline(intercept = -147.64607 , slope = 2.43911)
-print(p2)
+p2 <- p + geom_abline(intercept = ozone_intercept , slope = ozone_slope)
+p2
+```
+
+There's also another way to get the line drawn on your plot using `geom_smooth`. It will run the model for you, and then it will draw the line and the confidence intervals.
+
+```{r}
+p3 <- p + geom_smooth(aes(Temp, Ozone), method="lm")
+p3
 ```
 
 **bonus**
 
-We would go a little further, and bin the temperature
-variable into `high` and `low`, to enable comparison with
-ozone levels.
+We could go a little further and bin the temperature variable into `high` and `low` values to enable comparison with ozone levels.
 
 ```{r}
-aircomplete = mutate(aircomplete,
-  temp2 = ifelse(Temp > 80, "high", "low"))
+aircomplete <- aircomplete %>% mutate(Temp2 = ifelse(Temp > 80, "high", "low"))
 ```
 
-Next, let us create a box plot using this new `temp2` variable. We would use `geom_boxplot` from ggplot2 to create this plot.
+We are using `mutate` from the `dplyr` package to add a new column `Temp2`, which is a character data type based on the variable `Temp`.
+
+Next, let us create a box plot using this new `Temp2` variable. We can use `geom_boxplot` to create this plot.
 
 ```{r}
-ggplot(aircomplete) + geom_boxplot(aes(x=temp2, y=Ozone))
+ggplot(aircomplete) + geom_boxplot(aes(x=Temp2, y=Ozone))
 ```
 
-We see that low shows up after high on the x axis, and it is counter intuitive. This is because `temp2` is a character,
-and ggplot2 sorts this variable alphabetically (**h** of high orders before **l** of low).
-So we can use factors, as explained in the previous section to switch their position.
+We see that `low` shows up after `high` on the x axis, and it is counter-intuitive. This is because `Temp2` is a character,
+which is sorted alphabetically (**h** before **l**). So we can use factors, as explained in the previous section, to switch their position.
 
 ```{r}
-aircomplete = mutate(aircomplete,
-  temp_fac = factor(temp2, levels = c("low", "high")))
+aircomplete <- aircomplete %>% mutate(Temp_factor = factor(Temp2, levels = c("low", "high")))
+aircomplete %>% str()
 ```
 
-We are using `mutate` from `dplyr` to add a new column
-`temp_fac`; which is a factor version of `temp2`.
-Also, you will notice we have explicitly specified
-the levels in a order we would like (`low` and `high`).
+Again, we use `mutate` to add another new column `Temp_factor`, which is a factor version of `Temp2`. Also, you will notice we have explicitly specified the levels in an order we would like (`low` and then `high`). This is confirmed in the `str` command.
 
-Alright! Now lets see how `temp_fac`, comes to use in our boxplot.
+Alright! Now let's see how `Temp_factor` looks in our boxplot.
 
 ```{r}
-ggplot(aircomplete) + geom_boxplot(aes(x=temp_fac, y=Ozone))
+ggplot(aircomplete) + geom_boxplot(aes(x=Temp_factor, y=Ozone))
 ```
 
 
@@ -374,9 +382,7 @@ Here is a link to an example script:
 * [example_script.R](https://github.com/HoustonUseRs/intro-to-R-guide/blob/master/example_script.R)
 * [example_script.html](example_script.html)
 
-R basically convert the R script into markdown, and then into HTML. So have have the option
-of including some additional markdown instructions in this set.
-We need just to prefix all lines with a `#'` to use markdown
+R basically converts the R script into markdown, and then into HTML. So have have the option of including some additional markdown instructions in this set. We need just to prefix all lines with a `#'` to use markdown
 
 Here are a set of a few markdown examples.
 
