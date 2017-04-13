@@ -193,7 +193,11 @@ We can install the `ggplot2` package by calling the `install.packages` function 
 install.packages('ggplot2')
 ```
 
-While the package is installing, let's take a break!
+We will also be using a package called `broom` to tidy up some of our data output, so let's install that as well.
+
+```{r results="hide", eval=FALSE}
+install.packages('broom')
+```
 
 Once the package installed, we need to tell R to load it so we can use it.
 
@@ -271,7 +275,7 @@ ggsave(filename = "plot.png")
 
 ## Modeling the data
 
-From the plots, we see a potential correlation between Chirpspersecond and Temperature.  If we were ever without our smart phones and thermometers, out in the country with some crickets, we might want to know if we can use the Chirpspersecond to calculate the Temperature.
+From the plots, we see a potential correlation between Chirpspersecond and Temperature.  If we were ever without our smart phones and thermometers, out in the country with some crickets, we might want to know if we can use the Chirpspersecond to estimate the Temperature.
 
 We can calculate the linear model for Temperature vs. Chirpspersecond using R's `lm` function:
 
@@ -285,18 +289,17 @@ To calculate a linear model for Chirpspersecond from Temperature, we would do th
 lm(Chirpspersecond ~ Temperature, data = crickets)
 ```
 
+A linear model is a class of statistical models where a _continuous_ response variable is defined as a _function_ of one or more _independent, predictor variables_. The `lm` function is R's function that allows us to fit linear models.
+
+You can find more details about `lm` by typing `?lm` into your console. The important aspects to understand about our use of `lm` is that we are telling it to develop a linear model where we attempt to predict `Chirpspersecond` as a function of `Temperature` based on the `crickets` dataset.
+
 There's actually more information that `lm` tells us.  Let's take a look by first telling the computer the remember the result as a variable called `crickets_lm`.
 
 ```{r}
 crickets_lm <- lm(Chirpspersecond ~ Temperature, data = crickets)
 ```
 
-We can use the `broom` package to help us get to the information stored in the model. Let's install that first:
-
-```{r results="hide", eval=FALSE}
-install.packages('broom')
-library('broom')
-```
+Now, let's use the `broom` package we installed earlier to help us get to the information stored in the model.
 
 For example:
 
@@ -328,8 +331,8 @@ As before, the `?` can help us learn more:
 We can run these functions on our data by using `crickets[,1]` as the x, and `crickets[,2]` as the y like so:
 
 ```{r}
-cor(x = crickets[,1], y = crickets[,2])
-cor.test(x = crickets[,1], y = crickets[,2])
+cor(x = crickets$Chirpspersecond, y = crickets$Temperature)
+cor.test(x = crickets$Chirpspersecond, y = crickets$Temperature)
 ```
 
 ## Working with a simple dataset
