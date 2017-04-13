@@ -319,7 +319,7 @@ ggplot(data = crickets, mapping = aes(x = Temperature, y = Chirpspersecond)) +
     geom_abline(slope = lm_slope, intercept = lm_intercept, color = "maroon")
 ```
 
-Additionally, `cor` and `cor.test` are two functions that can tell us about correlations between paired samples.
+Additionally, `cor` and `cor.test` are two functions that can tell us about correlations between paired samples. The `cor` function will tell us the _correlation coefficient_ of two vectors. The `cor.test` function will allow us to test the strength of the association using one of several well-known correlation tests.
 
 As before, the `?` can help us learn more:
 
@@ -328,12 +328,14 @@ As before, the `?` can help us learn more:
 ?cor.test
 ```
 
-We can run these functions on our data by using `crickets[,1]` as the x, and `crickets[,2]` as the y like so:
+We can run these functions on our data by using `crickets$Chirpspersecond` as the y, and `crickets$Temperature` as the x like so:
 
 ```{r}
-cor(x = crickets$Chirpspersecond, y = crickets$Temperature)
-cor.test(x = crickets$Chirpspersecond, y = crickets$Temperature)
+cor(x = crickets$Temperature, y = crickets$Chirpspersecond)
+cor.test(x = crickets$Temperature, y = crickets$Chirpspersecond)
 ```
+
+You can see that we've calculated the correlation coefficient and run a Pearson's product moment correlation coefficient.  We are pretty confident based on this info that the temperature outside is strongly correlated with the number of cricket chirps per second.
 
 ## Working with a simple dataset
 
@@ -390,8 +392,9 @@ __Applied statistical modelling to the data__
 
 | Code                  | Description                         |
 | :-------------------- | :-----------------------------------|
+| `lm(crickets)`        | create a linear model               |
 | `cor(crickets)`       | calculate correlation coefficient   |
 | `cor.test(crickets)`  | test for statistically significant correlation  |
-| `lm(crickets)`        | create a linear model               |
+
 
 Crickets is a rather small and well-formed dataset.  Let's practice our new skills on a slightly more realistic dataset and learn additional skills for cleaning the data and making a report.
