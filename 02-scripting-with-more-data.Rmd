@@ -40,9 +40,16 @@ If we wanted to get a general sense of how many `NA`s there were in our entire d
 airquality %>% is.na() %>% sum()
 ```
 
+If we wanted to know the location of the missing `NA`s, we could do this:
+
+```{r}
+airquality %>% is.na() %>% which()
+```
+
 ## Ignoring missing values
 
-If we try to call some descriptive statistics on any columns with `NA` values, we will get an ugly result. Let's try getting the mean for Ozone levels.
+If we try to call some descriptive statistics on any columns with `NA` values, we will get an ugly result. Let's try getting the mean for 
+Ozone levels.
 
 ```{r}
 library(dplyr) # load using `library` if not already loaded
