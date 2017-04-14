@@ -120,7 +120,7 @@ setup_datasets <- function(working_path, source_url_path){
 setup_for_workshop <- function(){
   #' Assign to `working_path` our path for the workshop.
   #+ eval=FALSE
-  working_path <- './intro-to-R-20161112'
+  working_path <- './intro-to-R-20170415'
   source_url_path <- 'https://raw.githubusercontent.com/HoustonUseRs/intro-to-R-guide/master/'
   
   #' Call the functions we previously defined.
