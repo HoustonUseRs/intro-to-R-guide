@@ -75,6 +75,12 @@ aircomplete <- airquality %>% filter(complete.cases(airquality))
 aircomplete %>% nrow()
 ```
 
+You get the same result using `na.omit()`.
+```{r}
+airomit <- airquality %>% na.omit() 
+airomit %>% nrow()
+```
+
 ## Non-numeric data
 
 So far, we've primarily worked with numeric data.
