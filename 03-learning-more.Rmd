@@ -45,18 +45,18 @@ For a great overview of what's in the book, check out [this page](http://r4ds.ha
 
 * <a href="http://adv-r.had.co.nz/" target="_blank">  <img src="https://images.tandf.co.uk/common/jackets/amazon/978146658/9781466586963.jpg" style="width:50px"></a> <b> Advanced R</b> - Master R as a programming language. Also available online.
 
-* <a href="https://www.amazon.com/dp/0387981403/ref=cm_sw_su_dp?tag=ggplot2-20" target="_blank">  <img src="https://images-na.ssl-images-amazon.com/images/I/418lVZnPZXL.jpg" style="width:50px"></a> <b> ggplot2</b> - Learn how to create elegant graphics for data analysis 
+* <a href="https://www.amazon.com/dp/0387981403/ref=cm_sw_su_dp?tag=ggplot2-20" target="_blank">  <img src="https://images-na.ssl-images-amazon.com/images/I/418lVZnPZXL.jpg" style="width:50px"></a> <b> ggplot2</b> - Learn not only how to create elegant graphics for data analysis but also get insight into how the 'grammar of graphics' was used to build and make ggplot awesome.
 
 
 ### Practice and Learn Data Science
 Once you have learnt R, try your coding skills on analyzing a collection of public datasets. 
 
-* Kaggle Titantic examples - Learn how to tackle a machine learning problem and participate in competetions
+* Kaggle Titantic examples - Learn how to tackle a machine learning problem and participate in competitions either individually or in teams. Kaggle also has a ton of cool datasets you can play with as well as an active community of users you can interact with who use R as their data science tool of choice.
   * [Exploring Survival on the Titanic](https://www.kaggle.com/mrisdal/titanic/exploring-survival-on-the-titanic)
-* [Houston data jams](https://houstondatavis.github.io/data-jams/) Attend data visualization meetups in Houston.
-* [Quick-R](http://www.statmethods.net/) A collection of tutorials on how to do various things in R
-* [drivendata](https://www.drivendata.org/) Like Kaggle, with a focus on good will and non-profits
-* [Data Camp](https://www.datacamp.com/) Full online, interactive curriculum, some free, some not
+* [Houston data jams](https://houstondatavis.github.io/data-jams/) Attend data visualization meetups in Houston where you can learn about new data vis technologies from other members of the community, while also getting a chance to put your R ggplot skills to the test at their monthly data jams. 
+* [Quick-R](http://www.statmethods.net/) A collection of tutorials on how to do various things in R. If you are interested in learning how to manipulate data in R without the use of packages like 'dplyr' or 'tidyr', Quick-R gives some great tutorials on how to use base R to achieve some of the same ends as those packages. 
+* [drivendata](https://www.drivendata.org/) Like Kaggle, with a focus on good will and non-profits. 
+* [Data Camp](https://www.datacamp.com/) Full online, interactive curriculum, some free, some not. Data Camp also has a blog that publishes helpful articles and tips for new R users.
 
 * Others resources to check [R by example](http://www.mayin.org/ajayshah/KB/R/index.html), [R Examples](http://www.rexamples.com/)
 
