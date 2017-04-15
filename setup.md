@@ -19,7 +19,7 @@ Also, assign to `packages_utils` a vector of packages being used in this setup s
 
 
 ```r
-  packages_utils <- c('xlsx', 'purrr')
+  packages_utils <- c('purrr')
 ```
 
 The `installed.packages` function returns a dataframe of packages that are installed.
@@ -30,6 +30,7 @@ Assign to `installed_packages_as_vector` a vector of installed packages by name.
   installed_packages_as_vector <- installed.packages()[,"Package"]
 ```
 
+<!-- pacman::p_load, as an alternate -->
 `setdiff` is a nifty function that can get the differences between things, such as two vectors.
 Any element in the first argument that's missing from the second will be returned in a vector.
 
@@ -130,22 +131,6 @@ Put a nice message in the console.
   message(paste0("Creating ", working_path, " in ", getwd()))
 ```
 
-From the `xlsx` package, use the `write.xlsx` function to write the dataset as a xlsx to the
-`working_path`.
-
-
-```r
-  xlsx_file_path <- paste0(working_path, '/', dataset_name, '.xlsx')
-  xlsx::write.xlsx(x = dataset_as_dataframe, file = xlsx_file_path)
-```
-
-Put a nice message in the console.
-
-
-```r
-  message(paste0("Creating ", xlsx_file_path, " in ", getwd()))
-```
-
 Use the `write.csv` function to write the dataset as a csv to the `working_path`.
 
 
@@ -210,7 +195,7 @@ Assign to `working_path` our path for the workshop.
 
 
 ```r
-  working_path <- './intro-to-R-20161112'
+  working_path <- './intro-to-R-20170415'
   source_url_path <- 'https://raw.githubusercontent.com/HoustonUseRs/intro-to-R-guide/master/'
 ```
 

@@ -212,12 +212,12 @@ p3 <- p + geom_smooth(aes(Temp, Ozone), method="lm")
 p3
 ```
 
-**bonus**
+### Boxplot
 
-We could go a little further and bin the temperature variable into `high` and `low` values to enable comparison with ozone levels.
+We could go a little further and bin the temperature variable into `cool` and `warm` values to enable comparison with ozone levels.
 
 ```{r}
-aircomplete <- aircomplete %>% mutate(Temp2 = ifelse(Temp > 80, "high", "low"))
+aircomplete <- aircomplete %>% mutate(Temp2 = ifelse(Temp < 80, "cool", "warm"))
 ```
 
 We are using `mutate` from the `dplyr` package to add a new column `Temp2`, which is a character data type based on the variable `Temp`.
@@ -227,23 +227,6 @@ Next, let us create a box plot using this new `Temp2` variable. We can use `geom
 ```{r}
 ggplot(aircomplete) + geom_boxplot(aes(x=Temp2, y=Ozone))
 ```
-
-We see that `low` shows up after `high` on the x axis, and it is counter-intuitive. This is because `Temp2` is a character,
-which is sorted alphabetically (**h** before **l**). So we can use factors, as explained in the previous section, to switch their position.
-
-```{r}
-aircomplete <- aircomplete %>% mutate(Temp_factor = factor(Temp2, levels = c("low", "high")))
-aircomplete %>% str()
-```
-
-Again, we use `mutate` to add another new column `Temp_factor`, which is a factor version of `Temp2`. Also, you will notice we have explicitly specified the levels in an order we would like (`low` and then `high`). This is confirmed in the `str` command.
-
-Alright! Now let's see how `Temp_factor` looks in our boxplot.
-
-```{r}
-ggplot(aircomplete) + geom_boxplot(aes(x=Temp_factor, y=Ozone))
-```
-
 
 ## Making a reproducible report
 
