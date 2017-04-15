@@ -120,7 +120,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="3.5" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#analyzing-and-visualizing-the-data-using-a-script"><i class="fa fa-check"></i><b>3.5</b> Analyzing and Visualizing the data using a script</a><ul>
 <li class="chapter" data-level="3.5.1" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#creating-a-r-script-to-save-code-and-analysis"><i class="fa fa-check"></i><b>3.5.1</b> Creating a R script to save code and analysis</a></li>
 </ul></li>
-<li class="chapter" data-level="3.6" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#modeling-the-data-1"><i class="fa fa-check"></i><b>3.6</b> Modeling the data</a></li>
+<li class="chapter" data-level="3.6" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#modeling-the-data-1"><i class="fa fa-check"></i><b>3.6</b> Modeling the data</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#boxplot"><i class="fa fa-check"></i><b>3.6.1</b> Boxplot</a></li>
+</ul></li>
 <li class="chapter" data-level="3.7" data-path="this-time-its-for-real.html"><a href="this-time-its-for-real.html#making-a-reproducible-report"><i class="fa fa-check"></i><b>3.7</b> Making a reproducible report</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="learning-more.html"><a href="learning-more.html"><i class="fa fa-check"></i><b>4</b> Learning More</a><ul>
@@ -152,6 +154,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="6" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>6</b> Appendix</a><ul>
 <li class="chapter" data-level="6.1" data-path="appendix.html"><a href="appendix.html#more-on-dealing-with-non-numeric-data"><i class="fa fa-check"></i><b>6.1</b> More on Dealing with Non-numeric data</a><ul>
 <li class="chapter" data-level="6.1.1" data-path="appendix.html"><a href="appendix.html#the-takeaway"><i class="fa fa-check"></i><b>6.1.1</b> The takeaway</a></li>
+<li class="chapter" data-level="6.1.2" data-path="appendix.html"><a href="appendix.html#controlling-order"><i class="fa fa-check"></i><b>6.1.2</b> Controlling order</a></li>
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="appendix.html"><a href="appendix.html#webscraping-and-text-analysis"><i class="fa fa-check"></i><b>6.2</b> Webscraping and text analysis</a></li>
 <li class="chapter" data-level="6.3" data-path="appendix.html"><a href="appendix.html#machine-learning-in-r"><i class="fa fa-check"></i><b>6.3</b> Machine Learning in R</a></li>
@@ -341,29 +344,15 @@ p2</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">p3 &lt;-<span class="st"> </span>p +<span class="st"> </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(Temp, Ozone), <span class="dt">method=</span><span class="st">&quot;lm&quot;</span>)
 p3</code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-60-1.png" width="672" /></p>
-<p><strong>bonus</strong></p>
-<p>We could go a little further and bin the temperature variable into <code>high</code> and <code>low</code> values to enable comparison with ozone levels.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aircomplete &lt;-<span class="st"> </span>aircomplete %&gt;%<span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Temp2 =</span> <span class="kw">ifelse</span>(Temp &gt;<span class="st"> </span><span class="dv">80</span>, <span class="st">&quot;high&quot;</span>, <span class="st">&quot;low&quot;</span>))</code></pre></div>
+<div id="boxplot" class="section level3">
+<h3><span class="header-section-number">3.6.1</span> Boxplot</h3>
+<p>We could go a little further and bin the temperature variable into <code>cool</code> and <code>warm</code> values to enable comparison with ozone levels.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aircomplete &lt;-<span class="st"> </span>aircomplete %&gt;%<span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Temp2 =</span> <span class="kw">ifelse</span>(Temp &lt;<span class="st"> </span><span class="dv">80</span>, <span class="st">&quot;cool&quot;</span>, <span class="st">&quot;warm&quot;</span>))</code></pre></div>
 <p>We are using <code>mutate</code> from the <code>dplyr</code> package to add a new column <code>Temp2</code>, which is a character data type based on the variable <code>Temp</code>.</p>
 <p>Next, let us create a box plot using this new <code>Temp2</code> variable. We can use <code>geom_boxplot</code> to create this plot.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(aircomplete) +<span class="st"> </span><span class="kw">geom_boxplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Temp2, <span class="dt">y=</span>Ozone))</code></pre></div>
 <p><img src="_main_files/figure-html/unnamed-chunk-62-1.png" width="672" /></p>
-<p>We see that <code>low</code> shows up after <code>high</code> on the x axis, and it is counter-intuitive. This is because <code>Temp2</code> is a character, which is sorted alphabetically (<strong>h</strong> before <strong>l</strong>). So we can use factors, as explained in the previous section, to switch their position.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">aircomplete &lt;-<span class="st"> </span>aircomplete %&gt;%<span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Temp_factor =</span> <span class="kw">factor</span>(Temp2, <span class="dt">levels =</span> <span class="kw">c</span>(<span class="st">&quot;low&quot;</span>, <span class="st">&quot;high&quot;</span>)))
-aircomplete %&gt;%<span class="st"> </span><span class="kw">str</span>()</code></pre></div>
-<pre><code>## &#39;data.frame&#39;:    111 obs. of  8 variables:
-##  $ Ozone      : int  41 36 12 18 23 19 8 16 11 14 ...
-##  $ Solar.R    : int  190 118 149 313 299 99 19 256 290 274 ...
-##  $ Wind       : num  7.4 8 12.6 11.5 8.6 13.8 20.1 9.7 9.2 10.9 ...
-##  $ Temp       : int  67 72 74 62 65 59 61 69 66 68 ...
-##  $ Month      : int  5 5 5 5 5 5 5 5 5 5 ...
-##  $ Day        : int  1 2 3 4 7 8 9 12 13 14 ...
-##  $ Temp2      : chr  &quot;low&quot; &quot;low&quot; &quot;low&quot; &quot;low&quot; ...
-##  $ Temp_factor: Factor w/ 2 levels &quot;low&quot;,&quot;high&quot;: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
-<p>Again, we use <code>mutate</code> to add another new column <code>Temp_factor</code>, which is a factor version of <code>Temp2</code>. Also, you will notice we have explicitly specified the levels in an order we would like (<code>low</code> and then <code>high</code>). This is confirmed in the <code>str</code> command.</p>
-<p>Alright! Now let’s see how <code>Temp_factor</code> looks in our boxplot.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>(aircomplete) +<span class="st"> </span><span class="kw">geom_boxplot</span>(<span class="kw">aes</span>(<span class="dt">x=</span>Temp_factor, <span class="dt">y=</span>Ozone))</code></pre></div>
-<p><img src="_main_files/figure-html/unnamed-chunk-64-1.png" width="672" /></p>
+</div>
 </div>
 <div id="making-a-reproducible-report" class="section level2">
 <h2><span class="header-section-number">3.7</span> Making a reproducible report</h2>
