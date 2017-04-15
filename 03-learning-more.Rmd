@@ -2,6 +2,8 @@
 
 There are many ways to continue learning R.  No matter what you choose to be your next step, we're here and eager to share experiences and questions!  Join us in person for our [Houston R UseRs Meetups](http://www.meetup.com/houstonr/) or online in our [Slack](https://hrug-slack.herokuapp.com/) chat anytime.
 
+Here are some tips for getting help and next steps for 
+
 ## How to get help in R
 
 With getting help with a problem or error you are running into with R, or any programming language, it helps others help you when you can produce a [minimal reproducible example](http://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example).

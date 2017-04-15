@@ -4,27 +4,27 @@
 
 ### Mac
 
-1. [Install R](https://cran.r-project.org/bin/macosx/R-3.3.3.pkg)
-2. [Install RStudio](https://download1.rstudio.org/RStudio-1.0.136.dmg)
-3. Copy and paste this into RStudio, press enter to run
+1. [Download and install R](https://cran.r-project.org/bin/macosx/R-3.3.3.pkg)
+2. [Download and install RStudio](https://download1.rstudio.org/RStudio-1.0.136.dmg)
+3. Copy and paste the next line of code into the RStudio console (usually the lower left-hand box), press enter to run
 ```
 source('https://raw.githubusercontent.com/HoustonUseRs/intro-to-R-guide/master/scripts/setup.r')
 ```
 
 ### Windows
 
-1. [Install R](https://cran.r-project.org/bin/windows/base/R-3.3.3-win.exe)
-2. [Install RStudio](https://download1.rstudio.org/RStudio-1.0.136.exe)
-3. Copy and paste this into RStudio, press enter to run
+1. [Download and install R](https://cran.r-project.org/bin/windows/base/R-3.3.3-win.exe)
+2. [Download and install RStudio](https://download1.rstudio.org/RStudio-1.0.136.exe)
+3. Copy and paste the next line of code into the RStudio console (usually the lower left-hand box), press enter to run
 ```
 source('https://raw.githubusercontent.com/HoustonUseRs/intro-to-R-guide/master/scripts/setup.r')
 ```
 
 ### Ubuntu
 
-1. [Install R](https://cran.r-project.org/bin/linux/ubuntu/README.html)
-2. [Install RStudio](https://download1.rstudio.org/rstudio-1.0.136-amd64.deb)
-3. Copy and paste this into RStudio, press enter to run
+1. [Download and install R](https://cran.r-project.org/bin/linux/ubuntu/README.html)
+2. [Download and install RStudio](https://download1.rstudio.org/rstudio-1.0.136-amd64.deb)
+3. Copy and paste the next line of code into the RStudio console (usually the lower left-hand box), press enter to run
 ```
 source('https://raw.githubusercontent.com/HoustonUseRs/intro-to-R-guide/master/scripts/setup.r')
 ```
